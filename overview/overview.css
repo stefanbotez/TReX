@@ -109,7 +109,7 @@ header {
 }
 
 .menu li.active {
-    background-color: #4cc636;
+    background-color: #00d793;
 }
 
 .menu li a {
@@ -122,9 +122,59 @@ header {
 }
 
 .menu li:not(.active):hover a, .menu li:not(.active):hover i {
-    color: #4cc636;
+    color: #00d793;
 }
 
 .menu li.active > a, .menu li.active  i {
     color: #fff;
+}
+
+.filter-bar {
+    width :100%;
+    padding:20px;
+    background: #fff;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-form .filter-part {
+    position: relative;
+    margin: 0 20px 0 10px;
+}
+
+.filter-form .input-icon {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 15px;
+}
+
+.filter-form .filter-part label {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.filter-form .filter-part input {
+    padding: 9px;
+    outline: none;
+    border: 2px solid #d8d8d8;
+}
+
+.grid-options {
+    width: auto;
+}
+
+.grid-options i {
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0 10px;
 }
