@@ -1,5 +1,6 @@
 * {
     font-family: 'Montserrat', sans-serif;
+    color: #646464;
 }
 
 body {
@@ -22,4 +23,8 @@ ul {
 
 .container {
     width: 1170px;
+}
+
+a {
+    text-decoration: none;
 }

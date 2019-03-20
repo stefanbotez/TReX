@@ -27,8 +27,8 @@ body {
     margin-bottom: 30px;
 }
 
-.sidebar-content {
-    padding: 15px;
+.sidebar-container {
+    width: 100%;
 }
 
 .content {
@@ -89,4 +89,42 @@ header {
 
 .occupation {
     margin-top: 5px;
+}
+
+.menu {
+    margin-top: 40px;
+}
+
+.menu li {
+    width: 100%;
+
+}
+
+.menu li i {
+    font-size: 24px;
+    min-width:40px;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.menu li.active {
+    background-color: #4cc636;
+}
+
+.menu li a {
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 0 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.menu li:not(.active):hover a, .menu li:not(.active):hover i {
+    color: #4cc636;
+}
+
+.menu li.active > a, .menu li.active  i {
+    color: #fff;
 }
