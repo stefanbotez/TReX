@@ -209,6 +209,10 @@ header {
     font-weight: bold;       
 }
 
+.article-title:hover{
+    color: #00d793;
+}
+
 .article-content{
     background: white;
     padding: 40px 40px;
