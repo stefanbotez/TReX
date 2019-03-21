@@ -167,6 +167,7 @@ header {
     font-weight: 600;
     margin-right: 10px;
     white-space: nowrap;
+    min-width: 70px;
 }
 
 .filter-form .filter-part input {
@@ -286,4 +287,72 @@ header {
 .submit-button:hover{
     background: #00d793;
     color: white;
+}
+
+
+/* RESPONSIVE */
+
+/* MOBILE */
+@media only screen and (max-width: 375px) {
+    .article-container {
+        padding: 20px 0 0 0;
+        margin: 0;
+    }
+
+    .article-content {
+        padding:15px;
+    }
+
+    .filter-bar {
+        padding: 15px;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .filter-form, .filter-bar, .filter-part, .filter-part input {
+        width: 100%;
+    }
+
+    .filter-part {
+        margin: 0 !important;
+    }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 599px) {
+    .filter-form {
+        flex-direction: column;
+    }
+
+    .article-container {
+        padding: 10px;
+        margin: 0;
+    }
+
+    .article-header {
+        padding: 8px;
+    }
+
+    .article-content {
+        padding:15px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 899px) {
+    .filter-bar {
+        display: block;
+        padding: 20px 10px;
+    }
+
+    .filter-form {
+        flex-wrap: wrap;
+    }
+
+    .filter-part {
+        margin: 5px !important;
+    }
+
+    .article-container {
+        padding: 20px;
+        margin: 0;
+    }
 }
