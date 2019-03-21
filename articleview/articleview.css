@@ -1,0 +1,294 @@
+html{
+    overflow-y: hidden;
+}
+
+body {
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: #fff;
+    border-right: 1px solid #f1f1f1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sidebar >.logo {
+    height: 60px;
+    border-bottom: 1px solid #f1f1f1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.sidebar-container {
+    width: 100%;
+}
+
+.content-container {
+    overflow-y: auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+header {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.about-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.initials-container {
+    width: 80px;
+    height: 80px;
+
+    background-color: rgb(202, 182, 219);
+    border-radius: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.initials {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 600;
+    text-shadow: 0 1px 30px #646464
+}
+
+.name {
+    color: #646464;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.occupation {
+    margin-top: 5px;
+}
+
+.menu {
+    margin-top: 40px;
+}
+
+.menu li {
+    width: 100%;
+
+}
+
+.menu li i {
+    font-size: 24px;
+    min-width:40px;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.menu li.active {
+    background-color: #00d793;
+}
+
+.menu li a {
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 10px 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.menu li:not(.active):hover a, .menu li:not(.active):hover i {
+    color: #00d793;
+}
+
+.menu li.active > a, .menu li.active  i {
+    color: #fff;
+}
+
+.filter-bar {
+    width :100%;
+    padding:20px;
+    background: #fff;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-form {
+    display: flex;
+    align-content: space-between;
+}
+
+.filter-form .filter-part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    margin: 10px 20px 0 10px;
+}
+
+.filter-form .input-icon {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 15px;
+}
+
+.filter-form .filter-part label {
+    text-align: row;
+    font-weight: 600;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.filter-form .filter-part input {
+    padding: 9px;
+    outline: none;
+    border: 2px solid #d8d8d8;
+}
+
+.grid-options {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.grid-options i {
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0 10px;
+}
+
+.article-container{
+    margin: 20px 50px;
+}
+
+.article-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px;
+    background: #f0f0f0;
+}
+
+.article-title{
+    font-size: 20px;
+    font-weight: bold;       
+}
+
+.article-content{
+    background: white;
+    padding: 40px 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.article-tags{
+    margin-top: 30px;
+}
+
+.tag{
+    background: #ededed;
+    color: #999;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: all 0.4s;
+    margin-right: 8px;
+}
+
+.tag:hover{
+    background: #00d793;
+    color: white;
+}
+
+.content{
+    text-align: center;
+
+}
+
+.article-options{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.option-button{
+    margin-right: 10px;
+    font-size: 20px;
+    color: #999;
+    
+}
+
+.option-button:hover i{
+    color: #00d793;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.feedback-textarea {
+    width: 100%;
+    height: 75px;
+    margin-bottom: 20px;
+}
+
+.feedback-title{
+    font-size: 18;
+    font-weight: bold;
+
+}
+
+.submit-button{
+    background: #ededed;
+    color: #999;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: all 0.4s;
+    margin-right: 8px;
+}
+
+.submit-button:hover{
+    background: #00d793;
+    color: white;
+}
