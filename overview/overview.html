@@ -1,12 +1,13 @@
 <html>
     <head>
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
         <link rel="stylesheet" href="../shared.css">
         <link rel="stylesheet" href="./overview.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div class="sidebar">
+        <div class="sidebar mobile-hidden">
             <header class="logo">
                 <h1>TReX</h1>
             </header>
@@ -61,25 +62,25 @@
 
                 <div class="filter-form">
                     <div class="filter-part">
-                        <label for="search">Search</label>
+                        <label for="search" class="mobile-hidden">Search</label>
                         <input type="text" id="search">
                         <i class="fa fa-search input-icon"></i>
                     </div>
     
-                    <div class="filter-part">
+                    <div class="filter-part mobile-hidden">
                         <label for="order">Order by</label>
                         <input type="text" id="order">
                         <i class="fa fa-angle-down input-icon"></i>
                     </div>
     
-                    <div class="filter-part">
+                    <div class="filter-part mobile-hidden">
                         <label for="filter">Filter by</label>
                         <input type="text" id="filter">
                         <i class="fa fa-angle-down input-icon"></i>
                     </div>
                 </div>
 
-                <div class="grid-options">
+                <div class="grid-options mobile-hidden tablet-hidden">
                     <i class="fa fa-th-large"></i>
                     <i class="fa fa-th-list"></i>
                 </div>
@@ -98,11 +99,20 @@
                                 </div>
                             </div>
                             <div class="article-content">
-                                <div class="preview">
+                                <div class="preview mobile-hidden tablet-hidden">
                                     PHP has become one of the workhorses of the internet due to its power and flexibility. In this article, Dr. Michael Garbade introduces us to and reviews three PHP frameworks: Symfony, Laravel, and Yii. Frameworks are an almost essential tool for those sites that by their nature require frequent updates and interaction with databases.
 
                                     All three use templating systems to allow for the creation of PHP code for customized layouts and structures for various web pages, while minimizing the setup work. Dr. Garbade points out the advantages of each framework's approach in terms of flexibility, speed, database utilization, and extensibility. Although he couldn't recommend an overall winner in all of these categories, each framework has its strong points, depending on your needs.        
                                 </div>
+
+                                <div class="preview mobile-visible">
+                                    PHP has become one of the workhorses of the internet due to its power and flexibility. In this article, Dr. Michael Garbade introduces us to and reviews three PHP frameworks: Symfony, Laravel...        
+                                </div>
+
+                                <div class="preview tablet-visible">
+                                    PHP has become one of the workhorses of the internet due to its power and flexibility. In this article, Dr. Michael Garbade introduces us to and reviews three PHP frameworks: Symfony, Laravel...        
+                                </div>
+
                                 <div class="article-tags">
                                     <button class="tag">PHP</button>
                                     <button class="tag">Framework</button>
@@ -122,11 +132,21 @@
                                 </div>
                             </div>
                             <div class="article-content">
-                                <div class="preview">
+                                <div class="preview mobile-hidden tablet-hidden">
                                     As Tom Radcliffe points out in this article, C and C++ have a long history of use in embedded systems. C and C++ certainly have an advantage with regard to runtime speed and compactness of compiled code. They are also known for the challenges they present when writing code and often in understanding code someone else has written. In spite of a much shorter existence, Python has come on strong because of its greater ease of learning; thus, its popularity in computer science curricula.
 
                                     Tom explains the advantages of choosing Python vs. C/C++ for an embedded environment. If runtime speed were the main or only criterion, Python would be at a disadvantage, but in the real world, speed of coding can be a big factor, as well as allowances for user interaction with the system, an area where Python has some points of its own. A bright future for embedded Python seems likely.       
                                 </div>
+
+                                <div class="preview mobile-visible">
+                                    As Tom Radcliffe points out in this article, C and C++ have a long history of use in embedded systems. C and C++ certainly have an advantage with regard to runtime speed and compactness of compiled code. They are also known for the challenges they present when writing code and often in understanding code someone else has wr...
+
+                                </div>
+                                
+                                <div class="preview tablet-visible">
+                                        As Tom Radcliffe points out in this article, C and C++ have a long history of use in embedded systems. C and C++ certainly have an advantage with regard to runtime speed and compactness of compiled code. They are also known for the challenges they present when writing code and often in understanding code someone else has wr...
+    
+                                    </div>
                                 <div class="article-tags">
                                     <button class="tag">Python</button>
                                     <button class="tag">C</button>
@@ -146,9 +166,17 @@
                                 </div>
                             </div>
                             <div class="article-content">
-                                <div class="preview">
+                                <div class="preview mobile-hidden tablet-hidden">
                                     Tracy Miranda introduces us to the Eclipse Advanced Scripting Environment (EASE), and then gives us a nicely detailed explanation on how to set it up to add your own customizations to Eclipse. A master instructor, she has a great way of explaining the process and shows us some very useful examples of ways to enhance Eclipse IDE. Whether you are seeking to reduce the tedium of repetition, finding code references you need to edit, or even something as "simple" as building in an auto-save function, you will find Tracy smooths the way with her explanation of EASE.     
                                 </div>
+
+                                <div class="preview mobile-visible">
+                                    Tracy Miranda introduces us to the Eclipse Advanced Scripting Environment (EASE), and then gives us a nicely detailed explanation on how to set it up to add your own customizations to Eclipse. A master instructor, she has a great way of explaining the process and shows us some very useful examples of ways to enhance Eclipse IDE. Whether ...     
+                                </div>
+
+                                <div class="preview tablet-visible">
+                                        Tracy Miranda introduces us to the Eclipse Advanced Scripting Environment (EASE), and then gives us a nicely detailed explanation on how to set it up to add your own customizations to Eclipse. A master instructor, she has a great way of explaining the process and shows us some very useful examples of ways to enhance Eclipse IDE. Whether ...     
+                                    </div>
                                 <div class="article-tags">
                                     <button class="tag">Python</button>
                                     <button class="tag">Eclipse</button>
