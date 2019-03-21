@@ -83,3 +83,31 @@ button.continue {
 button.continue:hover {
      background: black;
 }
+
+
+/* RESPONSIVE  */
+
+/* MOBILE  */
+
+@media only screen and (max-width: 599px) {
+    .login-container, form {
+        width: 100%;
+    }
+}
+
+/* TABLET PORTRAIT  */
+
+@media only screen and (min-width: 600px) and (max-width: 899px){
+    .login-container, form {
+        width: 70%;
+    }
+}
+
+
+/* TABLET LANDSCAPE  */
+
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+    .login-container, form {
+        width: 60%;
+    }
+}
