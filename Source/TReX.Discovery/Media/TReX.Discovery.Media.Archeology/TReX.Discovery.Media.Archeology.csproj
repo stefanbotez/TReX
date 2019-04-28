@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.38.2.1572" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kernel\TReX.Discovery.Kernel.Raven\TReX.Discovery.Kernel.Raven.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Media.Domain\TReX.Discovery.Media.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
