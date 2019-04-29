@@ -9,6 +9,6 @@ namespace TReX.Kernel.Shared.Domain
     {
         Task<Maybe<T>> GetByIdAsync(string id);
 
-        Task<IEnumerable<T>> GetByIdsAsync(IEnumerable<string> ids);
+        Task<Result<IEnumerable<T>>> GetByIdsAsync(IEnumerable<string> ids);
     }
 }

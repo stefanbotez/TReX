@@ -18,7 +18,11 @@ namespace TReX.Kernel.Raven
             }).SingleInstance();
 
 
-            builder.RegisterType<RavenStoreHolder>().SingleInstance();
+            builder.RegisterType<RavenStoreHolder>().AsSelf()
+                .SingleInstance();
+            builder.RegisterType<AggregateTracker>().AsSelf()
+                .InstancePerLifetimeScope();
+
             builder.Register(context =>
             {
                 var store = context.Resolve<RavenStoreHolder>().Store;

@@ -11,17 +11,21 @@ namespace TReX.Kernel.Raven
         where T : AggregateRoot
     {
         private readonly IAsyncDocumentSession session;
+        private readonly AggregateTracker tracker;
 
-        public RavenWriteRepository(IAsyncDocumentSession session)
+        public RavenWriteRepository(IAsyncDocumentSession session, AggregateTracker tracker)
         {
             EnsureArg.IsNotNull(session);
+            EnsureArg.IsNotNull(tracker);
             this.session = session;
+            this.tracker = tracker;
         }
 
         public async Task<Result> CreateAsync(T aggregate)
         {
             return await Maybe<T>.From(aggregate).ToResult("Aggregate cannot be null")
-                .OnSuccess(a => Extensions.TryAsync(() => this.session.StoreAsync(a, a.Id)));
+                .OnSuccess(a => Extensions.TryAsync(() => this.session.StoreAsync(a, a.Id)))
+                .OnSuccess(() => this.tracker.Track(aggregate));
         }
     }
 }
