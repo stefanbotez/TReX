@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Kernel\TReX.Discovery.Kernel.Utilities\TReX.Discovery.Kernel.Utilities.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.Archeology\TReX.Discovery.Media.Archeology.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.Business\TReX.Discovery.Media.Business.csproj" />
   </ItemGroup>

@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
+using Raven.Client.Documents;
+using Raven.Client.Documents.Linq;
 using Raven.Client.Documents.Session;
 using TReX.Discovery.Kernel.Shared;
 using TReX.Discovery.Media.Business;
@@ -10,7 +13,7 @@ using TReX.Discovery.Media.Domain;
 
 namespace TReX.Discovery.Media.Archeology.Youtube
 {
-    public sealed class YoutubeMediaArcheolog : IMediaArcheolog
+    public sealed class YoutubeMediaArcheolog : IMediaArcheolog, IDisposable
     {
         private readonly IMessageBus bus;
         private readonly IAsyncDocumentSession session;
@@ -36,18 +39,22 @@ namespace TReX.Discovery.Media.Archeology.Youtube
 
         private async Task<Result<IEnumerable<YoutubeMediaResource>>> GetStudies(string topic, string page)
         {
-            var result = await this.provider.Search(topic, page);
-            var hasItems = result.Ensure(x => x.Items.Any(), "No items for requested topic");
-            if (hasItems.IsFailure)
+            var studiesResult = await this.provider.Search(topic, page);
+            var hasStudies = studiesResult.Ensure(x => x.Items.Any(), "No items for requested topic");
+            if (hasStudies.IsFailure)
             {
-                return Result.Fail<IEnumerable<YoutubeMediaResource>>(hasItems.Error);
+                return Result.Fail<IEnumerable<YoutubeMediaResource>>(hasStudies.Error);
             }
 
-            var discoveredResources = await this.session.LoadAsync<YoutubeMediaResource>(result.Value.Items.Select(i => i.Id.VideoId));
-            return await hasItems.Map(lr => lr.Items.Where(i => discoveredResources.All(yr => yr.Key != i.Id.VideoId)))
+            var studiesIds = studiesResult.Value.Items.Select(d => d.Id.VideoId);
+            var discoveredResources = await this.session.Query<YoutubeMediaResource>()
+                .Where(ymr => ymr.Id.In(studiesIds))
+                .ToListAsync();
+
+            return await hasStudies.Map(lr => lr.Items.Where(i => discoveredResources.All(yr => yr.Id != i.Id.VideoId)))
                 .Ensure(itd => itd.Any(), "No new items")
                 .OnSuccess(itd => itd.Select(x => new YoutubeMediaResource(x)))
-                .OnFailureCompensate(() => GetStudies(topic, result.Value.NextPageToken));
+                .OnFailureCompensate(() => GetStudies(topic, studiesResult.Value.NextPageToken));
         }
 
         private async Task<Result> PersistStudies(IEnumerable<YoutubeMediaResource> studies)
@@ -63,6 +70,11 @@ namespace TReX.Discovery.Media.Archeology.Youtube
         {
             var messages = studies.Select(s => new MediaResourceDiscovered(s.ToMediaResource()));
             return await this.bus.PublishMessages(messages);
+        }
+
+        public void Dispose()
+        {
+            session?.Dispose();
         }
     }
 }

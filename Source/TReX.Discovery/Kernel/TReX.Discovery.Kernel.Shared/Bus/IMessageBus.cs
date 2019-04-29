@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
-using TReX.Discovery.Kernel.Shared;
 
-namespace TReX.Discovery.Media.Business
+namespace TReX.Discovery.Kernel.Shared
 {
     public interface IMessageBus
     {

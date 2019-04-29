@@ -9,6 +9,7 @@ namespace TReX.Discovery.Media.DependencyInjection
             builder.RegisterModule<SettingsModule>();
             builder.RegisterModule<ArcheologyModule>();
             builder.RegisterModule<PersistenceModule>();
+            builder.RegisterModule<UtilitiesModule>();
         }
     }
 }

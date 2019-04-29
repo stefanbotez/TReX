@@ -27,7 +27,7 @@ namespace TReX.Discovery.Media.Archeology.Youtube
 
         public async Task<Result<SearchListResponse>> Search(string query, string page)
         {
-            var request = this.GetRequest(query, string.Empty);
+            var request = this.GetRequest(query, page);
             return await Result.Try(() => request.ExecuteAsync());
         }
 
