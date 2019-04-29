@@ -13,32 +13,43 @@ namespace TReX.Kernel.Utilities.EventStore
     public sealed class EventStoreBus : IMessageBus
     {
         private readonly IEventStoreConnection storeConnection;
+        private readonly EventStoreSubscriptionFactory subscriptionFactory;
 
-        public EventStoreBus(IEventStoreConnection storeConnection)
+        private readonly Dictionary<Type, EventStoreCatchUpSubscription> subscriptions = new Dictionary<Type, EventStoreCatchUpSubscription>();
+
+        public EventStoreBus(IEventStoreConnection storeConnection, EventStoreSubscriptionFactory subscriptionFactory)
         {
             EnsureArg.IsNotNull(storeConnection);
+            EnsureArg.IsNotNull(subscriptionFactory);
             this.storeConnection = storeConnection;
+            this.subscriptionFactory = subscriptionFactory;
         }
 
         public async Task<Result> PublishMessages<T>(IEnumerable<T> messages) 
             where T : IBusMessage
         {
-            var messagesByType = messages.ToLookup(m => m.GetType());
-            var tasks = messagesByType.Select(group =>
+            var messagesByTopic = messages.ToLookup(m => TopicFactory.GetTopic(m));
+            var tasks = messagesByTopic.Select(group =>
             {
-                var topic = GetTopicName(group.Key);
                 var events = group.Select(e => new EventStoreMessage(e))
                     .Select(e => e.ToEventData());
 
-                return Extensions.TryAsync(() => this.storeConnection.AppendToStreamAsync(topic, ExpectedVersion.Any, events));
+                return Extensions.TryAsync(() => this.storeConnection.AppendToStreamAsync(group.Key, ExpectedVersion.Any, events));
             });
 
             return Result.Combine(await Task.WhenAll(tasks));
         }
 
-        private static string GetTopicName(Type messageType)
+        public async Task SubscribeTo<T>() 
+            where T : IBusMessage
         {
-            return $"{messageType.Name}-Topic";
+            if (subscriptions.ContainsKey(typeof(T)))
+            {
+                return;
+            }
+
+            var subscription = await this.subscriptionFactory.CreateSubscription<T>();
+            subscriptions[typeof(T)] = subscription;
         }
     }
 }

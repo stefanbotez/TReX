@@ -8,5 +8,8 @@ namespace TReX.Kernel.Shared.Bus
     {
         Task<Result> PublishMessages<T>(IEnumerable<T> messages)
             where T : IBusMessage;
+
+        Task SubscribeTo<T>()
+            where T : IBusMessage;
     }
 }

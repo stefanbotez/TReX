@@ -1,6 +1,8 @@
-﻿namespace TReX.Kernel.Shared.Bus
+﻿using MediatR;
+
+namespace TReX.Kernel.Shared.Bus
 {
-    public interface IBusMessage
+    public interface IBusMessage : INotification
     {
         
     }

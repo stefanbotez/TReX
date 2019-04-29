@@ -13,6 +13,17 @@ namespace TReX.Kernel.Shared
             return subject;
         }
 
+        public static async Task<Maybe<T>> ToMaybe<T>(this Task<T> subjectTask)
+        {
+            return await subjectTask;
+        }
+
+        public static async Task<K> Unwrap<T, K>(this Task<Maybe<T>> subjectTask, Func<T, K> selector, K defaultValue = default)
+        {
+            var maybe = await subjectTask;
+            return maybe.Unwrap(selector, defaultValue);
+        }
+
         public static Maybe<T> FirstOrNothing<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.FirstOrDefault();

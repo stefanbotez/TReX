@@ -12,5 +12,9 @@ namespace TReX.Kernel.Utilities
         {
             return Task.FromResult(Result.Ok());
         }
+
+        public void SubscribeTo<T>() where T : IBusMessage
+        {
+        }
     }
 }
