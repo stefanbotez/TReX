@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Kernel\TReX.Discovery.Kernel.Raven\TReX.Discovery.Kernel.Raven.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.Business\TReX.Discovery.Media.Business.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.Domain\TReX.Discovery.Media.Domain.csproj" />
   </ItemGroup>

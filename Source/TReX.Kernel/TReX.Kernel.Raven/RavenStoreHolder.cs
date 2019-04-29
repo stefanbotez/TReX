@@ -4,9 +4,9 @@ using EnsureThat;
 using Raven.Client.Documents;
 using Raven.Client.ServerWide;
 using Raven.Client.ServerWide.Operations;
-using TReX.Discovery.Kernel.Shared;
+using TReX.Kernel.Shared;
 
-namespace TReX.Discovery.Kernel.Raven
+namespace TReX.Kernel.Raven
 {
     public sealed class RavenStoreHolder
     {

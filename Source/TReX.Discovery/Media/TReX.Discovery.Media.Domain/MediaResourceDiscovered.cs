@@ -1,4 +1,4 @@
-﻿using TReX.Discovery.Kernel.Shared;
+﻿using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Domain
 {

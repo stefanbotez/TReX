@@ -1,13 +1,14 @@
 ﻿using System;
 using CSharpFunctionalExtensions;
 using Google.Apis.YouTube.v3.Data;
-using TReX.Discovery.Kernel.Shared;
 using TReX.Discovery.Media.Domain;
+using TReX.Kernel.Shared;
+using TReX.Kernel.Shared.Domain;
 using Thumbnail = Google.Apis.YouTube.v3.Data.Thumbnail;
 
 namespace TReX.Discovery.Media.Archeology.Youtube
 {
-    public sealed class YoutubeMediaResource
+    public sealed class YoutubeMediaResource : AggregateRoot
     {
         private YoutubeMediaResource()
         {
@@ -16,13 +17,13 @@ namespace TReX.Discovery.Media.Archeology.Youtube
         public YoutubeMediaResource(SearchResult result) : this()
         {
             VideoId = result.Id.VideoId;
+            Id = VideoId;
+
             Title = result.Snippet.Title;
             Description = result.Snippet.Description;
             Thumbnail = result.Snippet.Thumbnails.High;
             PublishedAt = result.Snippet.PublishedAt.GetValueOrDefault(DateTime.Now);
         }
-
-        public string Id { get; private set; }
 
         public string VideoId { get; private set; }
 

@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using TReX.Discovery.Kernel.Shared;
-using TReX.Discovery.Kernel.Utilities;
+using TReX.Kernel.Shared.Bus;
+using TReX.Kernel.Utilities;
 
 namespace TReX.Discovery.Media.DependencyInjection
 {

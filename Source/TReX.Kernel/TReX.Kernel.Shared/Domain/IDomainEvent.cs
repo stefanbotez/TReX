@@ -1,4 +1,6 @@
-﻿namespace TReX.Discovery.Kernel.Shared
+﻿using TReX.Kernel.Shared.Bus;
+
+namespace TReX.Kernel.Shared.Domain
 {
     public interface IDomainEvent : IBusMessage
     {

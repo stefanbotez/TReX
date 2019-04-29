@@ -1,4 +1,4 @@
-﻿namespace TReX.Discovery.Kernel.Shared
+﻿namespace TReX.Kernel.Shared.Bus
 {
     public interface IBusMessage
     {

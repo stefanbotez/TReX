@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="RavenDB.Client" Version="4.1.5" />
+    <PackageReference Include="CSharpFunctionalExtensions" Version="1.18.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TReX.Discovery.Kernel.Shared\TReX.Discovery.Kernel.Shared.csproj" />
+    <ProjectReference Include="..\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
   </ItemGroup>
 
 </Project>

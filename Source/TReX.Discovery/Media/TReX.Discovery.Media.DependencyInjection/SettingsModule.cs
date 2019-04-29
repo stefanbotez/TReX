@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Configuration;
-using TReX.Discovery.Kernel.Raven;
 using TReX.Discovery.Media.Archeology.Youtube;
 
 namespace TReX.Discovery.Media.DependencyInjection
@@ -19,15 +18,6 @@ namespace TReX.Discovery.Media.DependencyInjection
                     youtubeSection[nameof(YoutubeSettings.ResourceType)],
                     int.Parse(youtubeSection[nameof(YoutubeSettings.MaxResults)]));
             }).SingleInstance();
-
-            builder.Register(context =>
-            {
-                var configuration = context.Resolve<IConfiguration>();
-                var ravenSection = configuration.GetSection("RavenSettings");
-                return new RavenSettings(ravenSection[nameof(RavenSettings.DatabaseName)],
-                    ravenSection[nameof(RavenSettings.ServerUrl)]);
-            }).SingleInstance();
-
         }
     }
 }

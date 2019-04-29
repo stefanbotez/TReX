@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Kernel\TReX.Discovery.Kernel.Shared\TReX.Discovery.Kernel.Shared.csproj" />
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

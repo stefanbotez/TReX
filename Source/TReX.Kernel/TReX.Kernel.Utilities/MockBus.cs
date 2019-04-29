@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
-using TReX.Discovery.Kernel.Shared;
+using TReX.Kernel.Shared.Bus;
 
-namespace TReX.Discovery.Kernel.Utilities
+namespace TReX.Kernel.Utilities
 {
     public sealed class MockBus : IMessageBus
     {

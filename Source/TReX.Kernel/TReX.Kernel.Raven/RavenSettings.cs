@@ -1,6 +1,6 @@
 ﻿using EnsureThat;
 
-namespace TReX.Discovery.Kernel.Raven
+namespace TReX.Kernel.Raven
 {
     public sealed class RavenSettings
     {

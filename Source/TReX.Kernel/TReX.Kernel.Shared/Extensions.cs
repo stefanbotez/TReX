@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 
-namespace TReX.Discovery.Kernel.Shared
+namespace TReX.Kernel.Shared
 {
     public static class Extensions
     {
