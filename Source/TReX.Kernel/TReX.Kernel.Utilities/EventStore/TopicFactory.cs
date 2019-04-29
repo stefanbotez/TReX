@@ -5,19 +5,13 @@ namespace TReX.Kernel.Utilities.EventStore
 {
     public static class TopicFactory
     {
-        public static string GetTopic<T>()
-            where T :IBusMessage
-        {
-            return GetTopic(typeof(T));
-        }
-
         public static string GetTopic<T>(T message)
             where T : IBusMessage
         {
-            return GetTopic<T>();
+            return GetTopic(message.GetType());
         }
 
-        private static string GetTopic(Type messageType)
+        public static string GetTopic(Type messageType)
         {
             return $"{messageType.Name}-Topic";
         }

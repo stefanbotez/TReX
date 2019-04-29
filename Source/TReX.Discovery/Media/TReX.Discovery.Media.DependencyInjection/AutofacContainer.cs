@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using TReX.Kernel.Raven;
+using TReX.Kernel.Utilities;
 
 namespace TReX.Discovery.Media.DependencyInjection
 {
@@ -8,9 +9,9 @@ namespace TReX.Discovery.Media.DependencyInjection
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterRavenPersistence()
+                .RegisterEventStoreBus()
                 .RegisterModule<SettingsModule>()
-                .RegisterModule<ArcheologyModule>()
-                .RegisterModule<UtilitiesModule>();
+                .RegisterModule<ArcheologyModule>();
         }
     }
 }

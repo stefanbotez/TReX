@@ -1,12 +1,10 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Autofac;
 using CSharpFunctionalExtensions;
 using EventStore.ClientAPI;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using TReX.Kernel.Shared.Bus;
-using TReX.Kernel.Shared.Domain;
 using TReX.Kernel.Utilities.EventStore;
 
 namespace TReX.Kernel.Utilities
@@ -15,6 +13,10 @@ namespace TReX.Kernel.Utilities
     {
         public static ContainerBuilder RegisterEventStoreBus(this ContainerBuilder builder)
         {
+            builder.RegisterType<EventStoreSubscriptionFactory>()
+                .AsSelf()
+                .InstancePerLifetimeScope();
+
             builder.RegisterType<EventStoreBus>()
                 .As<IMessageBus>()
                 .InstancePerLifetimeScope();

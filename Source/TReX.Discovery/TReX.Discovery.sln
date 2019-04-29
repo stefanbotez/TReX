@@ -59,6 +59,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Kernel.Shared", "..\TR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Kernel.Utilities", "..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj", "{32458399-5E62-4D80-812E-8F7A64A807F4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Media.Worker", "Media\TReX.Discovery.Media.Worker\TReX.Discovery.Media.Worker.csproj", "{E2869E15-0A96-4B4F-89E0-3896D1783FB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2869E15-0A96-4B4F-89E0-3896D1783FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2869E15-0A96-4B4F-89E0-3896D1783FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2869E15-0A96-4B4F-89E0-3896D1783FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2869E15-0A96-4B4F-89E0-3896D1783FB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +136,7 @@ Global
 		{14C538FA-9C38-4FC6-B795-07462ACA2E59} = {3C8EB77E-DDD3-4300-A064-BDB375E54534}
 		{C4F39193-6C43-42BF-AC47-B5CFEA6B8511} = {3C8EB77E-DDD3-4300-A064-BDB375E54534}
 		{32458399-5E62-4D80-812E-8F7A64A807F4} = {3C8EB77E-DDD3-4300-A064-BDB375E54534}
+		{E2869E15-0A96-4B4F-89E0-3896D1783FB5} = {D491A9DC-952F-4029-AF3B-232A081C6849}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76FF5FA7-7BA6-4444-BEC7-EE7A148CDAFB}

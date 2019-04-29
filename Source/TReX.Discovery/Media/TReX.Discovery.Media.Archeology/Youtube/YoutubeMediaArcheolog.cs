@@ -43,17 +43,18 @@ namespace TReX.Discovery.Media.Archeology.Youtube
 
         private async Task<Result<IEnumerable<YoutubeMediaResource>>> GetStudies(string topic, string page)
         {
-            var studiesResult = await this.provider.Search(topic, page);
-            var hasStudies = studiesResult.Ensure(x => x.Items.Any(), "No items for requested topic");
-            if (hasStudies.IsFailure)
+            var studiesResult = await this.provider.Search(topic, page)
+                .Ensure(x => x.Items.Any(), "No items for requested topic");
+            if (studiesResult.IsFailure)
             {
-                return Result.Fail<IEnumerable<YoutubeMediaResource>>(hasStudies.Error);
+                return Result.Fail<IEnumerable<YoutubeMediaResource>>(studiesResult.Error);
             }
 
             var studiesIds = studiesResult.Value.Items.Select(d => d.Id.VideoId);
-            var discoveredResources = await this.readRepository.GetByIdsAsync(studiesIds);
+            var discoveredResourcesResult = await this.readRepository.GetByIdsAsync(studiesIds);
 
-            return await hasStudies.Map(lr => lr.Items.Where(i => discoveredResources.All(yr => yr.Id != i.Id.VideoId)))
+            return await Result.Combine(studiesResult, discoveredResourcesResult)
+                .OnSuccess(() => studiesResult.Value.Items.Where(i => discoveredResourcesResult.Value.All(yr => yr.Id != i.Id.VideoId)))
                 .Ensure(itd => itd.Any(), "No new items")
                 .OnSuccess(itd => itd.Select(x => new YoutubeMediaResource(x)))
                 .OnFailureCompensate(() => GetStudies(topic, studiesResult.Value.NextPageToken));

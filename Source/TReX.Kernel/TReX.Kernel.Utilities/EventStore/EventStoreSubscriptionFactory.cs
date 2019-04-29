@@ -39,7 +39,7 @@ namespace TReX.Kernel.Utilities.EventStore
             where T : IBusMessage
         {
             var checkpoint = await this.GetCheckpointFor<T>().Unwrap(c => c.LastProcessedPosition, StreamPosition.Start);
-            var topic = TopicFactory.GetTopic<T>();
+            var topic = TopicFactory.GetTopic(typeof(T));
 
             return this.storeConnection.SubscribeToStreamFrom(topic, checkpoint, CatchUpSubscriptionSettings.Default, OnEventAppeared<T>, null, OnSubscriptionDropped<T>);
         }
