@@ -1,53 +1,48 @@
-﻿using System.Collections.Generic;
+﻿using CSharpFunctionalExtensions;
+using EnsureThat;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
-using EnsureThat;
-using TReX.Discovery.Media.Domain;
-using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Bus;
 using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Archeology.Youtube
 {
-    public sealed class YoutubeMediaArcheolog : IMediaArcheolog
+    public sealed class YoutubeMediaArcheolog : Archeolog<YoutubeMediaStudy>
     {
-        private readonly IMessageBus bus;
-        private readonly IReadRepository<YoutubeMediaResource> readRepository;
-        private readonly IWriteRepository<YoutubeMediaResource> writeRepository;
+        private readonly IReadRepository<YoutubeMediaStudy> readRepository;
         private readonly YoutubeMediaProvider provider;
+        private readonly YoutubeSettings settings;
 
         public YoutubeMediaArcheolog(
-            IReadRepository<YoutubeMediaResource> readRepository,
-            IWriteRepository<YoutubeMediaResource> writeRepository,
+            IReadRepository<YoutubeMediaStudy> readRepository,
+            IWriteRepository<YoutubeMediaStudy> writeRepository,
             IMessageBus bus,
-            YoutubeMediaProvider provider)
+            YoutubeMediaProvider provider,
+            YoutubeSettings settings)
+            :base(writeRepository, bus)
         {
             EnsureArg.IsNotNull(readRepository);
-            EnsureArg.IsNotNull(writeRepository);
-            EnsureArg.IsNotNull(bus);
             EnsureArg.IsNotNull(provider);
+            EnsureArg.IsNotNull(settings);
 
             this.readRepository = readRepository;
-            this.writeRepository = writeRepository;
-            this.bus = bus;
             this.provider = provider;
+            this.settings = settings;
         }
 
-        public async Task<Result> Study(string topic)
-        {
-            var studiesResult = await GetStudies(topic, string.Empty);
-            return await studiesResult.OnSuccess(studies => PersistStudies(studies))
-                .OnSuccess(() => PublishStudies(studiesResult.Value));
-        }
+        protected override Task<Result<IEnumerable<YoutubeMediaStudy>>> GetStudies(string topic) => this.GetStudies(topic, string.Empty);
 
-        private async Task<Result<IEnumerable<YoutubeMediaResource>>> GetStudies(string topic, string page)
+        private async Task<Result<IEnumerable<YoutubeMediaStudy>>> GetStudies(string topic, string page, int depth = 1)
         {
-            var studiesResult = await this.provider.Search(topic, page)
-                .Ensure(x => x.Items.Any(), "No items for requested topic");
+            var depthExceededResult = Result.Create(depth <= this.settings.MaxDepth, "Maximum youtube depth exceeded");
+
+            var studiesResult = await depthExceededResult.OnSuccess(() => this.provider.Search(topic, page))
+                .Ensure(x => x.Items.Any(), "No youtube items for requested topic");
+
             if (studiesResult.IsFailure)
             {
-                return Result.Fail<IEnumerable<YoutubeMediaResource>>(studiesResult.Error);
+                return Result.Fail<IEnumerable<YoutubeMediaStudy>>(studiesResult.Error);
             }
 
             var studiesIds = studiesResult.Value.Items.Select(d => d.Id.VideoId);
@@ -56,22 +51,8 @@ namespace TReX.Discovery.Media.Archeology.Youtube
             return await Result.Combine(studiesResult, discoveredResourcesResult)
                 .OnSuccess(() => studiesResult.Value.Items.Where(i => discoveredResourcesResult.Value.All(yr => yr.Id != i.Id.VideoId)))
                 .Ensure(itd => itd.Any(), "No new items")
-                .OnSuccess(itd => itd.Select(x => new YoutubeMediaResource(x)))
-                .OnFailureCompensate(() => GetStudies(topic, studiesResult.Value.NextPageToken));
-        }
-
-        private async Task<Result> PersistStudies(IEnumerable<YoutubeMediaResource> studies)
-        {
-            var storeTasks = studies.Select(s => Extensions.TryAsync(() => this.writeRepository.CreateAsync(s)));
-            var storeResults = await Task.WhenAll(storeTasks);
-
-            return Result.Combine(storeResults);
-        }
-
-        private async Task<Result> PublishStudies(IEnumerable<YoutubeMediaResource> studies)
-        {
-            var messages = studies.Select(s => new MediaResourceDiscovered(s.ToMediaResource()));
-            return await this.bus.PublishMessages(messages);
+                .OnSuccess(itd => itd.Select(x => new YoutubeMediaStudy(x)))
+                .OnFailureCompensate(() => GetStudies(topic, studiesResult.Value.NextPageToken, depth+1));
         }
     }
 }

@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TReX.Discovery.Media.Business\TReX.Discovery.Media.Business.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.DependencyInjection\TReX.Discovery.Media.DependencyInjection.csproj" />
   </ItemGroup>
 

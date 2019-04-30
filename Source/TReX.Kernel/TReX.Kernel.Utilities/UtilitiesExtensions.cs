@@ -7,10 +7,21 @@ using Newtonsoft.Json;
 using TReX.Kernel.Shared.Bus;
 using TReX.Kernel.Utilities.EventStore;
 
+using ILogger = TReX.Kernel.Shared.ILogger;
+
 namespace TReX.Kernel.Utilities
 {
     public static class UtilitiesExtensions
     {
+        public static ContainerBuilder RegisterLogger(this ContainerBuilder builder)
+        {
+            builder.RegisterType<Logger>()
+                .As<ILogger>()
+                .InstancePerLifetimeScope();
+
+            return builder;
+        }
+
         public static ContainerBuilder RegisterEventStoreBus(this ContainerBuilder builder)
         {
             builder.RegisterType<EventStoreSubscriptionFactory>()

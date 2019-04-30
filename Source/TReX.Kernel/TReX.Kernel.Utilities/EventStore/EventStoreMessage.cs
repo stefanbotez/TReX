@@ -12,21 +12,17 @@ namespace TReX.Kernel.Utilities.EventStore
         {
             this.Data = message;
             this.EventType = message.GetType().Name;
-            this.Metadata = new MessageMetadata(message.GetType());
         }
 
         private string EventType { get; set; }
 
         public object Data { get; private set; }
 
-        public MessageMetadata Metadata { get; private set; }
-
         public EventData ToEventData()
         {
             var serializedData = JsonConvert.SerializeObject(this.Data);
-            var serializedMetadata = JsonConvert.SerializeObject(this.Metadata);
 
-            return new EventData(Guid.NewGuid(), EventType, true, Encoding.UTF8.GetBytes(serializedData), Encoding.UTF8.GetBytes(serializedMetadata));
+            return new EventData(Guid.NewGuid(), EventType, true, Encoding.UTF8.GetBytes(serializedData), new byte[]{});
         }
     }
 

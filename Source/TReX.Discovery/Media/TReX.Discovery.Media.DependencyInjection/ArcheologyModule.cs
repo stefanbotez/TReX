@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using TReX.Discovery.Media.Archeology.Youtube;
+using TReX.Discovery.Media.Business.Archeology;
 using TReX.Discovery.Media.Business.Discovery;
-using TReX.Discovery.Media.Domain;
 
 namespace TReX.Discovery.Media.DependencyInjection
 {
@@ -10,12 +10,12 @@ namespace TReX.Discovery.Media.DependencyInjection
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<YoutubeMediaArcheolog>()
-                .As<IMediaArcheolog>()
+                .As<IArcheolog>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<YoutubeMediaProvider>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<MediaDiscoveryService>()
-                .As<IMediaDiscoveryService>()
+                .As<IDiscoveryService>()
                 .InstancePerLifetimeScope();
         }
     }

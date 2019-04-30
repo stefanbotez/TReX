@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Autofac;
 using MediatR;
 using TReX.Discovery.Media.DependencyInjection;
@@ -16,8 +15,13 @@ namespace TReX.Discovery.Media.Worker
                 .AsSelf()
                 .SingleInstance();
 
+            RegisterMediatr(builder);
+        }
+
+        private void RegisterMediatr(ContainerBuilder builder)
+        {
             builder.RegisterAssemblyTypes(typeof(IMediator).Assembly)
-                .AsImplementedInterfaces();
+    .AsImplementedInterfaces();
 
             builder.Register<ServiceFactory>(ctx =>
             {

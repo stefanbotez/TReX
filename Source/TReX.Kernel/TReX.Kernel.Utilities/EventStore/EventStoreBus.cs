@@ -28,7 +28,7 @@ namespace TReX.Kernel.Utilities.EventStore
         public async Task<Result> PublishMessages<T>(IEnumerable<T> messages) 
             where T : IBusMessage
         {
-            var messagesByTopic = messages.ToLookup(m => TopicFactory.GetTopic(m));
+            var messagesByTopic = messages.ToLookup(TopicFactory.GetTopic);
             var tasks = messagesByTopic.Select(group =>
             {
                 var events = group.Select(e => new EventStoreMessage(e))

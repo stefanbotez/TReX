@@ -8,13 +8,13 @@ using Thumbnail = Google.Apis.YouTube.v3.Data.Thumbnail;
 
 namespace TReX.Discovery.Media.Archeology.Youtube
 {
-    public sealed class YoutubeMediaResource : AggregateRoot
+    public sealed class YoutubeMediaStudy : AggregateRoot, IMediaStudy
     {
-        private YoutubeMediaResource()
+        private YoutubeMediaStudy()
         {
         }
 
-        public YoutubeMediaResource(SearchResult result) : this()
+        public YoutubeMediaStudy(SearchResult result) : this()
         {
             VideoId = result.Id.VideoId;
             Id = VideoId;

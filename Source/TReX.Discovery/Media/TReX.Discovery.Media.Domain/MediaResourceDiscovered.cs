@@ -4,13 +4,17 @@ namespace TReX.Discovery.Media.Domain
 {
     public sealed class MediaResourceDiscovered : IDomainEvent
     {
-        public MediaResourceDiscovered(MediaResource resource)
+        public MediaResourceDiscovered(string discoveryId, MediaResource resource)
         {
+            DiscoveryId = discoveryId;
+
             Title = resource.Title;
             ProviderId = resource.ProviderId;
             Description = resource.Description;
             ThumbnailUrl = resource.Thumbnail.Url;
         }
+
+        public string DiscoveryId { get; private set; }
 
         public string Title { get; private set; }
 

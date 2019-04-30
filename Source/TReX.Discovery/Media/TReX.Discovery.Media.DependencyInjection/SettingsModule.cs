@@ -16,7 +16,8 @@ namespace TReX.Discovery.Media.DependencyInjection
                     youtubeSection[nameof(YoutubeSettings.AppName)],
                     youtubeSection[nameof(YoutubeSettings.RequestPart)],
                     youtubeSection[nameof(YoutubeSettings.ResourceType)],
-                    int.Parse(youtubeSection[nameof(YoutubeSettings.MaxResults)]));
+                    int.Parse(youtubeSection[nameof(YoutubeSettings.MaxResults)]),
+                    int.Parse(youtubeSection[nameof(YoutubeSettings.MaxDepth)]));
             }).SingleInstance();
         }
     }

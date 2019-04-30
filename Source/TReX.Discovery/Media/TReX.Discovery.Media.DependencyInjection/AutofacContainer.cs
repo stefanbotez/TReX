@@ -8,7 +8,8 @@ namespace TReX.Discovery.Media.DependencyInjection
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterRavenPersistence()
+            builder.RegisterLogger()
+                .RegisterRavenPersistence()
                 .RegisterEventStoreBus()
                 .RegisterModule<SettingsModule>()
                 .RegisterModule<ArcheologyModule>();
