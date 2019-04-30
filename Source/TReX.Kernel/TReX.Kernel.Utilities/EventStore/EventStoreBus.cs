@@ -15,7 +15,7 @@ namespace TReX.Kernel.Utilities.EventStore
         private readonly IEventStoreConnection storeConnection;
         private readonly EventStoreSubscriptionFactory subscriptionFactory;
 
-        private readonly Dictionary<Type, EventStoreCatchUpSubscription> subscriptions = new Dictionary<Type, EventStoreCatchUpSubscription>();
+        private static readonly Dictionary<Type, EventStoreCatchUpSubscription> subscriptions = new Dictionary<Type, EventStoreCatchUpSubscription>();
 
         public EventStoreBus(IEventStoreConnection storeConnection, EventStoreSubscriptionFactory subscriptionFactory)
         {

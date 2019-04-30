@@ -9,7 +9,8 @@ namespace TReX.App.Infrastructure
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterRavenPersistence()
-                .RegisterEventStoreBus();
+                .RegisterEventStoreBus()
+                .RegisterLogger();
         }
     }
 }

@@ -6,6 +6,7 @@ using CSharpFunctionalExtensions;
 using EnsureThat;
 using EventStore.ClientAPI;
 using EventStore.ClientAPI.SystemData;
+using JsonNet.ContractResolvers;
 using MediatR;
 using Newtonsoft.Json;
 using TReX.Kernel.Shared;
@@ -48,9 +49,11 @@ namespace TReX.Kernel.Utilities.EventStore
             where T : IBusMessage
         {
             var jsonEvent = Encoding.UTF8.GetString(@event.OriginalEvent.Data);
-            var domainEvent = JsonConvert.DeserializeObject<T>(jsonEvent);
 
-            await this.mediator.Publish(domainEvent);
+            var serializerSettings = new JsonSerializerSettings { ContractResolver = new PrivateSetterAndCtorContractResolver()};
+            var message = JsonConvert.DeserializeObject<T>(jsonEvent, serializerSettings);
+
+            await this.mediator.Publish(message);
             await this.StoreCheckpoint<T>(@event);
 
         }
