@@ -13,6 +13,11 @@ namespace TReX.Kernel.Utilities
             return Task.FromResult(Result.Ok());
         }
 
+        public Task<Result> PublishMessages<T>(params T[] messages) where T : IBusMessage
+        {
+            return Task.FromResult(Result.Ok());
+        }
+
         public Task SubscribeTo<T>() where T : IBusMessage
         {
             return Task.CompletedTask;

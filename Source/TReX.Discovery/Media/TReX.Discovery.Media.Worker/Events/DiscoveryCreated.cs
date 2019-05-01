@@ -2,7 +2,7 @@
 
 namespace TReX.Discovery.Media.Worker.Events
 {
-    public sealed class DiscoveryCreated : IBusMessage
+    public sealed class DiscoveryCreated : IIntegrationEvent
     {
         private DiscoveryCreated()
         {
