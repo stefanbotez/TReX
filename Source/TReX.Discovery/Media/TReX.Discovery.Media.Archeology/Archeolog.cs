@@ -12,13 +12,13 @@ using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Archeology
 {
-    public abstract class Archeolog<TStudy> : IArcheolog
-        where TStudy : AggregateRoot, IMediaStudy
+    public abstract class Archeolog<TLecture> : IArcheolog
+        where TLecture : AggregateRoot, IMediaLecture
     {
-        protected readonly IWriteRepository<TStudy> writeRepository;
+        protected readonly IWriteRepository<TLecture> writeRepository;
         protected readonly IMessageBus bus;
 
-        protected Archeolog(IWriteRepository<TStudy> writeRepository, IMessageBus bus)
+        protected Archeolog(IWriteRepository<TLecture> writeRepository, IMessageBus bus)
         {
             EnsureArg.IsNotNull(writeRepository);
             EnsureArg.IsNotNull(bus);
@@ -28,14 +28,14 @@ namespace TReX.Discovery.Media.Archeology
 
         public async Task<Result> Study(StudyCommand command)
         {
-            var studiesResult = await GetStudies(command.Topic);
+            var studiesResult = await GetLectures(command.Topic);
             return await studiesResult.OnSuccess(PersistStudies)
                 .OnSuccess(() => PublishStudies(command.DiscoveryId, studiesResult.Value));
         }
 
-        protected abstract Task<Result<IEnumerable<TStudy>>> GetStudies(string topic);
+        protected abstract Task<Result<IEnumerable<TLecture>>> GetLectures(string topic);
 
-        protected async Task<Result> PersistStudies(IEnumerable<TStudy> studies)
+        protected async Task<Result> PersistStudies(IEnumerable<TLecture> studies)
         {
             var storeTasks = studies.Select(s => Extensions.TryAsync(() => this.writeRepository.CreateAsync(s)));
             var storeResults = await Task.WhenAll(storeTasks);
@@ -43,7 +43,7 @@ namespace TReX.Discovery.Media.Archeology
             return Result.Combine(storeResults);
         }
 
-        protected async Task<Result> PublishStudies(string discoveryId, IEnumerable<TStudy> studies)
+        protected async Task<Result> PublishStudies(string discoveryId, IEnumerable<TLecture> studies)
         {
             var messages = studies.Select(s => new MediaResourceDiscovered(discoveryId, s.ToMediaResource()));
             return await this.bus.PublishMessages(messages);

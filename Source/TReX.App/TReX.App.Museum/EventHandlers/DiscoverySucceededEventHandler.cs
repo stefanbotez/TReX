@@ -9,12 +9,12 @@ using TReX.Kernel.Shared.Domain;
 
 namespace TReX.App.Museum.EventHandlers
 {
-    public sealed class DiscoveryCompletedEventHandler : INotificationHandler<DiscoverySucceeded>
+    public sealed class DiscoverySucceededEventHandler : INotificationHandler<DiscoverySucceeded>
     {
         private readonly IReadRepository<Discovery> readRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public DiscoveryCompletedEventHandler(IReadRepository<Discovery> readRepository, IUnitOfWork unitOfWork)
+        public DiscoverySucceededEventHandler(IReadRepository<Discovery> readRepository, IUnitOfWork unitOfWork)
         {
             EnsureArg.IsNotNull(readRepository);
             EnsureArg.IsNotNull(unitOfWork);

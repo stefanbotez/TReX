@@ -2,7 +2,7 @@
 
 namespace TReX.Discovery.Media.Archeology
 {
-    public interface IMediaStudy
+    public interface IMediaLecture
     {
         MediaResource ToMediaResource();
     }

@@ -2,21 +2,20 @@
 using System.Reflection;
 using Autofac;
 using Microsoft.Extensions.Configuration;
-using TReX.Discovery.Media.DependencyInjection;
+using TReX.Kernel.Raven;
 using TReX.Kernel.Utilities;
 using Module = Autofac.Module;
 
-namespace TReX.Discovery.Media.Worker
+namespace TReX.App.Museum
 {
-    public sealed class WorkerContainer : Module
+    public sealed class MuseumContainer : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterMediatr(Assembly.GetExecutingAssembly());
-            builder.RegisterModule<AutofacContainer>();
-            builder.RegisterType<Application>()
-                .AsSelf()
-                .SingleInstance();
+            builder.RegisterMediatr(Assembly.GetExecutingAssembly())
+                .RegisterRavenPersistence()
+                .RegisterEventStoreBus()
+                .RegisterLogger();
 
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -25,6 +24,10 @@ namespace TReX.Discovery.Media.Worker
 
             builder.RegisterInstance(configuration)
                 .As<IConfiguration>()
+                .SingleInstance();
+
+            builder.RegisterType<Application>()
+                .AsSelf()
                 .SingleInstance();
         }
     }

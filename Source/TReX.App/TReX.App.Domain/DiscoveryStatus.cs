@@ -6,7 +6,12 @@ namespace TReX.App.Domain
 {
     public sealed class DiscoveryStatus : ValueObject
     {
-        private DiscoveryStatus(Status status)
+        private DiscoveryStatus()
+        {
+        }
+
+        private DiscoveryStatus(Status status) 
+            : this()
         {
             this.Status = status;
             this.ChangedAt = DateTimeOffset.Now;

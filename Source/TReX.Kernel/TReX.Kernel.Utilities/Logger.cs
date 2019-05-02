@@ -25,5 +25,16 @@ namespace TReX.Kernel.Utilities
 
            await Extensions.TryAsync(() => File.AppendAllTextAsync(logFilePath, line));
         }
+
+        public async Task LogError(string error)
+        {
+            var errorDelimiter = "-------------------ERROR-------------------";
+
+            await Log(Environment.NewLine);
+            await Log(errorDelimiter);
+            await Log(error);
+            await Log(errorDelimiter);
+            await Log(Environment.NewLine);
+        }
     }
 }

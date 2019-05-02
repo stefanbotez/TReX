@@ -8,15 +8,15 @@ using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Archeology.Youtube
 {
-    public sealed class YoutubeMediaArcheolog : Archeolog<YoutubeMediaStudy>
+    public sealed class YoutubeMediaArcheolog : Archeolog<YoutubeMediaLecture>
     {
-        private readonly IReadRepository<YoutubeMediaStudy> readRepository;
+        private readonly IReadRepository<YoutubeMediaLecture> readRepository;
         private readonly YoutubeMediaProvider provider;
         private readonly YoutubeSettings settings;
 
         public YoutubeMediaArcheolog(
-            IReadRepository<YoutubeMediaStudy> readRepository,
-            IWriteRepository<YoutubeMediaStudy> writeRepository,
+            IReadRepository<YoutubeMediaLecture> readRepository,
+            IWriteRepository<YoutubeMediaLecture> writeRepository,
             IMessageBus bus,
             YoutubeMediaProvider provider,
             YoutubeSettings settings)
@@ -31,18 +31,18 @@ namespace TReX.Discovery.Media.Archeology.Youtube
             this.settings = settings;
         }
 
-        protected override Task<Result<IEnumerable<YoutubeMediaStudy>>> GetStudies(string topic) => this.GetStudies(topic, string.Empty);
+        protected override Task<Result<IEnumerable<YoutubeMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
 
-        private async Task<Result<IEnumerable<YoutubeMediaStudy>>> GetStudies(string topic, string page, int depth = 1)
+        private async Task<Result<IEnumerable<YoutubeMediaLecture>>> GetLectures(string topic, string page, int depth = 1)
         {
-            var depthExceededResult = Result.Create(depth <= this.settings.MaxDepth, "Maximum youtube depth exceeded");
+            var depthExceededResult = Result.Create(depth <= this.settings.MaxDepth, $"Maximum youtube depth exceeded for topic {topic}");
 
             var studiesResult = await depthExceededResult.OnSuccess(() => this.provider.Search(topic, page))
                 .Ensure(x => x.Items.Any(), "No youtube items for requested topic");
 
             if (studiesResult.IsFailure)
             {
-                return Result.Fail<IEnumerable<YoutubeMediaStudy>>(studiesResult.Error);
+                return Result.Fail<IEnumerable<YoutubeMediaLecture>>(studiesResult.Error);
             }
 
             var studiesIds = studiesResult.Value.Items.Select(d => d.Id.VideoId);
@@ -51,8 +51,8 @@ namespace TReX.Discovery.Media.Archeology.Youtube
             return await Result.Combine(studiesResult, discoveredResourcesResult)
                 .OnSuccess(() => studiesResult.Value.Items.Where(i => discoveredResourcesResult.Value.All(yr => yr.Id != i.Id.VideoId)))
                 .Ensure(itd => itd.Any(), "No new items")
-                .OnSuccess(itd => itd.Select(x => new YoutubeMediaStudy(x)))
-                .OnFailureCompensate(() => GetStudies(topic, studiesResult.Value.NextPageToken, depth+1));
+                .OnSuccess(itd => itd.Select(x => new YoutubeMediaLecture(x)))
+                .OnFailureCompensate(() => GetLectures(topic, studiesResult.Value.NextPageToken, depth+1));
         }
     }
 }

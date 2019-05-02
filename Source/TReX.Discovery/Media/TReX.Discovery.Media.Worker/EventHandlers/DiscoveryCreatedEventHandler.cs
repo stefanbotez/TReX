@@ -44,7 +44,7 @@ namespace TReX.Discovery.Media.Worker.EventHandlers
             });
 
             await Result.Combine(await Task.WhenAll(discoveryTasks))
-                .OnSuccess(() => this.bus.PublishMessages(new DiscoveryCompleted(notification.DiscoveryId)))
+                .OnSuccess(() => this.bus.PublishMessages(new DiscoverySucceeded(notification.DiscoveryId)))
                 .OnFailure(e => this.bus.PublishMessages(new DiscoveryFailed(notification.DiscoveryId, e)));
         }
     }

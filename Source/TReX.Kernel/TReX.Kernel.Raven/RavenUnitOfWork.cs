@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using Raven.Client.Documents.Session;
@@ -13,15 +12,18 @@ namespace TReX.Kernel.Raven
     {
         private readonly IAsyncDocumentSession session;
         private readonly IMessageBus bus;
+        private readonly ILogger logger;
         private readonly AggregateTracker tracker;
 
-        public RavenUnitOfWork(IAsyncDocumentSession session, IMessageBus bus, AggregateTracker tracker)
+        public RavenUnitOfWork(IAsyncDocumentSession session, IMessageBus bus, ILogger logger, AggregateTracker tracker)
         {
             EnsureArg.IsNotNull(session);
             EnsureArg.IsNotNull(bus);
+            EnsureArg.IsNotNull(logger);
             EnsureArg.IsNotNull(tracker);
             this.session = session;
             this.bus = bus;
+            this.logger = logger;
             this.tracker = tracker;
         }
 
@@ -29,7 +31,8 @@ namespace TReX.Kernel.Raven
         {
             var events = this.tracker.DumpEvents();
             return await Extensions.TryAsync(() => this.session.SaveChangesAsync())
-                .OnSuccess(() => this.bus.PublishMessages(events));
+                .OnSuccess(() => this.bus.PublishMessages(events))
+                .OnFailure(e => this.logger.Log(e));
         }
     }
 }

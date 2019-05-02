@@ -71,17 +71,5 @@ namespace TReX.Kernel.Shared
                 return Result.Fail(e.Message);
             }
         }
-
-        public static async Task<Result<T>> TryAsync<T>(Func<Task<T>> func)
-        {
-            try
-            {
-                return Result.Ok(await func());
-            }
-            catch (Exception e)
-            {
-                return Result.Fail<T>(e.Message);
-            }
-        }
     }
 }

@@ -58,7 +58,7 @@ namespace TReX.Kernel.Utilities
             return builder;
         }
 
-        public static void RegisterMediatr(this ContainerBuilder builder)
+        public static ContainerBuilder RegisterMediatr(this ContainerBuilder builder, Assembly handlersAssembly)
         {
             builder.RegisterAssemblyTypes(typeof(IMediator).Assembly)
                 .AsImplementedInterfaces();
@@ -69,10 +69,12 @@ namespace TReX.Kernel.Utilities
                 return t => c.Resolve(t);
             });
 
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+            builder.RegisterAssemblyTypes(handlersAssembly)
                 .Where(t => t.IsClosedTypeOf(typeof(INotificationHandler<>)))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
+
+            return builder;
         }
 
         internal static Maybe<T> ToDecodedMessage<T>(this RecordedEvent @event)
