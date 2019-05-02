@@ -1,7 +1,6 @@
-﻿using System.Reflection;
-using Autofac;
-using MediatR;
+﻿using Autofac;
 using TReX.Discovery.Media.DependencyInjection;
+using TReX.Kernel.Utilities;
 using Module = Autofac.Module;
 
 namespace TReX.Discovery.Media.Worker
@@ -15,24 +14,7 @@ namespace TReX.Discovery.Media.Worker
                 .AsSelf()
                 .SingleInstance();
 
-            RegisterMediatr(builder);
-        }
-
-        private void RegisterMediatr(ContainerBuilder builder)
-        {
-            builder.RegisterAssemblyTypes(typeof(IMediator).Assembly)
-    .AsImplementedInterfaces();
-
-            builder.Register<ServiceFactory>(ctx =>
-            {
-                var c = ctx.Resolve<IComponentContext>();
-                return t => c.Resolve(t);
-            });
-
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-                .Where(t => t.IsClosedTypeOf(typeof(INotificationHandler<>)))
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
+            builder.RegisterMediatr();
         }
     }
 }

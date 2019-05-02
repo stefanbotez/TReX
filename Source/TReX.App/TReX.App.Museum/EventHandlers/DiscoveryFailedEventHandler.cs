@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
-using TReX.App.Business.Discovery.Events;
+using TReX.App.Museum.Events;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Domain;
 
-namespace TReX.App.Business.Discovery.EventHandlers
+namespace TReX.App.Museum.EventHandlers
 {
     public sealed class DiscoveryFailedEventHandler : INotificationHandler<DiscoveryFailed>
     {
@@ -29,9 +29,9 @@ namespace TReX.App.Business.Discovery.EventHandlers
         {
             EnsureArg.IsNotNull(notification);
 
-            await this.readRepository.GetByIdAsync(notification.DiscoveryId).ToResult(BusinessMessages.DiscoveryNotFound)
+            await this.readRepository.GetByIdAsync(notification.DiscoveryId).ToResult(MuseumMessages.DiscoveryNotFound)
                 .OnSuccess(d => d.AcknowledgeFailure())
-                .OnSuccess(_ => this.logger.Log(string.Format(BusinessMessages.DiscoveryFailed, notification.Reason)))
+                .OnSuccess(_ => this.logger.Log(string.Format(MuseumMessages.DiscoveryFailed, notification.Reason)))
                 .OnSuccess(_ => this.unitOfWork.CommitAsync());
         }
     }

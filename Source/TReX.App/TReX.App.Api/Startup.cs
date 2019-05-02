@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using TReX.App.Api.Extensions;
 using TReX.App.Business;
 using TReX.App.Infrastructure;
 
@@ -37,7 +36,7 @@ namespace TReX.App.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -49,11 +48,10 @@ namespace TReX.App.Api
                 app.UseHsts();
             }
 
-            await app.UseHttpsRedirection()
+            app.UseHttpsRedirection()
                 .UseSwagger()
                 .UseSwaggerUI(c => { c.SwaggerEndpoint("../swagger/v1/swagger.json", "TReX App API V1"); })
-                .UseMvc()
-                .UseBusSubscriptions();
+                .UseMvc();
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using EnsureThat;
-using TReX.Discovery.Media.Worker.Events;
+using TReX.App.Museum.Events;
 using TReX.Kernel.Shared.Bus;
 
-namespace TReX.Discovery.Media.Worker
+namespace TReX.App.Museum
 {
     public sealed class Application
     {
@@ -17,7 +17,9 @@ namespace TReX.Discovery.Media.Worker
 
         public async Task Run()
         {
-            await this.bus.SubscribeTo<DiscoveryCreated>();
+            await this.bus.SubscribeTo<MediaResourceDiscovered>();
+            await this.bus.SubscribeTo<DiscoverySucceeded>();
+            await this.bus.SubscribeTo<DiscoveryFailed>();
         }
     }
 }

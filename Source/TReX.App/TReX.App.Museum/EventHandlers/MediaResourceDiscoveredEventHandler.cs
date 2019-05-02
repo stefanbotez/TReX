@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using EnsureThat;
 using MediatR;
-using TReX.App.Business.Discovery.Events;
+using TReX.App.Museum.Events;
 using TReX.Kernel.Shared;
 
-namespace TReX.App.Business.Discovery.EventHandlers
+namespace TReX.App.Museum.EventHandlers
 {
     public sealed class MediaResourceDiscoveredEventHandler : INotificationHandler<MediaResourceDiscovered>
     {

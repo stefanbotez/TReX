@@ -1,7 +1,9 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using Autofac;
 using CSharpFunctionalExtensions;
 using EventStore.ClientAPI;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using TReX.Kernel.Shared.Bus;
@@ -54,6 +56,23 @@ namespace TReX.Kernel.Utilities
             }).InstancePerLifetimeScope();
 
             return builder;
+        }
+
+        public static void RegisterMediatr(this ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(typeof(IMediator).Assembly)
+                .AsImplementedInterfaces();
+
+            builder.Register<ServiceFactory>(ctx =>
+            {
+                var c = ctx.Resolve<IComponentContext>();
+                return t => c.Resolve(t);
+            });
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .Where(t => t.IsClosedTypeOf(typeof(INotificationHandler<>)))
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
         }
 
         internal static Maybe<T> ToDecodedMessage<T>(this RecordedEvent @event)

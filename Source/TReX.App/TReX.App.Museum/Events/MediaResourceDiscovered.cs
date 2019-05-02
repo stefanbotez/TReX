@@ -1,6 +1,6 @@
 ﻿using TReX.Kernel.Shared.Bus;
 
-namespace TReX.App.Business.Discovery.Events
+namespace TReX.App.Museum.Events
 {
     public sealed class MediaResourceDiscovered : IIntegrationEvent
     {

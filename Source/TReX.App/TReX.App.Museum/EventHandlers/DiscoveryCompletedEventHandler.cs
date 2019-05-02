@@ -3,17 +3,18 @@ using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
-using TReX.App.Business.Discovery.Events;
+using TReX.App.Domain;
+using TReX.App.Museum.Events;
 using TReX.Kernel.Shared.Domain;
 
-namespace TReX.App.Business.Discovery.EventHandlers
+namespace TReX.App.Museum.EventHandlers
 {
-    public sealed class DiscoveryCompletedEventHandler : INotificationHandler<DiscoveryCompleted>
+    public sealed class DiscoveryCompletedEventHandler : INotificationHandler<DiscoverySucceeded>
     {
-        private readonly IReadRepository<Domain.Discovery> readRepository;
+        private readonly IReadRepository<Discovery> readRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public DiscoveryCompletedEventHandler(IReadRepository<Domain.Discovery> readRepository, IUnitOfWork unitOfWork)
+        public DiscoveryCompletedEventHandler(IReadRepository<Discovery> readRepository, IUnitOfWork unitOfWork)
         {
             EnsureArg.IsNotNull(readRepository);
             EnsureArg.IsNotNull(unitOfWork);
@@ -21,11 +22,11 @@ namespace TReX.App.Business.Discovery.EventHandlers
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task Handle(DiscoveryCompleted notification, CancellationToken cancellationToken)
+        public async Task Handle(DiscoverySucceeded notification, CancellationToken cancellationToken)
         {
             EnsureArg.IsNotNull(notification);
 
-            await this.readRepository.GetByIdAsync(notification.DiscoveryId).ToResult(BusinessMessages.DiscoveryNotFound)
+            await this.readRepository.GetByIdAsync(notification.DiscoveryId).ToResult(MuseumMessages.DiscoveryNotFound)
                 .OnSuccess(d => d.AcknowledgeCompletion())
                 .OnSuccess(_ => this.unitOfWork.CommitAsync());
         }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Presentation", "01. Presentation", "{2540E63A-6E62-4069-9364-5ABB8E52DECD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Deployable", "01. Deployable", "{2540E63A-6E62-4069-9364-5ABB8E52DECD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Infrastructure", "02. Infrastructure", "{C5FF1124-E588-409E-BDEF-22EBF13D4EEC}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Kernel.Shared", "..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj", "{C4F39193-6C43-42BF-AC47-B5CFEA6B8511}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Kernel.Utilities", "..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj", "{32458399-5E62-4D80-812E-8F7A64A807F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.App.Museum", "TReX.App.Museum\TReX.App.Museum.csproj", "{F02CC21C-476D-4976-A004-680D597E81CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F02CC21C-476D-4976-A004-680D597E81CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02CC21C-476D-4976-A004-680D597E81CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02CC21C-476D-4976-A004-680D597E81CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02CC21C-476D-4976-A004-680D597E81CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{14C538FA-9C38-4FC6-B795-07462ACA2E59} = {B150E289-9A7E-439E-A2D6-13134A8F569F}
 		{C4F39193-6C43-42BF-AC47-B5CFEA6B8511} = {B150E289-9A7E-439E-A2D6-13134A8F569F}
 		{32458399-5E62-4D80-812E-8F7A64A807F4} = {B150E289-9A7E-439E-A2D6-13134A8F569F}
+		{F02CC21C-476D-4976-A004-680D597E81CE} = {2540E63A-6E62-4069-9364-5ABB8E52DECD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76FF5FA7-7BA6-4444-BEC7-EE7A148CDAFB}
