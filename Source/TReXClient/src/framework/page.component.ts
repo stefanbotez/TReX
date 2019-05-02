@@ -11,4 +11,11 @@ export abstract class PageComponent {
     public render(): void {
         this.master.bindPage(this);
     }
+
+    public get tag() {
+        const pageName = this.constructor.name.replace('Page', '');
+        const tag = pageName[0].toLowerCase() + pageName.substring(1);
+
+        return tag.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`);
+    }
 }

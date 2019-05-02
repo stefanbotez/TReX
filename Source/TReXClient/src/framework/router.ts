@@ -7,12 +7,12 @@ export class Router {
             const request = Router.parseRequestURL()
             const parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')
     
-            const page = routes[parsedURL] ? routes[parsedURL] : routes['**'];
-            if(!page) {
+            const route = routes[parsedURL] ? routes[parsedURL] : routes['**'];
+            if(!route) {
                 return;
             }
             
-            const pageInstance: any = trexContainer.resolve(page);
+            const pageInstance: any = trexContainer.resolve(route.page);
             pageInstance.render();
         };
     }
@@ -31,9 +31,5 @@ export class Router {
         request.verb        = r[3]
 
         return request
-    }
-
-    private static sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
