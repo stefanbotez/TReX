@@ -1,13 +1,12 @@
 import { injectable } from 'inversify';
-import { PageComponent, Page, DomMaster } from '@framework';
+import { TrexPage, DomMaster, Page } from '@framework';
 
 import * as template from './home.page.html'
 
-@injectable()
-@Page({
+@TrexPage({
     template: template
 })
-export class HomePage extends PageComponent {
+export class HomePage extends Page {
     public value = 282;
     
     public constructor(master: DomMaster) {

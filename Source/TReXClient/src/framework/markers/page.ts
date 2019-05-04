@@ -1,8 +1,12 @@
 import { injectable } from 'inversify';
-import { DomMaster } from './dom-master';
+import { DomMaster } from '../dom';
+
+export interface PageConstructor {
+    new(master: DomMaster): Page;
+}
 
 @injectable()
-export abstract class PageComponent {
+export abstract class Page {
     public readonly __template: string;
 
     protected constructor(private readonly master: DomMaster) {

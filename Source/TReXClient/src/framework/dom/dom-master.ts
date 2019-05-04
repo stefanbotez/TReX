@@ -1,6 +1,7 @@
 import * as rivets from 'rivets';
 import { injectable } from 'inversify';
-import { PageComponent } from './page.component';
+
+import { Page } from '../markers';
 import { DomContainer } from './dom-container';
 
 @injectable()
@@ -10,7 +11,7 @@ export class DomMaster {
     public constructor(private readonly container: DomContainer) {
     }
 
-    public bindPage(page: PageComponent): void {
+    public bindPage(page: Page): void {
         if (this.currentView) {
             this.currentView.unbind();
         }

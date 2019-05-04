@@ -1,6 +1,6 @@
 import { Container } from 'inversify';
-import { DomContainer } from '@framework/dom-container';
-import { DomMaster } from '@framework/dom-master';
+import { DomMaster} from '@framework/dom';
+import { DomContainer } from '@framework/dom';
 
 const container = new Container();
 container.bind<DomMaster>(DomMaster).toSelf();
