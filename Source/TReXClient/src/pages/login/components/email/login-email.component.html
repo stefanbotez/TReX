@@ -1,4 +1,4 @@
-<form action="./password.html">
+<div class="form">
     <header>
         <h2>
             Sign in
@@ -11,10 +11,10 @@
 
     <div class="form-part email">
         <label for="email">Your email</label>
-        <input type="text" id="email" autocomplete="off" autofocus>
+        <input type="text" id="email" autocomplete="off" autofocus rv-value="email">
     </div>
 
     <div class="continue-container">
-        <button class="continue">Continue</button>
+        <button class="continue" rv-on-click="submit">Continue</button>
     </div>
-</form>
+</div>

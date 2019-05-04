@@ -9,7 +9,13 @@ import { Subject } from 'rxjs';
 export class LoginEmailComponent extends Component implements HasInputs {
     private channel: Subject<string>;
 
+    public email: string = '';
+
     public gatherInputs(inputs: any): void {
         this.channel = inputs.channel;
+    }
+
+    public submit(e: any, self: LoginEmailComponent): void {
+        self.channel.next(self.email);
     }
 }

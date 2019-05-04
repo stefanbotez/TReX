@@ -14,6 +14,10 @@ export abstract class Page {
 
     public render(): void {
         this.master.bindPage(this);
+        if('onInit' in this) {
+            const self: any = this;
+            self.onInit();
+        }
     }
 
     public get tag() {

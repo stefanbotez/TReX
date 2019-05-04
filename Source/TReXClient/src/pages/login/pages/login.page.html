@@ -1,6 +1,7 @@
 <trex-login-email 
-    rv-if="advancedToPassword" 
+    rv-unless="advancedToPassword" 
     channel="emailChannel"></trex-login-email>
 
 <trex-login-password 
-    rv-unless="advancedToPassword"></trex-login-password>
+    rv-if="advancedToPassword"
+    channel="passwordChannel"></trex-login-password>
