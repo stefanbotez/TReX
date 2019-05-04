@@ -1,6 +1,7 @@
 import * as template from './login.page.html';
 import { Subject } from 'rxjs';
-import { Page, DomMaster, TrexPage, OnInit } from '@framework';
+import { Page, DomMaster, TrexPage, OnInit, RouterService } from '@framework';
+import { inject } from 'inversify';
 
 class Credentials {
     public email: string;
@@ -18,7 +19,10 @@ export class LoginPage extends Page implements OnInit {
 
     public advancedToPassword = false;
 
-    public constructor(master: DomMaster) {
+    public constructor(
+        @inject(RouterService) private routerService: RouterService,
+        @inject(DomMaster) master: DomMaster) {
+        
         super(master);
     }
 
@@ -39,6 +43,7 @@ export class LoginPage extends Page implements OnInit {
     }
 
     private login(): void {
-        console.log('Login made for', this.credentials);
+        alert(`Login made for credentials: ${this.credentials.email}, ${this.credentials.password}`);
+        this.routerService.goToHome();
     }
 }
