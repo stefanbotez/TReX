@@ -54,8 +54,8 @@ export class LoginPage extends Page implements OnInit {
 
     private initForm(): void {
         this.form.onSuccess.subscribe(() => {
-            this.notifications.pushSuccess(NotificationMessage.success(`Login made for credentials: ${this.form.email}, ${this.form.password}`))
-            this.routerService.goToHome();
+            this.notifications.pushSuccess(NotificationMessage.success(`Login made for credentials: ${this.form.email}, ${this.form.password}`));            
+            this.routerService.goToHome();            
         });
 
         this.form.onFail.subscribe((errors: string[]) => {

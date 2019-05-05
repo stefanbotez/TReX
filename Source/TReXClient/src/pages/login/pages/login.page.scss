@@ -1,7 +1,7 @@
 @import '../components/email/login-email.component.scss';
 @import '../components/password/login-password.component.scss';
 
-body#login {
+.master-container#login {
     display: flex;
     justify-content: center;
     align-items: center;

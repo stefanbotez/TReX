@@ -17,7 +17,9 @@ export class DomMaster {
         }
         
         this.container.$element.innerHTML = page.__template;
+        
         this.container.$element.id = page.tag;
+        this.container.$element.parentElement.id = page.tag;
 
         this.currentView = rivets.bind(this.container.$element, page);
     }
