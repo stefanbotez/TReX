@@ -2,20 +2,15 @@ import * as template from './login.page.html';
 import { Subject } from 'rxjs';
 import { Page, DomMaster, TrexPage, OnInit, RouterService } from '@framework';
 import { inject } from 'inversify';
-
-class Credentials {
-    public email: string;
-    public password: string;
-}
+import { LoginForm } from './login.form';
 
 @TrexPage({
     template: template
 })
 export class LoginPage extends Page implements OnInit {
-    private credentials = new Credentials();
-
     public emailChannel: Subject<string> = new Subject<string>();
     public passwordChannel: Subject<string> = new Subject<string>();
+    public form: LoginForm = new LoginForm();
 
     public advancedToPassword = false;
 
@@ -27,23 +22,31 @@ export class LoginPage extends Page implements OnInit {
     }
 
     public onInit(): void {
-        this.emailChannel.subscribe((email: string) => {
-            this.credentials.email = email;
-            this.advance();
-        });
-
-        this.passwordChannel.subscribe((password: string) => {
-            this.credentials.password = password;
-            this.login();
-        })
+        this.initChannels();
+        this.initForm();
     }
 
     public advance(): void {
         this.advancedToPassword = true;
     }
 
-    private login(): void {
-        alert(`Login made for credentials: ${this.credentials.email}, ${this.credentials.password}`);
-        this.routerService.goToHome();
+    private initChannels(): void {
+        this.emailChannel.subscribe((email: string) => {
+            this.form.email = email;
+            this.advance();
+        });
+
+        this.passwordChannel.subscribe((password: string) => {
+            this.form.password = password;
+            this.form.submit();
+        });
+    }
+
+    private initForm(): void {
+        this.form.onSuccess.subscribe(() => {
+            alert(`Login made for credentials: ${this.form.email}, ${this.form.password}`);
+            this.routerService.goToHome();
+        });
+        this.form.onFail.subscribe((errors: string[]) => console.log("errors m8", errors));
     }
 }
