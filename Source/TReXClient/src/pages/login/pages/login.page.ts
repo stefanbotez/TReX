@@ -1,6 +1,15 @@
 import * as template from './login.page.html';
 import { Subject } from 'rxjs';
-import { Page, DomMaster, TrexPage, OnInit, RouterService } from '@framework';
+import { 
+    Page, 
+    DomMaster, 
+    TrexPage, 
+    OnInit, 
+    RouterService, 
+    NotificationsService, 
+    NotificationMessage
+} from '@framework';
+
 import { inject } from 'inversify';
 import { LoginForm } from './login.form';
 
@@ -16,6 +25,7 @@ export class LoginPage extends Page implements OnInit {
 
     public constructor(
         @inject(RouterService) private routerService: RouterService,
+        @inject(NotificationsService) private notifications: NotificationsService,
         @inject(DomMaster) master: DomMaster) {
         
         super(master);
@@ -44,9 +54,13 @@ export class LoginPage extends Page implements OnInit {
 
     private initForm(): void {
         this.form.onSuccess.subscribe(() => {
-            alert(`Login made for credentials: ${this.form.email}, ${this.form.password}`);
+            this.notifications.pushSuccess(NotificationMessage.success(`Login made for credentials: ${this.form.email}, ${this.form.password}`))
             this.routerService.goToHome();
         });
-        this.form.onFail.subscribe((errors: string[]) => console.log("errors m8", errors));
+
+        this.form.onFail.subscribe((errors: string[]) => {
+            var messages = errors.map((e: string) => NotificationMessage.error(e));
+            this.notifications.pushError(...messages);
+        });
     }
 }
