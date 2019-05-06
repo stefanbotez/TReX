@@ -1,9 +1,9 @@
-import { Module } from '@framework';
+import { TrexModule } from '@framework';
 
 import { LoginPage } from './pages';
 import { LoginEmailComponent, LoginPasswordComponent } from './components';
 
-@Module({
+@TrexModule({
     pages: [LoginPage],
     components: [LoginEmailComponent, LoginPasswordComponent]
 })

@@ -1,4 +1,4 @@
-import { HomePage, LoginPage } from '@pages';
+import { HomePage, LoginPage, OverviewPage } from '@pages';
 
 interface Route {
     page: any;
@@ -11,6 +11,9 @@ export const routes: {[s: string]: Partial<Route>} = {
     },
     '/login': {
         page: LoginPage
+    },
+    '/overview': {
+        page: OverviewPage
     },
     '**': {
         page: HomePage

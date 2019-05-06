@@ -5,7 +5,7 @@ interface ModuleParams {
     components: ComponentConstructor[];
 }
 
-export function Module(params: ModuleParams): any {
+export function TrexModule(params: ModuleParams): any {
     return (ctor: any) => {
     };
 }

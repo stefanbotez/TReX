@@ -1,0 +1,28 @@
+trex-sidebar {
+    .sidebar {
+        width: 240px;
+        height: 100vh;
+        background-color: #fff;
+        border-right: 1px solid #f1f1f1;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .sidebar >.logo {
+        height: 60px;
+        border-bottom: 1px solid #f1f1f1;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        margin-bottom: 30px;
+    }
+    
+    .sidebar-container {
+        width: 100%;
+    }
+}

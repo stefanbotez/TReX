@@ -1,0 +1,230 @@
+.master-container#overview {
+
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    
+    .content-container {
+        overflow-y: auto;
+    }
+    
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+    }
+    
+    header {
+        width: 100%;
+        height: 60px;
+        background-color: #fff;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .about-user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        margin-top: 20px;
+    }
+    
+    .initials-container {
+        width: 80px;
+        height: 80px;
+    
+        background-color: rgb(202, 182, 219);
+        border-radius: 80%;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .initials {
+        color: #fff;
+        font-size: 32px;
+        font-weight: 600;
+        text-shadow: 0 1px 30px #646464
+    }
+    
+    .name {
+        color: #646464;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    
+    .occupation {
+        margin-top: 5px;
+    }
+    
+    .menu {
+        margin-top: 40px;
+    }
+    
+    .menu li {
+        width: 100%;
+    
+    }
+    
+    .menu li i {
+        font-size: 24px;
+        min-width:40px;
+        display: flex;
+        justify-content: center;
+        margin-right: 10px;
+    }
+    
+    .menu li.active {
+        background-color: #00d793;
+    }
+    
+    .menu li a {
+        width: 100%;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: 10px 10px 10px 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .menu li:not(.active):hover a, .menu li:not(.active):hover i {
+        color: #00d793;
+    }
+    
+    .menu li.active > a, .menu li.active  i {
+        color: #fff;
+    }
+    
+    .filter-bar {
+        width :100%;
+        padding:20px;
+        background: #fff;
+    
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .filter-form {
+        display: flex;
+    }
+    
+    .filter-form .filter-part {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        margin: 10px 20px 0 10px;
+    }
+    
+    .filter-form .input-icon {
+        position: absolute;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        right: 15px;
+    }
+    
+    .filter-form .filter-part label {
+        font-weight: 600;
+        margin-right: 10px;
+        white-space: nowrap;
+        min-width: 70px;
+    }
+    
+    .filter-form .filter-part input {
+        padding: 9px;
+        outline: none;
+        border: 2px solid #d8d8d8;
+    }
+    
+    .grid-options {
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .grid-options i {
+        cursor: pointer;
+        font-size: 24px;
+        padding: 0 10px;
+    }
+    
+    
+    /* RESPONSIVE */
+    
+    /* MOBILE */
+    @media only screen and (max-width: 375px) {
+        .article-container {
+            padding: 20px 0 0 0;
+        }
+    
+        .article-content {
+            padding:15px;
+        }
+    
+        .filter-bar {
+            padding: 15px;
+        }
+    }
+    
+    @media only screen and (max-width: 599px) {
+        .filter-form, .filter-bar, .filter-part, .filter-part input {
+            width: 100%;
+        }
+    
+        .filter-part {
+            margin: 0 !important;
+        }
+    }
+    
+    @media only screen and (min-width: 376px) and (max-width: 599px) {
+        .filter-form {
+            flex-direction: column;
+        }
+    
+        .article-container {
+            padding: 10px;
+        }
+    
+        .article-header {
+            padding: 8px;
+        }
+    
+        .article-content {
+            padding:15px;
+        }
+    }
+    
+    /* TABLET PORTRAIT  */
+    
+    @media only screen and (min-width: 600px) and (max-width: 899px) {
+        .filter-bar {
+            display: block;
+            padding: 20px 10px;
+        }
+    
+        .filter-form {
+            flex-wrap: wrap;
+        }
+    
+        .filter-part {
+            margin: 5px !important;
+        }
+    
+        .article-container {
+            padding: 20px;
+        }
+    }
+}

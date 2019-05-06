@@ -2,6 +2,11 @@
 
 @import 'home/home.page';
 @import 'login/pages/login.page';
+@import 'overview/pages/overview.page';
+
+@import 'overview/components/article/article.component';
+
+@import 'layout/components/sidebar/sidebar.component';
 
 * {
     font-family: 'Montserrat', sans-serif;

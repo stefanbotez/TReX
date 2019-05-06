@@ -30,7 +30,7 @@ const webpackConfig = {
                     {
                         loader: 'sass-loader',
                         options: {
-                            includePaths: ['./src/components', './src/pages']
+                            includePaths: ['./src/components', './src/pages', './src']
                         }
                     }
                 ]),
