@@ -1,4 +1,7 @@
+import Navigo = require('navigo');
 import { injectable } from "inversify";
+
+import { Router } from '@framework';
 
 @injectable()
 export class RouterService {
@@ -7,6 +10,6 @@ export class RouterService {
     }
     
     public goTo(route: string): void {
-        window.location.hash = route;
+        Router.navigate(route);
     }   
 }

@@ -1,5 +1,6 @@
 import * as template from './login.page.html';
 import { Subject } from 'rxjs';
+import { inject } from 'inversify';
 import { 
     Page, 
     DomMaster, 
@@ -10,7 +11,6 @@ import {
     NotificationMessage
 } from '@framework';
 
-import { inject } from 'inversify';
 import { LoginForm } from './login.form';
 
 @TrexPage({

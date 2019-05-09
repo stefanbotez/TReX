@@ -8,7 +8,6 @@ export class AppModule {
     ];    
 
     public static run(): void {
-        window.addEventListener('hashchange', Router.routeFn(routes));
-        window.addEventListener('load', Router.routeFn(routes));
+        Router.init(routes);
     }
 }

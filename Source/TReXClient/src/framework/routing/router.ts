@@ -1,35 +1,32 @@
+import Navigo  = require('navigo');
+
 import { trexContainer } from '@ioc';
+import { Route } from '@constants';
 
 export class Router {
+    private static router: Navigo = null;
 
-    public static routeFn(routes: any): () => void {
-        return (): void => {
-            const request = Router.parseRequestURL()
-            const parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')
-    
-            const route = routes[parsedURL] ? routes[parsedURL] : routes['**'];
-            if(!route) {
-                return;
-            }
-            
-            const pageInstance: any = trexContainer.resolve(route.page);
-            pageInstance.render();
-        };
+    public static init(routes: {[s: string]: Partial<Route>}): void {
+        const navigoConfig: any = {};
+        for(const key in routes) {
+            navigoConfig[key] = (params: {[x: string]: any}, query: any) => {
+                const config = routes[key];
+                if(config.redirectTo) {
+                    Router.router.navigate(config.redirectTo);
+                    return;
+                }
+
+                const pageInstance: any = trexContainer.resolve(config.page);
+                pageInstance.render();
+            };
+        }
+
+        Router.router = new Navigo(null, false);        
+        Router.router.on(navigoConfig)
+            .resolve();
     }
 
-    private static parseRequestURL() {
-
-        let url = location.hash.slice(1).toLowerCase() || '/';
-        let r = url.split("/")
-        let request = {
-            resource    : null,
-            id          : null,
-            verb        : null
-        }
-        request.resource    = r[1]
-        request.id          = r[2]
-        request.verb        = r[3]
-
-        return request
+    public static navigate(route: string): void {
+        Router.router.navigate(route);
     }
 }
