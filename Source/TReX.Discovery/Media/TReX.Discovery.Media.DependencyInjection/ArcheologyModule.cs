@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using TReX.Discovery.Media.Archeology.Youtube;
-using TReX.Discovery.Media.Business.Archeology;
-using TReX.Discovery.Media.Business.Discovery;
+using TReX.Discovery.Media.Business;
+using TReX.Discovery.Shared.Business;
 
 namespace TReX.Discovery.Media.DependencyInjection
 {

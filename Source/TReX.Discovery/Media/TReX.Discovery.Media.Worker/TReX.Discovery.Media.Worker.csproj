@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Domain\TReX.Discovery.Shared.Domain.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.Business\TReX.Discovery.Media.Business.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.DependencyInjection\TReX.Discovery.Media.DependencyInjection.csproj" />
   </ItemGroup>

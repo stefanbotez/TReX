@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Business\TReX.Discovery.Shared.Business.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.Domain\TReX.Discovery.Media.Domain.csproj" />
   </ItemGroup>
 

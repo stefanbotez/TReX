@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
-using TReX.Discovery.Media.Business.Discovery;
-using TReX.Discovery.Media.Business.Discovery.Commands;
-using TReX.Discovery.Media.Domain.Events;
 using TReX.Discovery.Media.Worker.Events;
+using TReX.Discovery.Shared.Business;
+using TReX.Discovery.Shared.Business.Commands;
+using TReX.Discovery.Shared.Domain.Events;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Bus;
 

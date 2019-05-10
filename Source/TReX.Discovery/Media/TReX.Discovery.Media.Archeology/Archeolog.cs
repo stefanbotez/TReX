@@ -3,9 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
-using TReX.Discovery.Media.Business.Archeology;
-using TReX.Discovery.Media.Business.Archeology.Commands;
 using TReX.Discovery.Media.Domain;
+using TReX.Discovery.Shared.Business;
+using TReX.Discovery.Shared.Business.Commands;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Bus;
 using TReX.Kernel.Shared.Domain;
@@ -29,7 +29,7 @@ namespace TReX.Discovery.Media.Archeology
         public async Task<Result> Study(StudyCommand command)
         {
             var studiesResult = await GetLectures(command.Topic);
-            return await studiesResult.OnSuccess(PersistStudies)
+            return await studiesResult.OnSuccess(s => PersistStudies(s))
                 .OnSuccess(() => PublishStudies(command.DiscoveryId, studiesResult.Value));
         }
 

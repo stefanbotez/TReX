@@ -1,6 +1,6 @@
 ﻿using EnsureThat;
 
-namespace TReX.Discovery.Media.Business.Discovery.Commands
+namespace TReX.Discovery.Shared.Business.Commands
 {
     public class DiscoverCommand
     {

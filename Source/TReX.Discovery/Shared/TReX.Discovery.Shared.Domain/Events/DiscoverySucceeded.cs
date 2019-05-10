@@ -1,7 +1,7 @@
 ﻿using EnsureThat;
 using TReX.Kernel.Shared.Domain;
 
-namespace TReX.Discovery.Media.Domain.Events
+namespace TReX.Discovery.Shared.Domain.Events
 {
     public sealed class DiscoverySucceeded : IDomainEvent
     {

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
-using TReX.Discovery.Media.Business.Archeology.Commands;
+using TReX.Discovery.Shared.Business.Commands;
 
-namespace TReX.Discovery.Media.Business.Archeology
+namespace TReX.Discovery.Shared.Business
 {
     public interface IArcheolog
     {

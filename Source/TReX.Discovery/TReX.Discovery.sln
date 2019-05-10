@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.202
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Media", "_Media", "{2EDE8EA7-F312-481A-AEE1-29BF69AD91D9}"
 EndProject
@@ -57,7 +57,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Kernel.Shared", "..\TR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Kernel.Utilities", "..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj", "{32458399-5E62-4D80-812E-8F7A64A807F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Media.Worker", "Media\TReX.Discovery.Media.Worker\TReX.Discovery.Media.Worker.csproj", "{E2869E15-0A96-4B4F-89E0-3896D1783FB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Shared", "Documents\TReX.Discovery.Documents.Shared\TReX.Discovery.Documents.Shared.csproj", "{C0ED3E9C-4E4C-43FF-A117-E913B20F6CFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Domain", "Documents\TReX.Discovery.Documents.Domain\TReX.Discovery.Documents.Domain.csproj", "{C588E809-C9C0-4028-8526-53276D24E484}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Business", "Documents\TReX.Discovery.Documents.Business\TReX.Discovery.Documents.Business.csproj", "{6AABDA22-E6CF-46FB-863E-F2E7C9075A6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Archeology", "Documents\TReX.Discovery.Documents.Archeology\TReX.Discovery.Documents.Archeology.csproj", "{E6FFFC83-AA4F-4FF0-AB0F-8657C3103E7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.DependencyInjection", "Documents\TReX.Discovery.Documents.DependencyInjection\TReX.Discovery.Documents.DependencyInjection.csproj", "{6A7998AD-3516-4A97-9E18-ACA4C2F2291C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{BCF94020-C725-4FA6-AD02-4D956EA4623C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Shared.Domain", "Shared\TReX.Discovery.Shared.Domain\TReX.Discovery.Shared.Domain.csproj", "{6B3CC513-085C-40C0-B644-E3026AF83694}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Shared.Business", "Shared\TReX.Discovery.Shared.Business\TReX.Discovery.Shared.Business.csproj", "{746F52C7-FD4E-4D31-9A16-2832CB3164AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Media.Worker", "Media\TReX.Discovery.Media.Worker\TReX.Discovery.Media.Worker.csproj", "{BB10DFBB-AC50-4503-BCCD-4C407C0DE02C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Documents.Worker", "Documents\TReX.Discovery.Documents.Worker\TReX.Discovery.Documents.Worker.csproj", "{D269CC0F-20DA-41C3-B925-08FAC9C01E33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,10 +115,42 @@ Global
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32458399-5E62-4D80-812E-8F7A64A807F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2869E15-0A96-4B4F-89E0-3896D1783FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2869E15-0A96-4B4F-89E0-3896D1783FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2869E15-0A96-4B4F-89E0-3896D1783FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2869E15-0A96-4B4F-89E0-3896D1783FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0ED3E9C-4E4C-43FF-A117-E913B20F6CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0ED3E9C-4E4C-43FF-A117-E913B20F6CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0ED3E9C-4E4C-43FF-A117-E913B20F6CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0ED3E9C-4E4C-43FF-A117-E913B20F6CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C588E809-C9C0-4028-8526-53276D24E484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C588E809-C9C0-4028-8526-53276D24E484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C588E809-C9C0-4028-8526-53276D24E484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C588E809-C9C0-4028-8526-53276D24E484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AABDA22-E6CF-46FB-863E-F2E7C9075A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AABDA22-E6CF-46FB-863E-F2E7C9075A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AABDA22-E6CF-46FB-863E-F2E7C9075A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AABDA22-E6CF-46FB-863E-F2E7C9075A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6FFFC83-AA4F-4FF0-AB0F-8657C3103E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6FFFC83-AA4F-4FF0-AB0F-8657C3103E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6FFFC83-AA4F-4FF0-AB0F-8657C3103E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6FFFC83-AA4F-4FF0-AB0F-8657C3103E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7998AD-3516-4A97-9E18-ACA4C2F2291C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7998AD-3516-4A97-9E18-ACA4C2F2291C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7998AD-3516-4A97-9E18-ACA4C2F2291C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7998AD-3516-4A97-9E18-ACA4C2F2291C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B3CC513-085C-40C0-B644-E3026AF83694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3CC513-085C-40C0-B644-E3026AF83694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3CC513-085C-40C0-B644-E3026AF83694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3CC513-085C-40C0-B644-E3026AF83694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{746F52C7-FD4E-4D31-9A16-2832CB3164AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{746F52C7-FD4E-4D31-9A16-2832CB3164AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{746F52C7-FD4E-4D31-9A16-2832CB3164AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{746F52C7-FD4E-4D31-9A16-2832CB3164AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB10DFBB-AC50-4503-BCCD-4C407C0DE02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB10DFBB-AC50-4503-BCCD-4C407C0DE02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB10DFBB-AC50-4503-BCCD-4C407C0DE02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB10DFBB-AC50-4503-BCCD-4C407C0DE02C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,7 +179,15 @@ Global
 		{14C538FA-9C38-4FC6-B795-07462ACA2E59} = {3C8EB77E-DDD3-4300-A064-BDB375E54534}
 		{C4F39193-6C43-42BF-AC47-B5CFEA6B8511} = {3C8EB77E-DDD3-4300-A064-BDB375E54534}
 		{32458399-5E62-4D80-812E-8F7A64A807F4} = {3C8EB77E-DDD3-4300-A064-BDB375E54534}
-		{E2869E15-0A96-4B4F-89E0-3896D1783FB5} = {D491A9DC-952F-4029-AF3B-232A081C6849}
+		{C0ED3E9C-4E4C-43FF-A117-E913B20F6CFC} = {BBB49DAD-37B9-42C6-86F3-F95A1FF94E5E}
+		{C588E809-C9C0-4028-8526-53276D24E484} = {F1026713-5552-44B7-85BD-4DBEE9859DE7}
+		{6AABDA22-E6CF-46FB-863E-F2E7C9075A6A} = {F1026713-5552-44B7-85BD-4DBEE9859DE7}
+		{E6FFFC83-AA4F-4FF0-AB0F-8657C3103E7A} = {091024E5-287C-46D7-A1ED-69C228A8956F}
+		{6A7998AD-3516-4A97-9E18-ACA4C2F2291C} = {091024E5-287C-46D7-A1ED-69C228A8956F}
+		{6B3CC513-085C-40C0-B644-E3026AF83694} = {BCF94020-C725-4FA6-AD02-4D956EA4623C}
+		{746F52C7-FD4E-4D31-9A16-2832CB3164AF} = {BCF94020-C725-4FA6-AD02-4D956EA4623C}
+		{BB10DFBB-AC50-4503-BCCD-4C407C0DE02C} = {D491A9DC-952F-4029-AF3B-232A081C6849}
+		{D269CC0F-20DA-41C3-B925-08FAC9C01E33} = {E550DDF1-01D0-4D9F-9357-7D6352E0FD3E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76FF5FA7-7BA6-4444-BEC7-EE7A148CDAFB}

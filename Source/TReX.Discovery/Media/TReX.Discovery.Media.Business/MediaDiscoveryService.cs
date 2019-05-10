@@ -3,13 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
-using TReX.Discovery.Media.Business.Archeology;
-using TReX.Discovery.Media.Business.Archeology.Commands;
-using TReX.Discovery.Media.Business.Discovery.Commands;
+using TReX.Discovery.Shared.Business;
+using TReX.Discovery.Shared.Business.Commands;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Domain;
 
-namespace TReX.Discovery.Media.Business.Discovery
+namespace TReX.Discovery.Media.Business
 {
     public sealed class MediaDiscoveryService : IDiscoveryService
     {

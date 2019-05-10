@@ -1,6 +1,6 @@
 ﻿using EnsureThat;
 
-namespace TReX.Discovery.Media.Business.Archeology.Commands
+namespace TReX.Discovery.Shared.Business.Commands
 {
     public sealed class StudyCommand
     {
