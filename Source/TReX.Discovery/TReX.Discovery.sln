@@ -75,7 +75,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Shared.Busin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Media.Worker", "Media\TReX.Discovery.Media.Worker\TReX.Discovery.Media.Worker.csproj", "{BB10DFBB-AC50-4503-BCCD-4C407C0DE02C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Documents.Worker", "Documents\TReX.Discovery.Documents.Worker\TReX.Discovery.Documents.Worker.csproj", "{D269CC0F-20DA-41C3-B925-08FAC9C01E33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Worker", "Documents\TReX.Discovery.Documents.Worker\TReX.Discovery.Documents.Worker.csproj", "{D269CC0F-20DA-41C3-B925-08FAC9C01E33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
