@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Media", "_Media", "{2EDE8EA7-F312-481A-AEE1-29BF69AD91D9}"
 EndProject
@@ -77,6 +77,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Media.Worker
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Worker", "Documents\TReX.Discovery.Documents.Worker\TReX.Discovery.Documents.Worker.csproj", "{D269CC0F-20DA-41C3-B925-08FAC9C01E33}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +153,10 @@ Global
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
