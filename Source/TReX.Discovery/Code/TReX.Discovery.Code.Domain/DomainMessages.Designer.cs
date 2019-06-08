@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TReX.Discovery.Shared.Domain {
+namespace TReX.Discovery.Code.Domain {
     using System;
     
     
@@ -19,17 +19,17 @@ namespace TReX.Discovery.Shared.Domain {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SharedDomainMessages {
+    internal class DomainMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SharedDomainMessages() {
+        internal DomainMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TReX.Discovery.Shared.Domain {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TReX.Discovery.Shared.Domain.SharedDomainMessages", typeof(SharedDomainMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TReX.Discovery.Code.Domain.DomainMessages", typeof(DomainMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,38 @@ namespace TReX.Discovery.Shared.Domain {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to External id is invalid!.
+        ///   Looks up a localized string similar to Resource provider id is invalid!.
         /// </summary>
-        internal static string InvalidExternalId {
+        internal static string InvalidProviderId {
             get {
-                return ResourceManager.GetString("InvalidExternalId", resourceCulture);
+                return ResourceManager.GetString("InvalidProviderId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provider name is invalid!.
+        ///   Looks up a localized string similar to Thumbnail cannot be null!.
         /// </summary>
-        internal static string InvalidProviderName {
+        internal static string InvalidThumbnail {
             get {
-                return ResourceManager.GetString("InvalidProviderName", resourceCulture);
+                return ResourceManager.GetString("InvalidThumbnail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource title is invalid!.
+        /// </summary>
+        internal static string InvalidTitle {
+            get {
+                return ResourceManager.GetString("InvalidTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid url!.
+        /// </summary>
+        internal static string InvalidUrl {
+            get {
+                return ResourceManager.GetString("InvalidUrl", resourceCulture);
             }
         }
     }

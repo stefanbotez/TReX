@@ -3,17 +3,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
-using TReX.Discovery.Media.Domain;
+using TReX.Discovery.Code.Domain;
 using TReX.Discovery.Shared.Business;
 using TReX.Discovery.Shared.Business.Commands;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Bus;
 using TReX.Kernel.Shared.Domain;
 
-namespace TReX.Discovery.Media.Archeology
+namespace TReX.Discovery.Code.Archeology
 {
     public abstract class Archeolog<TLecture> : IArcheolog
-        where TLecture : AggregateRoot, IMediaLecture
+        where TLecture : AggregateRoot, ICodeLecture
     {
         protected readonly IWriteRepository<TLecture> writeRepository;
         protected readonly IMessageBus bus;
@@ -45,7 +45,7 @@ namespace TReX.Discovery.Media.Archeology
 
         protected async Task<Result> PublishStudies(string discoveryId, IEnumerable<TLecture> studies)
         {
-            var messages = studies.Select(s => new MediaResourceDiscovered(discoveryId, s.ToMediaResource()));
+            var messages = studies.Select(s => new CodeResourceDiscovered(discoveryId, s.ToCodeLecture()));
             return await this.bus.PublishMessages(messages);
         }
     }
