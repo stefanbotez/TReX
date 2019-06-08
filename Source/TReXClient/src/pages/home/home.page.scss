@@ -4,12 +4,12 @@ $testColor: #e9cb2a;
     color: $testColor;
 }
 
-.container {
+.home-container {
     display: flex;
     flex-direction: row;
 }
 
-.right-container {
+.home-right-container {
     width: 100%;
     display: flex;
     flex-direction: column;

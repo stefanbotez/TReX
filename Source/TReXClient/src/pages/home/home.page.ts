@@ -14,17 +14,20 @@ export class HomePage extends Page {
         {
             title: 'My test title 1',
             text: 'asdjhakdj ak hjaksj hdka haksjda hakjsajdaj hkaj hdoiau doiduiwrbwbrf e b o jasop aknd ak dan ahd uiahdaid jajd nas d',
-            tags: ['aaa', 'bbb']
+            tags: ['aaa', 'bbb'],
+            id: '1'
         },
         {
             title: 'My test title 2',
             text: 'asdjhakdj ak hjaksj hdka haksjda hakjsajdaj hkaj hdoiau doiduiwrbwbrf e b o jasop aknd ak dan ahd uiahdaid jajd nas d',
-            tags: ['bbb', 'ccc', 'ddd']
+            tags: ['bbb', 'ccc', 'ddd'],
+            id: '2'
         },
         {
             title: 'My test title 3',
             text: 'asdjhakdj ak hjaksj hdka haksjda hakjsajdaj hkaj hdoiau doiduiwrbwbrf e b o jasop aknd ak dan ahd uiahdaid jajd nas d',
-            tags: ['aaa', 'ccc', 'ddd']
+            tags: ['aaa', 'ccc', 'ddd'],
+            id: '3'
         }
     ];
 
