@@ -1,2 +1,14 @@
-<input id="email" placeholder="email" value="{value}">
-You typed: {value}
+<div class="container">
+
+    <div class="left-container">
+        <trex-sidebar></trex-sidebar>
+    </div>
+
+    <div class="right-container">
+        <trex-filter-bar></trex-filter-bar>
+        <div class="article-preview-container">
+            <trex-article-preview rv-each-article="articles" article="article"></trex-article-preview>
+        </div>
+    </div>
+    
+</div>
