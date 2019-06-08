@@ -1,5 +1,5 @@
 import * as template from './article-preview.component.html';
-import { TrexComponent, Component, HasInputs } from "@framework";
+import { TrexComponent, Component, HasInputs, OnInit } from "@framework";
 import { Subject } from 'rxjs';
 
 
@@ -10,11 +10,14 @@ import { Subject } from 'rxjs';
 export class ArticlePreviewComponent extends Component implements HasInputs{
     private channel: Subject<string>;
 
-    public title: string = "Test title";
-    public content: string = "Test content asjdan  lajdslakj  lkajdalks asldk jalk jals kjsal jadj  lkajsd laj alkj laks jalk ";
-    public tags: string[] = ["aaa", "bbb", "cccc"];
+    public title: string;
+    public content: string;
+    public tags: string[];
 
     public gatherInputs(inputs: any): void {
         this.channel = inputs.channel;
+        this.title = inputs.article.title;
+        this.content = inputs.article.text;
+        this.tags = inputs.article.tags;
     }
 }

@@ -1,5 +1,5 @@
 .sidebar {
-    width: 240px;
+    width: 200px;
     height: 100vh;
     background-color: #fff;
     border-right: 1px solid #f1f1f1;
@@ -68,6 +68,7 @@
 }
 
 .name {
+    text-align: center;
     color: #646464;
     font-weight: 600;
     font-size: 18px;
@@ -93,6 +94,7 @@
     display: flex;
     justify-content: center;
     margin-right: 10px;
+    color: #646464;
 }
 
 .menu li.active {
@@ -105,8 +107,8 @@
     font-weight: 600;
     padding: 10px 10px 10px 20px;
     display: flex;
-    align-items: center;
     cursor: pointer;
+    text-align: center;
 }
 
 .menu li:not(.active):hover, .menu li:not(.active):hover i {
