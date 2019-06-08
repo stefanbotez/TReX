@@ -17,9 +17,20 @@ namespace TReX.Discovery.Code.Archeology.Github
 
         public async Task<SearchRepositoryResult> Search(string query)
         {
-            var request = new SearchRepositoriesRequest(query);
-
+            var request = new SearchRepositoriesRequest(query);           
             return await githubClient.Search.SearchRepo(request);
         }
+
+        public List<GithubCodeLecture> ToGithubCodeLecture(SearchRepositoryResult result, int page, int per_page)
+        {
+            List<GithubCodeLecture> resultList = new List<GithubCodeLecture>();
+
+            for (int i = (page - 1) * per_page; i < page * per_page; i++)
+            {
+                resultList.Add(new GithubCodeLecture(result.Items[i]));
+            }
+
+            return resultList;
+        } 
     }
 }

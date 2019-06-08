@@ -3,10 +3,12 @@ using Octokit.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TReX.Discovery.Code.Domain;
+using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Code.Archeology.Github
 {
-    class GithubCodeLecture
+    class GithubCodeLecture : AggregateRoot, ICodeLecture
     {
         private GithubCodeLecture()
         {
@@ -27,5 +29,10 @@ namespace TReX.Discovery.Code.Archeology.Github
         public string Description { get; private set; }
 
         public DateTime PublishedAt { get; private set; }
+
+        public CodeResource ToCodeLecture()
+        {
+            return CodeResource.Create(CodeId, Title, Description).Value;
+        }
     }
 }

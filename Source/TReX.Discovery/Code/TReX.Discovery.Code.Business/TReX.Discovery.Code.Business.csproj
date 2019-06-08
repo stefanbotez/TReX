@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Business\TReX.Discovery.Shared.Business.csproj" />
+  </ItemGroup>
+
 </Project>
