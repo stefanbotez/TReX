@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TReX.Discovery.Media.Domain {
+namespace TReX.Discovery.Shared.Domain {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace TReX.Discovery.Media.Domain {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DomainMessages {
+    internal class SharedDomainMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DomainMessages() {
+        internal SharedDomainMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TReX.Discovery.Media.Domain {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TReX.Discovery.Media.Domain.DomainMessages", typeof(DomainMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TReX.Discovery.Shared.Domain.SharedDomainMessages", typeof(SharedDomainMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,20 @@ namespace TReX.Discovery.Media.Domain {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource provider is invalid!.
+        ///   Looks up a localized string similar to External id is invalid!.
         /// </summary>
-        internal static string InvalidProviderDetails {
+        internal static string InvalidExternalId {
             get {
-                return ResourceManager.GetString("InvalidProviderDetails", resourceCulture);
+                return ResourceManager.GetString("InvalidExternalId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thumbnail cannot be null!.
+        ///   Looks up a localized string similar to Provider name is invalid!.
         /// </summary>
-        internal static string InvalidThumbnail {
+        internal static string InvalidProviderName {
             get {
-                return ResourceManager.GetString("InvalidThumbnail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Resource title is invalid!.
-        /// </summary>
-        internal static string InvalidTitle {
-            get {
-                return ResourceManager.GetString("InvalidTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid url!.
-        /// </summary>
-        internal static string InvalidUrl {
-            get {
-                return ResourceManager.GetString("InvalidUrl", resourceCulture);
+                return ResourceManager.GetString("InvalidProviderName", resourceCulture);
             }
         }
     }
