@@ -3,3 +3,13 @@ $testColor: #e9cb2a;
 .home {
     color: $testColor;
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+}
