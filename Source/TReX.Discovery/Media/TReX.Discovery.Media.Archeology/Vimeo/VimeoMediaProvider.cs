@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+using EnsureThat;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
     class VimeoMediaProvider
     {
         private readonly VimeoSettings settings;
+        public VimeoMediaProvider(VimeoSettings settings)
+        {
+            EnsureArg.IsNotNull(settings);
+            this.settings = settings;
+        }
 
 
         public async Task<Result<HttpResponseMessage>> Search(string query, string page = "1")

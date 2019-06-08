@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Domain\TReX.Discovery.Shared.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

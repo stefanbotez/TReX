@@ -1,5 +1,7 @@
 ﻿using System;
+using CSharpFunctionalExtensions;
 using TReX.Discovery.Media.Domain;
+using TReX.Discovery.Shared.Domain;
 using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Archeology.Vimeo
@@ -29,9 +31,11 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
 
         public DateTime PublishedAt { get; private set; }
 
-        public MediaResource ToMediaResource()
+        public Result<MediaResource> ToResource()
         {
-            return MediaResource.Create(VideoId, Title, Description, Thumbnail).Value;
+            var providerDetailsResult = ProviderDetails.Create(VideoId, Constants.Vimeo);
+
+            return providerDetailsResult.OnSuccess(pd => MediaResource.Create(pd, Title, Description, Thumbnail));
         }
     }
 }

@@ -5,6 +5,9 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>810dcaa7-8d05-4017-bdf7-8c63d48aeb58</ProjectGuid>
   </PropertyGroup>
+  <PropertyGroup>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
