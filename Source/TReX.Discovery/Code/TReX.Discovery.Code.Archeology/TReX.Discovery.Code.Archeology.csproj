@@ -13,11 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
     <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Business\TReX.Discovery.Shared.Business.csproj" />
-=======
->>>>>>> 5f3ed5b0972aae99e89a4fee1f8c388cad4359df
     <ProjectReference Include="..\TReX.Discovery.Code.Domain\TReX.Discovery.Code.Domain.csproj" />
   </ItemGroup>
 

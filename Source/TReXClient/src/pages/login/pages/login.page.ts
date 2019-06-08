@@ -40,10 +40,6 @@ export class LoginPage extends Page implements OnInit {
         this.advancedToPassword = true;
     }
 
-    public goBack(): void {
-        this.advancedToPassword = false;
-    }
-
     private initChannels(): void {
         this.emailChannel.subscribe((email: string) => {
             this.form.email = email;
@@ -65,7 +61,6 @@ export class LoginPage extends Page implements OnInit {
         this.form.onFail.subscribe((errors: string[]) => {
             var messages = errors.map((e: string) => NotificationMessage.error(e));
             this.notifications.pushError(...messages);
-            this.goBack();
         });
     }
 }

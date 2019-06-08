@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
   </ItemGroup>
 
@@ -22,9 +21,6 @@
       <LastGenOutput>DomainMessages.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-=======
-    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Domain\TReX.Discovery.Shared.Domain.csproj" />
->>>>>>> 5f3ed5b0972aae99e89a4fee1f8c388cad4359df
   </ItemGroup>
 
 </Project>

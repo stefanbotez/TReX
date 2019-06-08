@@ -19,6 +19,10 @@ trex-login-email {
         font-size: 14px;
     }
     
+    .form {
+        width: 40%;
+    }
+    
     .form-part {
         display: flex;
         flex-direction: column;
@@ -78,13 +82,17 @@ trex-login-email {
     /* MOBILE  */
     
     @media only screen and (max-width: 599px) {
-        width: 100%;
+        .login-container, form {
+            width: 100%;
+        }
     }
     
     /* TABLET PORTRAIT  */
     
     @media only screen and (min-width: 600px) and (max-width: 899px){
-        width: 70%;
+        .login-container, form {
+            width: 70%;
+        }
     }
     
     
