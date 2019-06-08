@@ -45,7 +45,10 @@ namespace TReX.Discovery.Media.Archeology
 
         protected async Task<Result> PublishStudies(string discoveryId, IEnumerable<TLecture> studies)
         {
-            var messages = studies.Select(s => new MediaResourceDiscovered(discoveryId, s.ToMediaResource()));
+            var messages = studies.Select(s => s.ToResource())
+                .Where(s => s.IsSuccess)
+                .Select(s => new MediaResourceDiscovered(discoveryId, s.Value));
+
             return await this.bus.PublishMessages(messages);
         }
     }
