@@ -4,4 +4,16 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Raven\TReX.Kernel.Raven.csproj" />
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Code.Archeology\TReX.Discovery.Code.Archeology.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Code.Business\TReX.Discovery.Code.Business.csproj" />
+  </ItemGroup>
+
 </Project>

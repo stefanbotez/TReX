@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="InvalidProviderDetails" xml:space="preserve">
-    <value>Resource provider is invalid!</value>
+  <data name="InvalidExternalId" xml:space="preserve">
+    <value>External id is invalid!</value>
   </data>
-  <data name="InvalidThumbnail" xml:space="preserve">
-    <value>Thumbnail cannot be null!</value>
-  </data>
-  <data name="InvalidTitle" xml:space="preserve">
-    <value>Resource title is invalid!</value>
-  </data>
-  <data name="InvalidUrl" xml:space="preserve">
-    <value>Invalid url!</value>
+  <data name="InvalidProviderName" xml:space="preserve">
+    <value>Provider name is invalid!</value>
   </data>
 </root>

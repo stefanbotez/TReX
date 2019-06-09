@@ -1,6 +1,7 @@
-﻿using System.Reflection;
-using Autofac;
-using TReX.Discovery.Code.Archeology;
+﻿using Autofac;
+using TReX.Discovery.Code.Archeology.Github;
+using TReX.Discovery.Code.Business;
+using TReX.Discovery.Shared.Business;
 
 namespace TReX.Discovery.Code.DependencyInjection
 {
@@ -8,7 +9,7 @@ namespace TReX.Discovery.Code.DependencyInjection
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<GithubCodeArcheolog>()
+            builder.RegisterType<GithubCodeArcheologist>()
                 .As<IArcheolog>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<GithubCodeProvider>()

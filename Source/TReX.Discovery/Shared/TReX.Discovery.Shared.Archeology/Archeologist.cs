@@ -3,22 +3,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
-using TReX.Discovery.Code.Domain;
-using TReX.Discovery.Shared.Business;
 using TReX.Discovery.Shared.Business.Commands;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Bus;
 using TReX.Kernel.Shared.Domain;
 
-namespace TReX.Discovery.Code.Archeology
+namespace TReX.Discovery.Shared.Archeology
 {
-    public abstract class Archeolog<TLecture> : IArcheolog
-        where TLecture : AggregateRoot, ICodeLecture
+    public abstract class Archeologist<TLecture, TResource>
+        where TLecture : AggregateRoot, ILecture<TResource>
     {
         protected readonly IWriteRepository<TLecture> writeRepository;
         protected readonly IMessageBus bus;
 
-        protected Archeolog(IWriteRepository<TLecture> writeRepository, IMessageBus bus)
+        protected Archeologist(IWriteRepository<TLecture> writeRepository, IMessageBus bus)
         {
             EnsureArg.IsNotNull(writeRepository);
             EnsureArg.IsNotNull(bus);
@@ -45,8 +43,12 @@ namespace TReX.Discovery.Code.Archeology
 
         protected async Task<Result> PublishStudies(string discoveryId, IEnumerable<TLecture> studies)
         {
-            var messages = studies.Select(s => new CodeResourceDiscovered(discoveryId, s.ToCodeLecture()));
+            var messages = studies.Select(s => s.ToResource())
+                .Where(r => r.IsSuccess)
+                .Select(r => GetDiscoveryEvent(discoveryId, r.Value));
             return await this.bus.PublishMessages(messages);
         }
+
+        protected abstract IDomainEvent GetDiscoveryEvent(string discoveryId, TResource resource);
     }
 }

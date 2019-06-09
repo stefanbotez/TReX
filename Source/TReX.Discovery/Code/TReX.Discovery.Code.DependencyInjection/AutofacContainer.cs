@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using System.Reflection;
 using TReX.Kernel.Raven;
 using TReX.Kernel.Utilities;
 

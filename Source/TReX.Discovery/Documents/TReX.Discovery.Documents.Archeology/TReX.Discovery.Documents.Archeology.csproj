@@ -9,4 +9,11 @@
     <PackageReference Include="Ensure.That" Version="8.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Archeology\TReX.Discovery.Shared.Archeology.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Domain\TReX.Discovery.Shared.Domain.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Documents.Domain\TReX.Discovery.Documents.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
-﻿using TReX.Kernel.Shared.Domain;
+﻿using TReX.Discovery.Shared.Domain;
+using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Domain
 {
@@ -9,7 +10,7 @@ namespace TReX.Discovery.Media.Domain
             DiscoveryId = discoveryId;
 
             Title = resource.Title;
-            ProviderId = resource.ProviderId;
+            ProviderDetails = resource.ProviderDetails;
             Description = resource.Description;
             ThumbnailUrl = resource.Thumbnail.Url;
         }
@@ -18,7 +19,7 @@ namespace TReX.Discovery.Media.Domain
 
         public string Title { get; private set; }
 
-        public string ProviderId { get; private set; }
+        public ProviderDetails ProviderDetails { get; private set; }
 
         public string Description { get; private set; }
 

@@ -2,13 +2,14 @@
 using CSharpFunctionalExtensions;
 using Google.Apis.YouTube.v3.Data;
 using TReX.Discovery.Media.Domain;
-using TReX.Kernel.Shared;
+using TReX.Discovery.Shared.Archeology;
+using TReX.Discovery.Shared.Domain;
 using TReX.Kernel.Shared.Domain;
 using Thumbnail = Google.Apis.YouTube.v3.Data.Thumbnail;
 
 namespace TReX.Discovery.Media.Archeology.Youtube
 {
-    public sealed class YoutubeMediaLecture : AggregateRoot, IMediaLecture
+    public sealed class YoutubeMediaLecture : AggregateRoot, ILecture<MediaResource>
     {
         private YoutubeMediaLecture()
         {
@@ -35,10 +36,13 @@ namespace TReX.Discovery.Media.Archeology.Youtube
 
         public DateTime PublishedAt { get; private set; }
 
-        public MediaResource ToMediaResource()
+        public Result<MediaResource> ToResource()
         {
-            var thumbnail = Thumbnail.ToMaybe().Unwrap(t => Domain.Thumbnail.Create(t.Url).Value);
-            return MediaResource.Create(VideoId, Title, Description, thumbnail).Value;
+            var thumbnailResult = Domain.Thumbnail.Create(Thumbnail.Url);
+            var providerDetailsResult = ProviderDetails.Create(VideoId, Constants.Youtube);
+
+            return Result.FirstFailureOrSuccess(thumbnailResult, providerDetailsResult)
+                .OnSuccess(() => MediaResource.Create(providerDetailsResult.Value, Title, Description, thumbnailResult.Value));
         }
     }
 }
