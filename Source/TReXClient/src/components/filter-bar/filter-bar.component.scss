@@ -61,3 +61,36 @@
         padding: 0 10px;
     }
 }
+
+@media only screen and (max-width: 599px) {
+    .filter-form {
+        width: 100%;
+
+        .filter-part {
+            width: 100%;
+
+            #search {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .grid-options {
+        display: none;
+    }
+
+    .filter-form {
+        width: 100%;
+        flex-direction: column;
+
+        .filter-part {
+            width: 100%;
+
+            input {
+                width: 100%;
+            }
+        }
+    }
+}

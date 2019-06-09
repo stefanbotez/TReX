@@ -73,3 +73,10 @@
     transition: 0.4s;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 599px) {
+    .article-preview-component-container{
+        padding: 0;
+    }
+
+}

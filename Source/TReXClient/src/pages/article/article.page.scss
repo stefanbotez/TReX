@@ -113,3 +113,9 @@
     background: #00d793;
     color: white;
 }
+
+@media only screen and (max-width: 599px) {
+    .article-component-container {
+        padding: 0;
+    }
+}
