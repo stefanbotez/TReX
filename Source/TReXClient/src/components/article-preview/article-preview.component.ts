@@ -9,8 +9,6 @@ import { inject } from 'inversify';
     template: template
 })
 export class ArticlePreviewComponent extends Component implements HasInputs{
-    private channel: Subject<string>;
-
     public title: string;
     public content: string;
     public tags: string[];
@@ -23,7 +21,6 @@ export class ArticlePreviewComponent extends Component implements HasInputs{
     }
 
     public gatherInputs(inputs: any): void {
-        this.channel = inputs.channel;
         this.title = inputs.article.title;
         this.content = inputs.article.text;
         this.tags = inputs.article.tags;
