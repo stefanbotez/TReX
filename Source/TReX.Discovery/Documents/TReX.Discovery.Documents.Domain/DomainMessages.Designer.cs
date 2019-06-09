@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TReX.Discovery.Code.Domain {
+namespace TReX.Discovery.Documents.Domain {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TReX.Discovery.Code.Domain {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TReX.Discovery.Code.Domain.DomainMessages", typeof(DomainMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TReX.Discovery.Documents.Domain.DomainMessages", typeof(DomainMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

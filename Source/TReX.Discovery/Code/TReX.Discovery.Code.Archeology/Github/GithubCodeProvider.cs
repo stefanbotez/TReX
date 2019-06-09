@@ -1,12 +1,10 @@
 ﻿using Octokit;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace TReX.Discovery.Code.Archeology.Github
 {
-    class GithubCodeProvider
+    public class GithubCodeProvider
     {
         private readonly GitHubClient githubClient;
 

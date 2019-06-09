@@ -1,11 +1,16 @@
-﻿using TReX.Kernel.Shared.Domain;
+﻿using CSharpFunctionalExtensions;
 using TReX.Discovery.Documents.Domain;
+using TReX.Discovery.Shared.Archeology;
+using TReX.Discovery.Shared.Domain;
+using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Documents.Archeology.Wikipedia
 {
-    public sealed class WikipediaDocumentLecture : AggregateRoot, IDocumentLecure
+    public sealed class WikipediaDocumentLecture : AggregateRoot, ILecture<DocumentResource>
     {
         private WikipediaDocumentLecture()
+        {
+        }
 
         public WikipediaDocumentLecture(int ns, string title, int pageid, int size, int wordcount, string snippet)
         {
@@ -23,6 +28,13 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
         public int Size { get; private set; }
         public int WordCount { get; private set; }
         public string Snippet { get; private set; }
+
+
+        public Result<DocumentResource> ToResource()
+        {
+            return ProviderDetails.Create(PageId.ToString(), Constants.Wikipedia)
+                .OnSuccess(pd => DocumentResource.Create(pd, Title, Snippet));
+        }
     }
 
 

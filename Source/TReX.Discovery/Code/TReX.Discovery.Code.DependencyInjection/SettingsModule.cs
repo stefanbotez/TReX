@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Configuration;
-using System.Reflection;
+using TReX.Discovery.Code.Archeology.Github;
 
 namespace TReX.Discovery.Code.DependencyInjection
 {

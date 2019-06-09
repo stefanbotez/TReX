@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Archeology\TReX.Discovery.Shared.Archeology.csproj" />
     <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Business\TReX.Discovery.Shared.Business.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Code.Domain\TReX.Discovery.Code.Domain.csproj" />
   </ItemGroup>

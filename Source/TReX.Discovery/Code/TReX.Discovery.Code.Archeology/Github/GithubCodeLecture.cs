@@ -1,14 +1,14 @@
 ﻿using Octokit;
-using Octokit.Internal;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using CSharpFunctionalExtensions;
 using TReX.Discovery.Code.Domain;
+using TReX.Discovery.Shared.Archeology;
+using TReX.Discovery.Shared.Domain;
 using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Code.Archeology.Github
 {
-    class GithubCodeLecture : AggregateRoot, ICodeLecture
+    public class GithubCodeLecture : AggregateRoot, ILecture<CodeResource>
     {
         private GithubCodeLecture()
         {
@@ -16,13 +16,13 @@ namespace TReX.Discovery.Code.Archeology.Github
 
         public GithubCodeLecture(Repository result) : this()
         {
-            CodeId = result.Id.ToString();
+            RepositoryId = result.Id.ToString();
             Title = result.Name;
             Description = result.Description;
             PublishedAt = result.PushedAt.Value.DateTime;
         }
 
-        public string CodeId { get; private set; }
+        public string RepositoryId { get; private set; }
 
         public string Title { get; private set; }
 
@@ -30,9 +30,10 @@ namespace TReX.Discovery.Code.Archeology.Github
 
         public DateTime PublishedAt { get; private set; }
 
-        public CodeResource ToCodeLecture()
+        public Result<CodeResource> ToResource()
         {
-            return CodeResource.Create(CodeId, Title, Description).Value;
+            return ProviderDetails.Create(RepositoryId, Constants.Github)
+                .OnSuccess(pd => CodeResource.Create(pd, Title, Description));
         }
     }
 }

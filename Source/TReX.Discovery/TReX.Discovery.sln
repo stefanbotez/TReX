@@ -79,17 +79,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Wo
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Code.Shared", "Code\TReX.Discovery.Code.Shared\TReX.Discovery.Code.Shared.csproj", "{AC3AAFD2-8A9F-4436-B733-089FC3545478}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Shared", "Code\TReX.Discovery.Code.Shared\TReX.Discovery.Code.Shared.csproj", "{AC3AAFD2-8A9F-4436-B733-089FC3545478}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Code.Domain", "Code\TReX.Discovery.Code.Domain\TReX.Discovery.Code.Domain.csproj", "{7DF69964-BA15-4C8A-B5BE-590C827291E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Domain", "Code\TReX.Discovery.Code.Domain\TReX.Discovery.Code.Domain.csproj", "{7DF69964-BA15-4C8A-B5BE-590C827291E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Code.Business", "Code\TReX.Discovery.Code.Business\TReX.Discovery.Code.Business.csproj", "{AF9CB4D4-56CE-4657-910D-3317BD1959D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Business", "Code\TReX.Discovery.Code.Business\TReX.Discovery.Code.Business.csproj", "{AF9CB4D4-56CE-4657-910D-3317BD1959D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Code.Archeology", "Code\TReX.Discovery.Code.Archeology\TReX.Discovery.Code.Archeology.csproj", "{0C5127A6-59CA-4100-8D9B-EFDFA8636CD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Archeology", "Code\TReX.Discovery.Code.Archeology\TReX.Discovery.Code.Archeology.csproj", "{0C5127A6-59CA-4100-8D9B-EFDFA8636CD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Code.DependencyInjection", "Code\TReX.Discovery.Code.DependencyInjection\TReX.Discovery.Code.DependencyInjection.csproj", "{790FFD42-C96B-49E9-AE01-D0C27A26A174}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.DependencyInjection", "Code\TReX.Discovery.Code.DependencyInjection\TReX.Discovery.Code.DependencyInjection.csproj", "{790FFD42-C96B-49E9-AE01-D0C27A26A174}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Code.Worker", "Code\TReX.Discovery.Code.Worker\TReX.Discovery.Code.Worker.csproj", "{0FF4785A-0C04-4145-948E-263ACC3AD5CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Worker", "Code\TReX.Discovery.Code.Worker\TReX.Discovery.Code.Worker.csproj", "{0FF4785A-0C04-4145-948E-263ACC3AD5CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Shared.Archeology", "Shared\TReX.Discovery.Shared.Archeology\TReX.Discovery.Shared.Archeology.csproj", "{360C2582-8046-4F6D-9B73-AA35FCF9B357}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -193,6 +195,10 @@ Global
 		{0FF4785A-0C04-4145-948E-263ACC3AD5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FF4785A-0C04-4145-948E-263ACC3AD5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FF4785A-0C04-4145-948E-263ACC3AD5CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360C2582-8046-4F6D-9B73-AA35FCF9B357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360C2582-8046-4F6D-9B73-AA35FCF9B357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360C2582-8046-4F6D-9B73-AA35FCF9B357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360C2582-8046-4F6D-9B73-AA35FCF9B357}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -236,6 +242,7 @@ Global
 		{0C5127A6-59CA-4100-8D9B-EFDFA8636CD1} = {147A4A4F-CED1-4C28-83CB-342959C3B43C}
 		{790FFD42-C96B-49E9-AE01-D0C27A26A174} = {147A4A4F-CED1-4C28-83CB-342959C3B43C}
 		{0FF4785A-0C04-4145-948E-263ACC3AD5CC} = {DB7D8C8E-A98D-43F4-8DF9-0D8823FDCAB2}
+		{360C2582-8046-4F6D-9B73-AA35FCF9B357} = {BCF94020-C725-4FA6-AD02-4D956EA4623C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76FF5FA7-7BA6-4444-BEC7-EE7A148CDAFB}

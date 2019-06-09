@@ -4,20 +4,21 @@ using EnsureThat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using TReX.Discovery.Code.Domain;
+using TReX.Discovery.Shared.Archeology;
 using TReX.Kernel.Shared.Bus;
 using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Code.Archeology.Github
 {
-    class GithubCodeArcheolog : Archeolog<GithubCodeLecture>
+    public class GithubCodeArcheologist : Archeologist<GithubCodeLecture, CodeResource>
     {
         private readonly IReadRepository<GithubCodeLecture> readRepository;
         private readonly GithubCodeProvider provider;
         private readonly GithubSettings settings;
 
-        public GithubCodeArcheolog(
+        public GithubCodeArcheologist(
             IReadRepository<GithubCodeLecture> readRepository,
             IWriteRepository<GithubCodeLecture> writeRepository,
             IMessageBus bus,
@@ -36,6 +37,8 @@ namespace TReX.Discovery.Code.Archeology.Github
 
         protected override Task<Result<IEnumerable<GithubCodeLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
 
+        protected override IDomainEvent GetDiscoveryEvent(string discoveryId, CodeResource resource) => new CodeResourceDiscovered(discoveryId, resource);
+
         private async Task<Result<IEnumerable<GithubCodeLecture>>> GetLectures(string topic, string page, int depth = 1)
         {
             var depthExceededResult = Result.Create(depth <= this.settings.MaxDepth, $"Maximum github depth exceeded for topic {topic}");
@@ -47,11 +50,11 @@ namespace TReX.Discovery.Code.Archeology.Github
             {
                 return Result.Fail<IEnumerable<GithubCodeLecture>>(studiesResult.Error);
             }
-            var studiesIds = provider.ToGithubCodeLecture(studiesResult.Value, Int32.Parse(page), this.settings.PerPage).Select(o => o.CodeId).ToList();
+            var studiesIds = provider.ToGithubCodeLecture(studiesResult.Value, Int32.Parse(page), this.settings.PerPage).Select(o => o.RepositoryId).ToList();
             var discoveredResourcesResult = await this.readRepository.GetByIdsAsync(studiesIds);
 
             return await Result.Combine(studiesResult, discoveredResourcesResult)
-                .OnSuccess(() => provider.ToGithubCodeLecture(studiesResult.Value, Int32.Parse(page), this.settings.PerPage).Where(i => discoveredResourcesResult.Value.All(yr => yr.CodeId != i.CodeId)))
+                .OnSuccess(() => provider.ToGithubCodeLecture(studiesResult.Value, Int32.Parse(page), this.settings.PerPage).Where(i => discoveredResourcesResult.Value.All(yr => yr.RepositoryId != i.RepositoryId)))
                 .Ensure(itd => itd.Any(), "No new items")
                 .OnSuccess(itd => itd.Select(x => x))
                 .OnFailureCompensate(() => GetLectures(topic, page + 1, depth + 1));

@@ -3,18 +3,20 @@ using EnsureThat;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TReX.Discovery.Media.Domain;
+using TReX.Discovery.Shared.Archeology;
 using TReX.Kernel.Shared.Bus;
 using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Archeology.Youtube
 {
-    public sealed class YoutubeMediaArcheolog : Archeolog<YoutubeMediaLecture>
+    public sealed class YoutubeMediaArcheologist : Archeologist<YoutubeMediaLecture, MediaResource>
     {
         private readonly IReadRepository<YoutubeMediaLecture> readRepository;
         private readonly YoutubeMediaProvider provider;
         private readonly YoutubeSettings settings;
 
-        public YoutubeMediaArcheolog(
+        public YoutubeMediaArcheologist(
             IReadRepository<YoutubeMediaLecture> readRepository,
             IWriteRepository<YoutubeMediaLecture> writeRepository,
             IMessageBus bus,
@@ -32,6 +34,8 @@ namespace TReX.Discovery.Media.Archeology.Youtube
         }
 
         protected override Task<Result<IEnumerable<YoutubeMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
+
+        protected override IDomainEvent GetDiscoveryEvent(string discoveryId, MediaResource resource) => new MediaResourceDiscovered(discoveryId, resource);
 
         private async Task<Result<IEnumerable<YoutubeMediaLecture>>> GetLectures(string topic, string page, int depth = 1)
         {

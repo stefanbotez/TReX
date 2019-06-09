@@ -1,22 +1,22 @@
 ﻿using CSharpFunctionalExtensions;
 using EnsureThat;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using TReX.Discovery.Media.Domain;
+using TReX.Discovery.Shared.Archeology;
 using TReX.Kernel.Shared.Bus;
 using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Archeology.Vimeo
 {
-    class VimeoMediaArcheolog : Archeolog<VimeoMediaLecture>
+    public class VimeoMediaArcheologist : Archeologist<VimeoMediaLecture, MediaResource>
     {
         private readonly IReadRepository<VimeoMediaLecture> readRepository;
         private readonly VimeoMediaProvider provider;
         private readonly VimeoSettings settings;
 
-        public VimeoMediaArcheolog(
+        public VimeoMediaArcheologist(
             IReadRepository<VimeoMediaLecture> readRepository,
             IWriteRepository<VimeoMediaLecture> writeRepository,
             IMessageBus bus,
@@ -34,6 +34,8 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
         }
 
         protected override Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
+
+        protected override IDomainEvent GetDiscoveryEvent(string discoveryId, MediaResource resource) => new MediaResourceDiscovered(discoveryId, resource);
 
         private async Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic, string page, int depth = 1)
         {
