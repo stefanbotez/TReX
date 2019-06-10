@@ -3,5 +3,6 @@
     public static class Constants
     {
         public const string Wikipedia = nameof(Wikipedia);
+        public const string Twitter = nameof(Twitter);
     }
 }
