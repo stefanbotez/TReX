@@ -77,8 +77,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Media.Worker
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Worker", "Documents\TReX.Discovery.Documents.Worker\TReX.Discovery.Documents.Worker.csproj", "{D269CC0F-20DA-41C3-B925-08FAC9C01E33}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Shared", "Code\TReX.Discovery.Code.Shared\TReX.Discovery.Code.Shared.csproj", "{AC3AAFD2-8A9F-4436-B733-089FC3545478}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Domain", "Code\TReX.Discovery.Code.Domain\TReX.Discovery.Code.Domain.csproj", "{7DF69964-BA15-4C8A-B5BE-590C827291E1}"
@@ -169,10 +167,6 @@ Global
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Release|Any CPU.Build.0 = Release|Any CPU
-		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC3AAFD2-8A9F-4436-B733-089FC3545478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC3AAFD2-8A9F-4436-B733-089FC3545478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC3AAFD2-8A9F-4436-B733-089FC3545478}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
+using TReX.Discovery.Shared.Business;
 using TReX.Discovery.Shared.Business.Commands;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Bus;
@@ -10,7 +11,7 @@ using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Shared.Archeology
 {
-    public abstract class Archeologist<TLecture, TResource>
+    public abstract class Archeologist<TLecture, TResource> : IArcheologist
         where TLecture : AggregateRoot, ILecture<TResource>
     {
         protected readonly IWriteRepository<TLecture> writeRepository;
