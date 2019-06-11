@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
-using TReX.Discovery.Media.Worker.Events;
 using TReX.Discovery.Shared.Business;
 using TReX.Discovery.Shared.Business.Commands;
 using TReX.Discovery.Shared.Domain.Events;
+using TReX.Discovery.Shared.Integration.Events;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Bus;
 
-namespace TReX.Discovery.Media.Worker.EventHandlers
+namespace TReX.Discovery.Shared.Integration.EventHandlers
 {
     public sealed class DiscoveryCreatedEventHandler : INotificationHandler<DiscoveryCreated>
     {

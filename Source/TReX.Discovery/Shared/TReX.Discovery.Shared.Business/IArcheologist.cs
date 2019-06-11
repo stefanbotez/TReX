@@ -4,7 +4,7 @@ using TReX.Discovery.Shared.Business.Commands;
 
 namespace TReX.Discovery.Shared.Business
 {
-    public interface IArcheolog
+    public interface IArcheologist
     {
         Task<Result> Study(StudyCommand command);
     }

@@ -10,7 +10,7 @@ namespace TReX.Discovery.Media.DependencyInjection
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<YoutubeMediaArcheologist>()
-                .As<IArcheolog>()
+                .As<IArcheologist>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<YoutubeMediaProvider>()
                 .InstancePerLifetimeScope();

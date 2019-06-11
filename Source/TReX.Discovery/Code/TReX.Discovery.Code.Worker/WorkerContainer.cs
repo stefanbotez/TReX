@@ -1,10 +1,10 @@
 ﻿using Autofac;
-using TReX.Discovery.Media.DependencyInjection;
+using TReX.Discovery.Code.DependencyInjection;
 using TReX.Discovery.Shared.Integration;
 using TReX.Kernel.Utilities;
 using Module = Autofac.Module;
 
-namespace TReX.Discovery.Media.Worker
+namespace TReX.Discovery.Code.Worker
 {
     public sealed class WorkerContainer : Module
     {

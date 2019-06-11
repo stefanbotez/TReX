@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System.Reflection;
 using System.Text;
 using Autofac;
 using CSharpFunctionalExtensions;
@@ -73,6 +74,20 @@ namespace TReX.Kernel.Utilities
                 .Where(t => t.IsClosedTypeOf(typeof(INotificationHandler<>)))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
+
+            return builder;
+        }
+
+        public static ContainerBuilder RegisterAppSettings(this ContainerBuilder builder)
+        {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            builder.RegisterInstance(configuration)
+                .As<IConfiguration>()
+                .SingleInstance();
 
             return builder;
         }

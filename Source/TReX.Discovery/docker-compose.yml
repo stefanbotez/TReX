@@ -9,6 +9,14 @@ services:
     depends_on:
       - raven
       - event-store
+  trex.discovery.code.worker:
+    image: ${DOCKER_REGISTRY-}trexdiscoverycodeworker
+    build:
+      context: .
+      dockerfile: Code/TReX.Discovery.Code.Worker/Dockerfile
+    depends_on:
+      - raven
+      - event-store
   raven:
     image: "ravendb/ravendb"
     environment:
@@ -27,3 +35,6 @@ services:
       EVENTSTORE_RUN_PROJECTIONS: "All"
     ports:
       - "2113:2113"
+
+
+

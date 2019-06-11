@@ -10,7 +10,7 @@ namespace TReX.Discovery.Code.DependencyInjection
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<GithubCodeArcheologist>()
-                .As<IArcheolog>()
+                .As<IArcheologist>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<GithubCodeProvider>()
                 .InstancePerLifetimeScope();

@@ -3,7 +3,7 @@ using EnsureThat;
 using TReX.Discovery.Shared.Integration.Events;
 using TReX.Kernel.Shared.Bus;
 
-namespace TReX.Discovery.Media.Worker
+namespace TReX.Discovery.Code.Worker
 {
     public sealed class Application
     {
