@@ -9,7 +9,11 @@ import { Subject } from 'rxjs';
 })
 export class HomePage extends Page implements OnInit {
     public filterbarChannel: Subject<string> = new Subject<string>();
+    public sidebarChannel: Subject<string> = new Subject<string>();
     public notFound: boolean = false;
+    public historyTabSelected: boolean = true;
+    public savedTabSelected: boolean = false;
+    public proposalsTabSelected: boolean = false;
     //temporary
     //just for testing
     public articles: any[] = [
@@ -54,6 +58,26 @@ export class HomePage extends Page implements OnInit {
         this.filterbarChannel.subscribe((value: string) => {
             this.filterArticlePreviews(value);
         });
+
+        this.sidebarChannel.subscribe((value: string) => {
+            if (value === 'HISTORY') {
+                this.historyTabSelected = true;
+                this.savedTabSelected = false;
+                this.proposalsTabSelected = false;
+            }
+
+            if (value === 'SAVED') {
+                this.historyTabSelected = false;
+                this.savedTabSelected = true;
+                this.proposalsTabSelected = false;
+            }
+
+            if (value === 'PROPOSALS') {
+                this.historyTabSelected = false;
+                this.savedTabSelected = false;
+                this.proposalsTabSelected = true;
+            }
+        })
     }
 
     private filterArticlePreviews(searchValue: string) {

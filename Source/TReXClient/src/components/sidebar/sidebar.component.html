@@ -23,15 +23,15 @@
 
         <div class="menu">
             <ul>
-                <li class="active">
+                <li rv-class-selected="isHistoryActive" rv-on-click="selected">
                     <i class="fa fa-book-open"></i>
                     History
                 </li>
-                <li>
+                <li rv-class-selected="isSavedActive" rv-on-click="selected">
                     <i class="fa fa-bookmark"></i>
                     Saved
                 </li>
-                <li>
+                <li rv-class-selected="isProposalsActive" rv-on-click="selected">
                     <i class="fa fa-question"></i>
                     Proposals
                 </li>

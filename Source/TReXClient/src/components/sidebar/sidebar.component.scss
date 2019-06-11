@@ -111,10 +111,19 @@
     text-align: center;
 }
 
-.menu li:not(.active):hover, .menu li:not(.active):hover i {
+.menu li:not(.selected):hover, .menu li:not(.selected):hover i {
     color: #00d793;
 }
 
 .menu li.active, .menu li.active  i {
     color: #fff;
+}
+
+.selected {
+    background-color: #00d793;
+    color: white;
+
+    i {
+        color: white !important;
+    }
 }
