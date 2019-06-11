@@ -1,14 +1,20 @@
 <div class="home-container">
 
     <div class="home-left-container">
-        <trex-sidebar></trex-sidebar>
+        <trex-sidebar channel="sidebarChannel"></trex-sidebar>
     </div>
 
     <div class="home-right-container">
-        <trex-filter-bar channel="filterbarChannel"></trex-filter-bar>
-        <div class="article-preview-container">
-            <trex-article-preview rv-each-article="updatedArticles" article="article"></trex-article-preview>
-            <trex-not-found rv-if="notFound"></trex-not-found>
+        <div rv-hide="proposalsTabSelected">
+            <trex-filter-bar channel="filterbarChannel"></trex-filter-bar>
+            <div class="article-preview-container">
+                <trex-article-preview rv-each-article="updatedArticles" article="article"></trex-article-preview>
+                <trex-not-found rv-if="notFound"></trex-not-found>
+            </div>
+        </div>
+
+        <div rv-show="proposalsTabSelected">
+            Implementation comming soon..
         </div>
     </div>
     
