@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,7 +47,7 @@ namespace TReX.App.Api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection()
+            app
                 .UseSwagger()
                 .UseSwaggerUI(c => { c.SwaggerEndpoint("../swagger/v1/swagger.json", "TReX App API V1"); })
                 .UseMvc();

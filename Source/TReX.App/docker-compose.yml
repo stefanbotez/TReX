@@ -4,8 +4,8 @@ services:
   trex.app.api:
     image: ${DOCKER_REGISTRY-}trexappapi
     build:
-      context: .
-      dockerfile: TReX.App.Api/Dockerfile
+      context: ../
+      dockerfile: TReX.App/TReX.App.Api/Dockerfile
     depends_on:
       - raven
       - event-store
