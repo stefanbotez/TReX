@@ -1,5 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 using EnsureThat;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,7 +56,7 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
                 .OnSuccess(() => provider.ToVimeoMediaLecture(studiesResult.Value.Content.ToString()).Where(i => discoveredResourcesResult.Value.All(yr => yr.VideoId != i.Value.VideoId)))
                 .Ensure(itd => itd.Any(), "No new items")
                 .OnSuccess(itd => itd.Select(x => x.Value))
-                .OnFailureCompensate(() => GetLectures(topic, page + 1, depth + 1));
+                .OnFailureCompensate(() => GetLectures(topic, (Int32.Parse(page) + 1).ToString(), depth + 1));
         }
     }
 }
