@@ -46,7 +46,7 @@ namespace TReX.App.Domain.Resources
             => Create(provider, discovery, title, description, ResourceType.Code);
 
         public static Result<Resource> CreateDocument(ProviderDetails provider, ParentDiscovery discovery, string title, string description)
-            => Create(provider, discovery, title, description, ResourceType.Documents);
+            => Create(provider, discovery, title, description, ResourceType.Document);
 
         private static Result<Resource> Create(ProviderDetails provider, ParentDiscovery discovery, string title, string description, ResourceType type)
         {

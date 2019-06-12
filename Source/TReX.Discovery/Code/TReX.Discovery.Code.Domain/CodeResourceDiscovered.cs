@@ -4,9 +4,10 @@ namespace TReX.Discovery.Code.Domain
 {
     public sealed class CodeResourceDiscovered : IDomainEvent
     {
-        public CodeResourceDiscovered(string discoveryId, CodeResource resource)
+        public CodeResourceDiscovered(Shared.Domain.Discovery discovery, CodeResource resource)
         {
-            DiscoveryId = discoveryId;
+            DiscoveryId = discovery.Id;
+            DiscoveryTopic = discovery.Topic;
 
             Title = resource.Title;
             ProviderDetails = resource.ProviderDetails;
@@ -14,6 +15,8 @@ namespace TReX.Discovery.Code.Domain
         }
 
         public string DiscoveryId { get; private set; }
+
+        public string DiscoveryTopic { get; private set; }
 
         public string Title { get; private set; }
 
