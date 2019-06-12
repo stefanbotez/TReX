@@ -33,7 +33,7 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
             this.settings = settings;
         }
 
-        protected override Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
+        protected override Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, "1");
 
         protected override IDomainEvent GetDiscoveryEvent(string discoveryId, MediaResource resource) => new MediaResourceDiscovered(discoveryId, resource);
 
