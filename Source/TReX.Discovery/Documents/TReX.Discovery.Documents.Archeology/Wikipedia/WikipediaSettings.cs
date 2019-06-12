@@ -9,7 +9,7 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
             EnsureArg.IsNotNullOrWhiteSpace(srWhat);
             EnsureArg.IsNotNullOrWhiteSpace(SrSearch);
             EnsureArg.IsLte(srLimit, 10);
-            EnsureArg.IsLte(srOffSet, 2);
+            EnsureArg.IsLte(srOffSet, 0);
 
             SrWhat = srWhat;
             SrSearch = srSearch;
