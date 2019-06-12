@@ -53,7 +53,7 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
             var discoveredResourcesResult = await this.readRepository.GetByIdsAsync(studiesIds);
 
             return await Result.Combine(studiesResult, discoveredResourcesResult)
-                .OnSuccess(() => provider.ToVimeoMediaLecture(studiesResult.Value.Content.ToString()).Where(i => discoveredResourcesResult.Value.All(yr => yr.VideoId != i.Value.VideoId)))
+                .OnSuccess(() => provider.ToVimeoMediaLecture(studiesResult.Value.Content.ReadAsStringAsync().Result).Where(i => discoveredResourcesResult.Value.All(yr => yr.VideoId != i.Value.VideoId)))
                 .Ensure(itd => itd.Any(), "No new items")
                 .OnSuccess(itd => itd.Select(x => x.Value))
                 .OnFailureCompensate(() => GetLectures(topic, (Int32.Parse(page) + 1).ToString(), depth + 1));

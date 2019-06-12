@@ -15,11 +15,11 @@ namespace TReX.Discovery.Media.DependencyInjection
                 .InstancePerLifetimeScope();
             builder.RegisterType<YoutubeMediaProvider>()
                 .InstancePerLifetimeScope();
-            //builder.RegisterType<VimeoMediaArcheologist>()
-            //    .As<IArcheologist>()
-            //    .InstancePerLifetimeScope();
-            //builder.RegisterType<VimeoMediaProvider>()
-            //    .InstancePerLifetimeScope();
+            builder.RegisterType<VimeoMediaArcheologist>()
+                .As<IArcheologist>()
+                .InstancePerLifetimeScope();
+            builder.RegisterType<VimeoMediaProvider>()
+                .InstancePerLifetimeScope();
             builder.RegisterType<MediaDiscoveryService>()
                 .As<IDiscoveryService>()
                 .InstancePerLifetimeScope();
