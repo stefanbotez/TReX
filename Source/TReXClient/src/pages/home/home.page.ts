@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 export class HomePage extends Page implements OnInit {
     public filterbarChannel: Subject<string> = new Subject<string>();
     public sidebarChannel: Subject<string> = new Subject<string>();
+    public proposalChannel: Subject<string> = new Subject<string>();
     public notFound: boolean = false;
     public historyTabSelected: boolean = true;
     public savedTabSelected: boolean = false;
@@ -57,6 +58,10 @@ export class HomePage extends Page implements OnInit {
     private initChannels(): void {
         this.filterbarChannel.subscribe((value: string) => {
             this.filterArticlePreviews(value);
+        });
+
+        this.proposalChannel.subscribe((value: string) => {
+            //handle form input - make request
         });
 
         this.sidebarChannel.subscribe((value: string) => {
