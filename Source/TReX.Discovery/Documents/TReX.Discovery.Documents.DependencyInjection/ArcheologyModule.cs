@@ -17,9 +17,9 @@ namespace TReX.Discovery.Documents.DependencyInjection
             builder.RegisterType<TwitterDocumentProvider>()
                 .InstancePerLifetimeScope();
 
-            //builder.RegisterType<WikipediaDocumentArcheologist>()
-            //    .As<IArcheologist>()
-            //    .InstancePerLifetimeScope();
+            builder.RegisterType<WikipediaDocumentArcheologist>()
+                .As<IArcheologist>()
+                .InstancePerLifetimeScope();
 
             builder.RegisterType<WikipediaDocumentProvider>()
                 .InstancePerLifetimeScope();

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web;
 using TReX.Discovery.Media.Domain;
 
 namespace TReX.Discovery.Media.Archeology.Vimeo
@@ -22,7 +23,7 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
 
         public async Task<Result<HttpResponseMessage>> Search(string query, string page = "1")
         {
-            var request = "https://api.vimeo.com/videos?query=" + query + "&page=" + page + "&per_page=" + settings.PerPage;
+            var request = "https://api.vimeo.com/videos?query=" + HttpUtility.UrlEncode(query) + "&page=" + page + "&per_page=" + settings.PerPage;
             return await Result.Try(() => ExecuteGetCommand(request, settings.AccessToken));
         }
 
