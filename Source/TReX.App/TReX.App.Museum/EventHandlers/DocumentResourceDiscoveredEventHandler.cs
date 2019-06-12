@@ -10,13 +10,13 @@ using TReX.Kernel.Shared.Domain;
 
 namespace TReX.App.Museum.EventHandlers
 {
-    public sealed class MediaResourceDiscoveredEventHandler : INotificationHandler<MediaResourceDiscovered>
+    public sealed class DocumentResourceDiscoveredEventHandler : INotificationHandler<DocumentResourceDiscovered>
     {
         private readonly ILogger logger;
         private readonly IWriteRepository<Resource> writeRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public MediaResourceDiscoveredEventHandler(ILogger logger, IWriteRepository<Resource> writeRepository, IUnitOfWork unitOfWork)
+        public DocumentResourceDiscoveredEventHandler(ILogger logger, IWriteRepository<Resource> writeRepository, IUnitOfWork unitOfWork)
         {
             EnsureArg.IsNotNull(logger);
             EnsureArg.IsNotNull(writeRepository);
@@ -26,12 +26,11 @@ namespace TReX.App.Museum.EventHandlers
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task Handle(MediaResourceDiscovered notification, CancellationToken cancellationToken)
+        public async Task Handle(DocumentResourceDiscovered notification, CancellationToken cancellationToken)
         {
-            await logger.Log($"App discovered media resource: {notification.Title}");
+            await logger.Log($"App discovered document resource: {notification.Title}");
             await ParentDiscovery.Create(notification.DiscoveryId, notification.DiscoveryTopic)
-                .OnSuccess(pd => Resource.CreateMedia(notification.ProviderDetails, pd, notification.Title, notification.Description))
-                .OnSuccess(r => r.FillBucket(nameof(MediaResourceDiscovered.ThumbnailUrl), notification.ThumbnailUrl))
+                .OnSuccess(pd => Resource.CreateDocument(notification.ProviderDetails, pd, notification.Title, notification.Description))
                 .OnSuccess(r => this.writeRepository.CreateAsync(r))
                 .OnSuccess(() => this.unitOfWork.CommitAsync());
         }

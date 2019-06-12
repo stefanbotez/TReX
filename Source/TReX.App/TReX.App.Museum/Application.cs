@@ -18,6 +18,9 @@ namespace TReX.App.Museum
         public async Task Run()
         {
             await this.bus.SubscribeTo<MediaResourceDiscovered>();
+            await this.bus.SubscribeTo<CodeResourceDiscovered>();
+            await this.bus.SubscribeTo<DocumentResourceDiscovered>();
+
             await this.bus.SubscribeTo<DiscoverySucceeded>();
             await this.bus.SubscribeTo<DiscoveryFailed>();
         }

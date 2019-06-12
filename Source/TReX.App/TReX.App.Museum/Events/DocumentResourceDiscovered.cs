@@ -11,6 +11,8 @@ namespace TReX.App.Museum.Events
 
         public string DiscoveryId { get; private set; }
 
+        public string DiscoveryTopic { get; private set; }
+
         public string Title { get; private set; }
 
         public string Description { get; private set; }

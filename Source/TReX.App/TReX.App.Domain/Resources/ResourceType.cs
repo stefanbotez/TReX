@@ -4,6 +4,6 @@
     {
         Media = 0,
         Code = 1,
-        Documents = 2
+        Document = 2
     }
 }
