@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using Autofac;
@@ -74,6 +75,17 @@ namespace TReX.Kernel.Utilities
                 .Where(t => t.IsClosedTypeOf(typeof(INotificationHandler<>)))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
+
+            return builder;
+        }
+
+        public static ContainerBuilder RegisterSettings<TSettings>(this ContainerBuilder builder, Func<IConfigurationSection, TSettings> func)
+        {
+            builder.Register(ctx =>
+            {
+                var config = ctx.Resolve<IConfiguration>();
+                return func(config.GetSection(typeof(TSettings).Name));
+            });
 
             return builder;
         }

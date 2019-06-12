@@ -21,13 +21,13 @@ namespace TReX.Discovery.Documents.Archeology.Twitter
             MaxDepth = maxDepth;
         }
 
-        public string ConsumerKey { get; } //AlffsFObuC02EcAdmiNexiJOl 
+        public string ConsumerKey { get; }
 
-        public string ConsumerSecret { get; } //tepIgaeUE0wVFSuHa9z2aUvCCKTMD9tMt5ZxxyZBGWyUakhVUo 
+        public string ConsumerSecret { get; } 
 
-        public string ApiKey { get; } //2388862608-ZB71dptULrjtTZSHZDpZ8KEXdvcmzNRConjp3RP
+        public string ApiKey { get; } 
 
-        public string ApiSecret { get; } //OBI8v2BQGRN3HWWKLTK1slKUxtntLjzqTz3Mj9beRx7rY 
+        public string ApiSecret { get; }
 
         public int PerPage { get; }
 

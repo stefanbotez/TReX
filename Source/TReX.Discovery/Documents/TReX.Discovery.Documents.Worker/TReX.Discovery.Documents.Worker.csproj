@@ -6,4 +6,14 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Integration\TReX.Discovery.Shared.Integration.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Documents.DependencyInjection\TReX.Discovery.Documents.DependencyInjection.csproj" />
+  </ItemGroup>
+
 </Project>
