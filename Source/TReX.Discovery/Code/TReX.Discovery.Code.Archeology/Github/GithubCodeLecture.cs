@@ -17,6 +17,7 @@ namespace TReX.Discovery.Code.Archeology.Github
         public GithubCodeLecture(Repository result) : this()
         {
             RepositoryId = result.Id.ToString();
+            Id = RepositoryId;
             Title = result.Name;
             Description = result.Description;
             PublishedAt = result.PushedAt.Value.DateTime;

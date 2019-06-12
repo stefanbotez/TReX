@@ -18,6 +18,7 @@ namespace TReX.Discovery.Documents.Archeology.Twitter
         public TwitterDocumentLecture(string tweetId, string author, string description, DateTime publishedAt)
         {
             TweetId = tweetId;
+            Id = TweetId;
             Author = author;
             Description = description;
             PublishedAt = publishedAt;
