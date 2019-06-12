@@ -26,6 +26,14 @@ services:
     depends_on:
       - raven
       - event-store
+  trex.discovery.documents.worker:
+    image: ${DOCKER_REGISTRY-}trexdiscoverydocumentsworker
+    build:
+      context: .
+      dockerfile: TReX.Discovery/Documents/TReX.Discovery.Documents.Worker/Dockerfile
+    depends_on:
+      - raven
+      - event-store
 
   raven:
     image: "ravendb/ravendb"

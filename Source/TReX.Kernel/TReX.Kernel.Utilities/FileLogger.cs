@@ -6,11 +6,11 @@ using TReX.Kernel.Shared;
 
 namespace TReX.Kernel.Utilities
 {
-    public sealed class Logger : ILogger
+    public sealed class FileLogger : ILogger
     {
         private readonly string logsPath;
 
-        public Logger(IConfiguration configuration)
+        public FileLogger(IConfiguration configuration)
         {
             this.logsPath = configuration["LogsPath"];
             Directory.CreateDirectory(this.logsPath);

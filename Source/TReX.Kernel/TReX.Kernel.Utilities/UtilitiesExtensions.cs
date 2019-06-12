@@ -17,9 +17,9 @@ namespace TReX.Kernel.Utilities
 {
     public static class UtilitiesExtensions
     {
-        public static ContainerBuilder RegisterLogger(this ContainerBuilder builder)
+        public static ContainerBuilder RegisterConsoleLogger(this ContainerBuilder builder)
         {
-            builder.RegisterType<Logger>()
+            builder.RegisterType<ConsoleLogger>()
                 .As<ILogger>()
                 .InstancePerLifetimeScope();
 

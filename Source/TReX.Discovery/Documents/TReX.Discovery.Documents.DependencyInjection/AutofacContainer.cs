@@ -8,7 +8,7 @@ namespace TReX.Discovery.Documents.DependencyInjection
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterLogger()
+            builder.RegisterConsoleLogger()
                 .RegisterRavenPersistence()
                 .RegisterEventStoreBus()
                 .RegisterModule<SettingsModule>()
