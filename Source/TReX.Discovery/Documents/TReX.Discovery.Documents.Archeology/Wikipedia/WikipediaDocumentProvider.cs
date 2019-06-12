@@ -26,23 +26,26 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
 
         public List<WikipediaDocumentLecture> ToWikipediaDocumentLectures(string json)
         {
-            List<Result<WikipediaDocumentLecture>> results = new List<Result<WikipediaDocumentLecture>>();
+            List<WikipediaDocumentLecture> results = new List<WikipediaDocumentLecture>();
             JToken token = JToken.Parse(json);
             JArray data = (JArray)token.SelectToken("search");
             foreach (JToken wikiData in data)
             {
-                var NS = wikiData["ns"].ToString();
-                var Title = wikiData["title"].ToString();
-                var PageId = wikiData["pageid"];
-                var Size = wikiData["size"];
-                var WordCount = wikiData["wordcount"];
-                var Snippet = wikiData["snippet"].ToString();
-                var Timestamp = wikiData["timestamp"].ToString();
+                int NS = (int) wikiData["ns"];
+                string Title = wikiData["title"].ToString();
+                int PageId = (int) wikiData["pageid"];
+                int Size = (int) wikiData["size"];
+                int WordCount = (int) wikiData["wordcount"];
+                string Snippet = wikiData["snippet"].ToString();
+                string Timestamp = wikiData["timestamp"].ToString();
 
+                results.Add(new WikipediaDocumentLecture(NS, Title, PageId, Size, WordCount, Snippet, Timestamp));
+    
             }
 
-            results.Add(t => new WikipediaDocumentLecture(NS, title, PageId, Size, wordcount, Snippet, timestamp));
             return results;
+
+
         }
 
 
