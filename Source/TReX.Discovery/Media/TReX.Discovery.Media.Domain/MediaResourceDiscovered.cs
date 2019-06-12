@@ -1,13 +1,13 @@
-﻿using TReX.Discovery.Shared.Domain;
-using TReX.Kernel.Shared.Domain;
+﻿using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Media.Domain
 {
     public sealed class MediaResourceDiscovered : IDomainEvent
     {
-        public MediaResourceDiscovered(string discoveryId, MediaResource resource)
+        public MediaResourceDiscovered(Shared.Domain.Discovery discovery, MediaResource resource)
         {
-            DiscoveryId = discoveryId;
+            DiscoveryId = discovery.Id;
+            DiscoveryTopic = discovery.Topic;
 
             Title = resource.Title;
             ProviderDetails = resource.ProviderDetails;
@@ -16,6 +16,8 @@ namespace TReX.Discovery.Media.Domain
         }
 
         public string DiscoveryId { get; private set; }
+
+        public string DiscoveryTopic { get; private set; }
 
         public string Title { get; private set; }
 

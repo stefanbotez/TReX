@@ -35,7 +35,7 @@ namespace TReX.Discovery.Media.Archeology.Youtube
 
         protected override Task<Result<IEnumerable<YoutubeMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
 
-        protected override IDomainEvent GetDiscoveryEvent(string discoveryId, MediaResource resource) => new MediaResourceDiscovered(discoveryId, resource);
+        protected override IDomainEvent GetDiscoveryEvent(Shared.Domain.Discovery discovery, MediaResource resource) => new MediaResourceDiscovered(discovery, resource);
 
         private async Task<Result<IEnumerable<YoutubeMediaLecture>>> GetLectures(string topic, string page, int depth = 1)
         {

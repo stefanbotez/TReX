@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Shared.Business\TReX.Discovery.Shared.Business.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Shared.Domain\TReX.Discovery.Shared.Domain.csproj" />
   </ItemGroup>
 
 </Project>

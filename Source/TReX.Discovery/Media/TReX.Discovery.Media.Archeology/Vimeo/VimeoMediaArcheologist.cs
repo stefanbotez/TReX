@@ -36,7 +36,7 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
 
         protected override Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, "1");
 
-        protected override IDomainEvent GetDiscoveryEvent(string discoveryId, MediaResource resource) => new MediaResourceDiscovered(discoveryId, resource);
+        protected override IDomainEvent GetDiscoveryEvent(Shared.Domain.Discovery discovery, MediaResource resource) => new MediaResourceDiscovered(discovery, resource);
 
         private async Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic, string page, int depth = 1)
         {

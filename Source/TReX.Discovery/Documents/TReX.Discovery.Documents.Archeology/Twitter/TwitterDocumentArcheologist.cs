@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
@@ -38,7 +37,7 @@ namespace TReX.Discovery.Documents.Archeology.Twitter
 
         protected override Task<Result<IEnumerable<TwitterDocumentLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
 
-        protected override IDomainEvent GetDiscoveryEvent(string discoveryId, DocumentResource resource) => new DocumentResourceDiscovered(discoveryId, resource);
+        protected override IDomainEvent GetDiscoveryEvent(Shared.Domain.Discovery discovery, DocumentResource resource) => new DocumentResourceDiscovered(discovery, resource);
 
         private async Task<Result<IEnumerable<TwitterDocumentLecture>>> GetLectures(string topic, string page, int depth = 1)
         {
