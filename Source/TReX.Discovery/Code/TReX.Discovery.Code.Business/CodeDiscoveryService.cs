@@ -12,17 +12,17 @@ namespace TReX.Discovery.Code.Business
 {
     public sealed class CodeDiscoveryService : IDiscoveryService
     {
-        private readonly IEnumerable<IArcheolog> archeologs;
+        private readonly IEnumerable<IArcheologist> archeologists;
         private readonly IUnitOfWork unitOfWork;
         private readonly ILogger logger;
 
-        public CodeDiscoveryService(IEnumerable<IArcheolog> archeologs, IUnitOfWork unitOfWork, ILogger logger)
+        public CodeDiscoveryService(IEnumerable<IArcheologist> archeologists, IUnitOfWork unitOfWork, ILogger logger)
         {
-            EnsureArg.IsNotNull(archeologs);
+            EnsureArg.IsNotNull(archeologists);
             EnsureArg.IsNotNull(unitOfWork);
             EnsureArg.IsNotNull(logger);
 
-            this.archeologs = archeologs;
+            this.archeologists = archeologists;
             this.unitOfWork = unitOfWork;
             this.logger = logger;
         }
@@ -30,7 +30,7 @@ namespace TReX.Discovery.Code.Business
         public async Task<Result> Discover(DiscoverCommand command)
         {
             var studyCommand = new StudyCommand(command.Topic, command.DiscoveryId);
-            var studyTasks = this.archeologs.Select(a => a.Study(studyCommand));
+            var studyTasks = this.archeologists.Select(a => a.Study(studyCommand));
             var studyResults = await Task.WhenAll(studyTasks);
 
             var failedStudies = studyResults.Where(r => r.IsFailure);

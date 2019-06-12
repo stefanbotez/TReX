@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Domain\TReX.Discovery.Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Integration\TReX.Discovery.Shared.Integration.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.Business\TReX.Discovery.Media.Business.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Media.DependencyInjection\TReX.Discovery.Media.DependencyInjection.csproj" />
   </ItemGroup>

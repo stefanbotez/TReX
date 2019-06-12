@@ -35,11 +35,11 @@ namespace TReX.Discovery.Code.Archeology.Github
             this.settings = settings;
         }
 
-        protected override Task<Result<IEnumerable<GithubCodeLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
+        protected override Task<Result<IEnumerable<GithubCodeLecture>>> GetLectures(string topic) => this.GetLectures(topic, "1");
 
         protected override IDomainEvent GetDiscoveryEvent(string discoveryId, CodeResource resource) => new CodeResourceDiscovered(discoveryId, resource);
 
-        private async Task<Result<IEnumerable<GithubCodeLecture>>> GetLectures(string topic, string page, int depth = 1)
+        private async Task<Result<IEnumerable<GithubCodeLecture>>> GetLectures(string topic, string page = "1", int depth = 1)
         {
             var depthExceededResult = Result.Create(depth <= this.settings.MaxDepth, $"Maximum github depth exceeded for topic {topic}");
 

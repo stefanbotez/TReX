@@ -1,6 +1,6 @@
 ﻿using TReX.Kernel.Shared.Bus;
 
-namespace TReX.Discovery.Media.Worker.Events
+namespace TReX.Discovery.Shared.Integration.Events
 {
     public sealed class DiscoveryCreated : IIntegrationEvent
     {

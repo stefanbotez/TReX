@@ -12,11 +12,11 @@ namespace TReX.Discovery.Media.Business
 {
     public sealed class MediaDiscoveryService : IDiscoveryService
     {
-        private readonly IEnumerable<IArcheolog> archeologs;
+        private readonly IEnumerable<IArcheologist> archeologs;
         private readonly IUnitOfWork unitOfWork;
         private readonly ILogger logger;
 
-        public MediaDiscoveryService(IEnumerable<IArcheolog> archeologs, IUnitOfWork unitOfWork, ILogger logger)
+        public MediaDiscoveryService(IEnumerable<IArcheologist> archeologs, IUnitOfWork unitOfWork, ILogger logger)
         {
             EnsureArg.IsNotNull(archeologs);
             EnsureArg.IsNotNull(unitOfWork);

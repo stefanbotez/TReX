@@ -77,8 +77,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Media.Worker
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Documents.Worker", "Documents\TReX.Discovery.Documents.Worker\TReX.Discovery.Documents.Worker.csproj", "{D269CC0F-20DA-41C3-B925-08FAC9C01E33}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Shared", "Code\TReX.Discovery.Code.Shared\TReX.Discovery.Code.Shared.csproj", "{AC3AAFD2-8A9F-4436-B733-089FC3545478}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Domain", "Code\TReX.Discovery.Code.Domain\TReX.Discovery.Code.Domain.csproj", "{7DF69964-BA15-4C8A-B5BE-590C827291E1}"
@@ -92,6 +90,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TReX.Discovery.Code.Worker", "Code\TReX.Discovery.Code.Worker\TReX.Discovery.Code.Worker.csproj", "{0FF4785A-0C04-4145-948E-263ACC3AD5CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Shared.Archeology", "Shared\TReX.Discovery.Shared.Archeology\TReX.Discovery.Shared.Archeology.csproj", "{360C2582-8046-4F6D-9B73-AA35FCF9B357}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TReX.Discovery.Shared.Integration", "Shared\TReX.Discovery.Shared.Integration\TReX.Discovery.Shared.Integration.csproj", "{8CFBA67E-AFFB-48F8-B5CA-A8A41F01E326}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "..\docker-compose.dcproj", "{E2D6CA2E-3002-4B1F-B4BC-230904ADDE02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -167,10 +169,6 @@ Global
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D269CC0F-20DA-41C3-B925-08FAC9C01E33}.Release|Any CPU.Build.0 = Release|Any CPU
-		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{810DCAA7-8D05-4017-BDF7-8C63D48AEB58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC3AAFD2-8A9F-4436-B733-089FC3545478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC3AAFD2-8A9F-4436-B733-089FC3545478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC3AAFD2-8A9F-4436-B733-089FC3545478}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -199,6 +197,14 @@ Global
 		{360C2582-8046-4F6D-9B73-AA35FCF9B357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360C2582-8046-4F6D-9B73-AA35FCF9B357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360C2582-8046-4F6D-9B73-AA35FCF9B357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFBA67E-AFFB-48F8-B5CA-A8A41F01E326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFBA67E-AFFB-48F8-B5CA-A8A41F01E326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFBA67E-AFFB-48F8-B5CA-A8A41F01E326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFBA67E-AFFB-48F8-B5CA-A8A41F01E326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D6CA2E-3002-4B1F-B4BC-230904ADDE02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2D6CA2E-3002-4B1F-B4BC-230904ADDE02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2D6CA2E-3002-4B1F-B4BC-230904ADDE02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2D6CA2E-3002-4B1F-B4BC-230904ADDE02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -243,6 +249,7 @@ Global
 		{790FFD42-C96B-49E9-AE01-D0C27A26A174} = {147A4A4F-CED1-4C28-83CB-342959C3B43C}
 		{0FF4785A-0C04-4145-948E-263ACC3AD5CC} = {DB7D8C8E-A98D-43F4-8DF9-0D8823FDCAB2}
 		{360C2582-8046-4F6D-9B73-AA35FCF9B357} = {BCF94020-C725-4FA6-AD02-4D956EA4623C}
+		{8CFBA67E-AFFB-48F8-B5CA-A8A41F01E326} = {BCF94020-C725-4FA6-AD02-4D956EA4623C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76FF5FA7-7BA6-4444-BEC7-EE7A148CDAFB}

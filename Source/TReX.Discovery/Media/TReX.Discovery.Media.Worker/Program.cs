@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
 
@@ -6,13 +7,21 @@ namespace TReX.Discovery.Media.Worker
 {
     public static class Program
     {
+        private static ManualResetEvent _quitEvent = new ManualResetEvent(false);
+
         public static async Task Main(string[] args)
         {
             await BuildContainer()
                 .Resolve<Application>()
                 .Run();
 
-            Console.ReadLine();
+            Console.WriteLine("Media worker is up..");
+
+            Console.CancelKeyPress += (sender, eArgs) => {
+                _quitEvent.Set();
+                eArgs.Cancel = true;
+            };
+            _quitEvent.WaitOne();
         }
 
         private static IContainer BuildContainer()

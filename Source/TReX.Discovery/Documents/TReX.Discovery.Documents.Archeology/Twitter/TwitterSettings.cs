@@ -1,8 +1,4 @@
 ﻿using EnsureThat;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Tweetinvi;
 
 namespace TReX.Discovery.Documents.Archeology.Twitter
 {

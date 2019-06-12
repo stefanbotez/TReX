@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
@@ -33,32 +35,32 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
             this.settings = settings;
         }
 
-        protected override Task<Result<IEnumerable<WikipediaDocumentLecture>>> GetLectures(string topic) => this.GetLectures(topic, 0);
+        protected override Task<Result<IEnumerable<WikipediaDocumentLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
 
         protected override IDomainEvent GetDiscoveryEvent(string discoveryId, DocumentResource resource) => new DocumentResourceDiscovered(discoveryId, resource);
 
-        private async Task<Result<IEnumerable<WikipediaDocumentLecture>>> GetLectures(string topic, int srlimit, int depth = 1)
+        private async Task<Result<IEnumerable<WikipediaDocumentLecture>>> GetLectures(string topic, string page, int depth)
         {
-            return Result.Fail<IEnumerable<WikipediaDocumentLecture>>("Not implemented");
+           
 
-            //var depthExceededResult = Result.Create(depth <= this.settings.SrLimit, $"Maximum wikipedia depth exceeded for topic {topic}");
+            var depthExceededResult = Result.Create(depth <= this.settings.SrOffSet, $"Maximum wikipedia depth exceeded for topic {topic}");
 
-            //var studiesResult = await depthExceededResult.OnSuccess(() => this.provider.Search(topic, srlimit))
-            //    .Ensure(x => x.Items.Any(), "No wikipedia items for requested topic");
+            var studiesResult = await depthExceededResult.OnSuccess(() => this.provider.Search(topic))
+                .Ensure(x => provider.ToWikipediaDocumentLectures((x, Int32.Parse(page), depthExceededResult).Count > 0, "No wiki items for requested topic")
 
-            //if (studiesResult.IsFailure)
-            //{
-            //    return Result.Fail<IEnumerable<WikipediaDocumentLecture>>(studiesResult.Error);
-            //}
-//
-//            var studiesIds = studiesResult.Value.Items.Select(d => d.Id.VideoId);
-//            var discoveredResourcesResult = await this.readRepository.GetByIdsAsync(studiesIds);
-//
-//            return await Result.Combine(studiesResult, discoveredResourcesResult)
-//                .OnSuccess(() => studiesResult.Value.Items.Where(i => discoveredResourcesResult.Value.All(yr => yr.Id != i.Id.VideoId)))
-//                .Ensure(itd => itd.Any(), "No new items")
-//                .OnSuccess(itd => itd.Select(x => new WikipediaDocumentLecture(x)))
-//                .OnFailureCompensate(() => GetLectures(topic, studiesResult.Value.NextPageToken, depth + 1));
+            if (studiesResult.IsFailure)
+            {
+                return Result.Fail<IEnumerable<WikipediaDocumentLecture>>(studiesResult.Error);
+            }
+
+            var studiesIds = provider.ToWikipediaDocumentLectures(studiesResult.Value.Content.ReadAsStringAsync().Result).Select(o => o.PageId).ToList();
+            var discoveredResourcesResult = await this.readRepository.GetByIdsAsync(studiesIds);
+
+            return await Result.Combine(studiesResult, discoveredResourcesResult)
+                .OnSuccess(() => provider.ToWikipediaDocumentLectures(studiesResult.Value.Content.ToString()).Where(i => discoveredResourcesResult(yr => yr.PageId != i.Pageid)))
+                .Ensure(itd => itd.Any(), "No new items")
+                .OnSuccess(itd => itd.Select(x => x.PageId))
+                .OnFailureCompensate(() => GetLectures(topic, page + 1, depth + 1));
         }
     }
 }
