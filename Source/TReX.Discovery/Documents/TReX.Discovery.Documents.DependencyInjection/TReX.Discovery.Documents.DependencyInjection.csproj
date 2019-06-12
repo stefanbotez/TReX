@@ -13,6 +13,7 @@
     <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Raven\TReX.Kernel.Raven.csproj" />
     <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj" />
     <ProjectReference Include="..\TReX.Discovery.Documents.Archeology\TReX.Discovery.Documents.Archeology.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Documents.Business\TReX.Discovery.Documents.Business.csproj" />
   </ItemGroup>
 
 </Project>
