@@ -7,7 +7,7 @@ namespace TReX.Discovery.Code.Worker
 {
     public static class Program
     {
-        private static ManualResetEvent _quitEvent = new ManualResetEvent(false);
+        private static readonly ManualResetEvent _quitEvent = new ManualResetEvent(false);
 
         public static async Task Main(string[] args)
         {

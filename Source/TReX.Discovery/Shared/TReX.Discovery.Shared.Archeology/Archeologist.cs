@@ -28,8 +28,10 @@ namespace TReX.Discovery.Shared.Archeology
         public async Task<Result> Study(StudyCommand command)
         {
             var studiesResult = await GetLectures(command.Topic);
+            var discovery = new Domain.Discovery(command.DiscoveryId, command.Topic);
+
             return await studiesResult.OnSuccess(s => PersistStudies(s))
-                .OnSuccess(() => PublishStudies(command.DiscoveryId, studiesResult.Value));
+                .OnSuccess(() => PublishStudies(discovery, studiesResult.Value));
         }
 
         protected abstract Task<Result<IEnumerable<TLecture>>> GetLectures(string topic);
@@ -42,14 +44,14 @@ namespace TReX.Discovery.Shared.Archeology
             return Result.Combine(storeResults);
         }
 
-        protected async Task<Result> PublishStudies(string discoveryId, IEnumerable<TLecture> studies)
+        protected async Task<Result> PublishStudies(Domain.Discovery discovery, IEnumerable<TLecture> studies)
         {
             var messages = studies.Select(s => s.ToResource())
                 .Where(r => r.IsSuccess)
-                .Select(r => GetDiscoveryEvent(discoveryId, r.Value));
+                .Select(r => GetDiscoveryEvent(discovery, r.Value));
             return await this.bus.PublishMessages(messages);
         }
 
-        protected abstract IDomainEvent GetDiscoveryEvent(string discoveryId, TResource resource);
+        protected abstract IDomainEvent GetDiscoveryEvent(Domain.Discovery discovery, TResource resource);
     }
 }

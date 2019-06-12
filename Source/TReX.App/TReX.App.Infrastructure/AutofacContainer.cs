@@ -10,7 +10,7 @@ namespace TReX.App.Infrastructure
         {
             builder.RegisterRavenPersistence()
                 .RegisterEventStoreBus()
-                .RegisterLogger();
+                .RegisterConsoleLogger();
         }
     }
 }

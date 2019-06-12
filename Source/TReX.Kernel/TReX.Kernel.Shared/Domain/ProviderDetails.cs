@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 
-namespace TReX.Discovery.Shared.Domain
+namespace TReX.Kernel.Shared.Domain
 {
     public sealed class ProviderDetails : ValueObject
     {
@@ -15,10 +15,10 @@ namespace TReX.Discovery.Shared.Domain
 
         public static Result<ProviderDetails> Create(string externalId, string name)
         {
-            var idResult = Maybe<string>.From(externalId).ToResult(SharedDomainMessages.InvalidExternalId)
-                .Ensure(i => !string.IsNullOrEmpty(i), SharedDomainMessages.InvalidExternalId);
-            var nameResult = Maybe<string>.From(name).ToResult(SharedDomainMessages.InvalidProviderName)
-                .Ensure(i => !string.IsNullOrEmpty(i), SharedDomainMessages.InvalidProviderName);
+            var idResult = Maybe<string>.From(externalId).ToResult(KernelSharedMessages.InvalidExternalId)
+                .Ensure(i => !string.IsNullOrEmpty(i), KernelSharedMessages.InvalidExternalId);
+            var nameResult = Maybe<string>.From(name).ToResult(KernelSharedMessages.InvalidProviderName)
+                .Ensure(i => !string.IsNullOrEmpty(i), KernelSharedMessages.InvalidProviderName);
 
             return Result.FirstFailureOrSuccess(idResult, nameResult)
                 .OnSuccess(() => new ProviderDetails

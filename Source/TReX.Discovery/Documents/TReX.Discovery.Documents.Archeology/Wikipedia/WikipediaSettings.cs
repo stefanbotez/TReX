@@ -8,8 +8,8 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
         {
             EnsureArg.IsNotNullOrWhiteSpace(srWhat);
             EnsureArg.IsNotNullOrWhiteSpace(SrSearch);
-            EnsureArg.IsLte(srLimit, 10);
-            EnsureArg.IsLte(srOffSet, 0);
+            EnsureArg.IsGt(srLimit, 0);
+            EnsureArg.IsGt(srOffSet, 0);
 
             SrWhat = srWhat;
             SrSearch = srSearch;

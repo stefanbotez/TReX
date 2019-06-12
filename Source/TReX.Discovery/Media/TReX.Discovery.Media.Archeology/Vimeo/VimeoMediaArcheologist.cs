@@ -1,5 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 using EnsureThat;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,9 +34,9 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
             this.settings = settings;
         }
 
-        protected override Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
+        protected override Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic) => this.GetLectures(topic, "1");
 
-        protected override IDomainEvent GetDiscoveryEvent(string discoveryId, MediaResource resource) => new MediaResourceDiscovered(discoveryId, resource);
+        protected override IDomainEvent GetDiscoveryEvent(Shared.Domain.Discovery discovery, MediaResource resource) => new MediaResourceDiscovered(discovery, resource);
 
         private async Task<Result<IEnumerable<VimeoMediaLecture>>> GetLectures(string topic, string page, int depth = 1)
         {
@@ -52,10 +53,10 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
             var discoveredResourcesResult = await this.readRepository.GetByIdsAsync(studiesIds);
 
             return await Result.Combine(studiesResult, discoveredResourcesResult)
-                .OnSuccess(() => provider.ToVimeoMediaLecture(studiesResult.Value.Content.ToString()).Where(i => discoveredResourcesResult.Value.All(yr => yr.VideoId != i.Value.VideoId)))
+                .OnSuccess(() => provider.ToVimeoMediaLecture(studiesResult.Value.Content.ReadAsStringAsync().Result).Where(i => discoveredResourcesResult.Value.All(yr => yr.VideoId != i.Value.VideoId)))
                 .Ensure(itd => itd.Any(), "No new items")
                 .OnSuccess(itd => itd.Select(x => x.Value))
-                .OnFailureCompensate(() => GetLectures(topic, page + 1, depth + 1));
+                .OnFailureCompensate(() => GetLectures(topic, (Int32.Parse(page) + 1).ToString(), depth + 1));
         }
     }
 }

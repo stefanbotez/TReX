@@ -5,4 +5,14 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Raven\TReX.Kernel.Raven.csproj" />
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Documents.Archeology\TReX.Discovery.Documents.Archeology.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TReX.Discovery.Documents.Worker": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

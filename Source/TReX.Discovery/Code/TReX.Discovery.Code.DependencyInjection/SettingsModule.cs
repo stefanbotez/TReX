@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using Microsoft.Extensions.Configuration;
 using TReX.Discovery.Code.Archeology.Github;
+using TReX.Kernel.Utilities;
 
 namespace TReX.Discovery.Code.DependencyInjection
 {
@@ -8,13 +8,9 @@ namespace TReX.Discovery.Code.DependencyInjection
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(context =>
-            {
-                var configuration = context.Resolve<IConfiguration>();
-                var githubSection = configuration.GetSection("GithubSettings");
-                return new GithubSettings(int.Parse(githubSection[nameof(GithubSettings.MaxDepth)]),
-                    int.Parse(githubSection[nameof(GithubSettings.PerPage)]));
-            }).SingleInstance();
+            builder.RegisterSettings(gitSection => new GithubSettings(
+                int.Parse(gitSection[nameof(GithubSettings.MaxDepth)]),
+                int.Parse(gitSection[nameof(GithubSettings.PerPage)])));
         }
     }
 }

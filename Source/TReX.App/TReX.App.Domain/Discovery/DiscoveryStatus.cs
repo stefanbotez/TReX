@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 
-namespace TReX.App.Domain
+namespace TReX.App.Domain.Discovery
 {
     public sealed class DiscoveryStatus : ValueObject
     {

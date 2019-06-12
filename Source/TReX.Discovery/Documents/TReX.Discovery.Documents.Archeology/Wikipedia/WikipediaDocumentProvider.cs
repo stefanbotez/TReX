@@ -17,18 +17,17 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
         public async Task<HttpResponseMessage> Search(string query)
         {
             HttpClient client = new HttpClient();
-             var request = "https://en.wikipedia.org//w/api.php?action=query&format=json&list=search&srsearch=" +
-                            query + "&srlimit=" + settings.SrLimit + "&sroffset=" + settings.SrOffSet + "&srwhat=" +
-                            settings.SrWhat;
+             var request = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + query +
+                           "&utf8=&format=json";
 
-             return await client.GetAsync(request);
+            return await client.GetAsync(request);
         }
 
         public List<WikipediaDocumentLecture> ToWikipediaDocumentLectures(string json)
         {
             List<WikipediaDocumentLecture> results = new List<WikipediaDocumentLecture>();
             JToken token = JToken.Parse(json);
-            JArray data = (JArray)token.SelectToken("search");
+            JArray data = (JArray)token["query"].SelectToken("search");
             foreach (JToken wikiData in data)
             {
                 int NS = (int) wikiData["ns"];

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
@@ -41,7 +42,7 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
 
         private async Task<Result<IEnumerable<WikipediaDocumentLecture>>> GetLectures(string topic, string page, int depth)
         {
-           
+
 
             var depthExceededResult = Result.Create(depth <= this.settings.SrOffSet, $"Maximum wikipedia depth exceeded for topic {topic}");
 
@@ -63,4 +64,5 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
                 .OnFailureCompensate(() => GetLectures(topic, page + 1, depth + 1));
         }
     }
+
 }

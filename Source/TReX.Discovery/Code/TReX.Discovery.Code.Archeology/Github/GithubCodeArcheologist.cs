@@ -37,7 +37,7 @@ namespace TReX.Discovery.Code.Archeology.Github
 
         protected override Task<Result<IEnumerable<GithubCodeLecture>>> GetLectures(string topic) => this.GetLectures(topic, "1");
 
-        protected override IDomainEvent GetDiscoveryEvent(string discoveryId, CodeResource resource) => new CodeResourceDiscovered(discoveryId, resource);
+        protected override IDomainEvent GetDiscoveryEvent(Shared.Domain.Discovery discovery, CodeResource resource) => new CodeResourceDiscovered(discovery.Id, resource);
 
         private async Task<Result<IEnumerable<GithubCodeLecture>>> GetLectures(string topic, string page = "1", int depth = 1)
         {

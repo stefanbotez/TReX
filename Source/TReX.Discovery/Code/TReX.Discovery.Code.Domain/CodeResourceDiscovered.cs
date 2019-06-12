@@ -1,5 +1,4 @@
-﻿using TReX.Discovery.Shared.Domain;
-using TReX.Kernel.Shared.Domain;
+﻿using TReX.Kernel.Shared.Domain;
 
 namespace TReX.Discovery.Code.Domain
 {

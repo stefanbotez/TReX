@@ -70,6 +70,33 @@ namespace TReX.App.Domain {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discovery is invalid!.
+        /// </summary>
+        internal static string InvalidDiscovery {
+            get {
+                return ResourceManager.GetString("InvalidDiscovery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provider is invalid!.
+        /// </summary>
+        internal static string InvalidProvider {
+            get {
+                return ResourceManager.GetString("InvalidProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title is invalid!.
+        /// </summary>
+        internal static string InvalidTitle {
+            get {
+                return ResourceManager.GetString("InvalidTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Topic cannot be null or empty!.
         /// </summary>
         internal static string InvalidTopic {
