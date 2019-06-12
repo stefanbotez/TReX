@@ -4,7 +4,7 @@ using EnsureThat;
 using TReX.App.Domain.Events;
 using TReX.Kernel.Shared.Domain;
 
-namespace TReX.App.Domain
+namespace TReX.App.Domain.Discovery
 {
     public sealed class Discovery : AggregateRoot
     {

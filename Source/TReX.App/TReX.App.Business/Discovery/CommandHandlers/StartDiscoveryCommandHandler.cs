@@ -10,10 +10,10 @@ namespace TReX.App.Business.Discovery.CommandHandlers
 {
     public sealed class StartDiscoveryCommandHandler : IRequestHandler<StartDiscoveryCommand, Result>
     {
-        private readonly IWriteRepository<Domain.Discovery> writeRepository;
+        private readonly IWriteRepository<Domain.Discovery.Discovery> writeRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public StartDiscoveryCommandHandler(IWriteRepository<Domain.Discovery> writeRepository, IUnitOfWork unitOfWork)
+        public StartDiscoveryCommandHandler(IWriteRepository<Domain.Discovery.Discovery> writeRepository, IUnitOfWork unitOfWork)
         {
             EnsureArg.IsNotNull(writeRepository);
             EnsureArg.IsNotNull(unitOfWork);
@@ -25,7 +25,7 @@ namespace TReX.App.Business.Discovery.CommandHandlers
         {
             EnsureArg.IsNotNull(command);
 
-            return await Domain.Discovery.CreateOnBehalfOf(command.Behalf, command.Topic)
+            return await Domain.Discovery.Discovery.CreateOnBehalfOf(command.Behalf, command.Topic)
                 .OnSuccess(d => this.writeRepository.CreateAsync(d))
                 .OnSuccess(() => this.unitOfWork.CommitAsync());
         }

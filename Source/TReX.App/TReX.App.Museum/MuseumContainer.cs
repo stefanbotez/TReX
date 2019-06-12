@@ -15,7 +15,7 @@ namespace TReX.App.Museum
             builder.RegisterMediatr(Assembly.GetExecutingAssembly())
                 .RegisterRavenPersistence()
                 .RegisterEventStoreBus()
-                .RegisterLogger();
+                .RegisterConsoleLogger();
 
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())

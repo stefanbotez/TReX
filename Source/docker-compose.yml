@@ -9,6 +9,14 @@ services:
     depends_on:
       - raven
       - event-store
+  trex.app.museum:
+    image: ${DOCKER_REGISTRY-}trexappmuseum
+    build:
+      context: .
+      dockerfile: TReX.App/TReX.App.Museum/Dockerfile
+    depends_on:
+      - raven
+      - event-store
 
   trex.discovery.media.worker:
     image: ${DOCKER_REGISTRY-}trexdiscoverymediaworker
