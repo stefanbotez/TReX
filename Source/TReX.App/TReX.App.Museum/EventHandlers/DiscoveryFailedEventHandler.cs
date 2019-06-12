@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
+using TReX.App.Domain.Discovery;
 using TReX.App.Museum.Events;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Domain;
@@ -12,10 +13,10 @@ namespace TReX.App.Museum.EventHandlers
     public sealed class DiscoveryFailedEventHandler : INotificationHandler<DiscoveryFailed>
     {
         private readonly ILogger logger;
-        private readonly IReadRepository<Domain.Discovery> readRepository;
+        private readonly IReadRepository<Discovery> readRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public DiscoveryFailedEventHandler(ILogger logger, IReadRepository<Domain.Discovery> readRepository, IUnitOfWork unitOfWork)
+        public DiscoveryFailedEventHandler(ILogger logger, IReadRepository<Discovery> readRepository, IUnitOfWork unitOfWork)
         {
             EnsureArg.IsNotNull(logger);
             EnsureArg.IsNotNull(readRepository);

@@ -120,6 +120,15 @@
   <data name="InvalidBehalf" xml:space="preserve">
     <value>Behalf cannot be null!</value>
   </data>
+  <data name="InvalidDiscovery" xml:space="preserve">
+    <value>Discovery is invalid!</value>
+  </data>
+  <data name="InvalidProvider" xml:space="preserve">
+    <value>Provider is invalid!</value>
+  </data>
+  <data name="InvalidTitle" xml:space="preserve">
+    <value>Title is invalid!</value>
+  </data>
   <data name="InvalidTopic" xml:space="preserve">
     <value>Topic cannot be null or empty!</value>
   </data>

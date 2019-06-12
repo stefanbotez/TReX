@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TReX.App.Museum": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -4,6 +4,7 @@ using CSharpFunctionalExtensions;
 using EnsureThat;
 using MediatR;
 using TReX.App.Domain;
+using TReX.App.Domain.Discovery;
 using TReX.App.Museum.Events;
 using TReX.Kernel.Shared.Domain;
 
