@@ -36,7 +36,7 @@ namespace TReX.Discovery.Documents.Archeology.Twitter
         {
             List<TwitterDocumentLecture> resultList = new List<TwitterDocumentLecture>();
             List<ITweet> tweetsList = results.ToList();
-            for (int i = (page - 1) * per_page; i < page * per_page; i++)
+            for (int i = (page - 1) * per_page; i < page * per_page && i < tweetsList.Count; i++)
             {
                 resultList.Add(new TwitterDocumentLecture(tweetsList[i].IdStr, tweetsList[i].CreatedBy.Name, tweetsList[i].Text, tweetsList[i].CreatedAt));
             }

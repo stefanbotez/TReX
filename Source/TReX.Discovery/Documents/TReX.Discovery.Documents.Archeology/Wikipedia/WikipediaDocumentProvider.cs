@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Tweetinvi.Models;
 using Newtonsoft.Json.Linq;
+using System.Web;
 
 namespace TReX.Discovery.Documents.Archeology.Wikipedia
 {
@@ -17,7 +18,7 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
         public async Task<HttpResponseMessage> Search(string query)
         {
             HttpClient client = new HttpClient();
-             var request = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + query +
+             var request = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + HttpUtility.UrlEncode(query) +
                            "&utf8=&format=json";
 
             return await client.GetAsync(request);

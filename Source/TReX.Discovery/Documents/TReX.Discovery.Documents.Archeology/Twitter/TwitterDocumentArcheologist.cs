@@ -35,7 +35,7 @@ namespace TReX.Discovery.Documents.Archeology.Twitter
             this.settings = settings;
         }
 
-        protected override Task<Result<IEnumerable<TwitterDocumentLecture>>> GetLectures(string topic) => this.GetLectures(topic, string.Empty);
+        protected override Task<Result<IEnumerable<TwitterDocumentLecture>>> GetLectures(string topic) => this.GetLectures(topic, "1");
 
         protected override IDomainEvent GetDiscoveryEvent(Shared.Domain.Discovery discovery, DocumentResource resource) => new DocumentResourceDiscovered(discovery, resource);
 

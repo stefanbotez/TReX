@@ -11,14 +11,16 @@
 
         <div class="filter-part mobile-hidden">
             <label for="order">Order by</label>
-            <input type="text" id="order">
-            <i class="fa fa-angle-down input-icon"></i>
+            <select rv-on-change="orberByValueSelected">
+                <option rv-each-value="orderByValues">{value.name}</option>
+            </select>
         </div>
 
         <div class="filter-part mobile-hidden">
             <label for="filter">Filter by</label>
-            <input type="text" id="filter">
-            <i class="fa fa-angle-down input-icon"></i>
+            <select rv-on-change="filterByValueSelected">
+                <option rv-each-value="filterByValues">{value}</option>
+            </select>
         </div>
     </div>
 

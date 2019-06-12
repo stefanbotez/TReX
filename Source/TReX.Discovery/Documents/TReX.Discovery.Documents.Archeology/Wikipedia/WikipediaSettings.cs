@@ -4,7 +4,7 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
 {
     public sealed class WikipediaSettings
     {
-        public WikipediaSettings(string srWhat, string srSearch, int srLimit, int srOffSet)
+        public WikipediaSettings(string srWhat, string srSearch, int srLimit, int srOffSet, int maxDepth)
         {
             EnsureArg.IsNotNullOrWhiteSpace(srWhat);
             EnsureArg.IsNotNullOrWhiteSpace(SrSearch);
@@ -15,6 +15,7 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
             SrSearch = srSearch;
             SrLimit = srLimit;
             SrOffSet = srOffSet;
+            MaxDepth = MaxDepth;
 
         }
 
@@ -22,5 +23,6 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
         public string SrSearch { get; }
         public int SrLimit { get; }
         public int SrOffSet { get; }
+        public int MaxDepth { get; }
     }
 }

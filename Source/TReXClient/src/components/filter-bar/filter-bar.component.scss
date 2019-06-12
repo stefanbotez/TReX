@@ -43,10 +43,11 @@
     min-width: 70px;
 }
 
-.filter-form .filter-part input {
+.filter-form .filter-part input, select {
     padding: 9px;
     outline: none;
     border: 2px solid #d8d8d8;
+    width: 160px;
 }
 
 .grid-options {
