@@ -17,6 +17,10 @@ export class FilterBarComponent extends Component implements HasInputs {
         {
             name: 'Title descending',
             value: 'desc'
+        },
+        {
+            name: 'Newest',
+            value: 'new'
         }
     ];
     public filterByValues: string[] = ['', 'aaa', 'bbb', 'ccc', 'ddd'];

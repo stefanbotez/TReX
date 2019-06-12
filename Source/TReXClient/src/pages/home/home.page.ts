@@ -46,6 +46,34 @@ export class HomePage extends Page implements OnInit {
             id: '2'
         }
     ];
+    public youtubeArticles: any[] = [
+        {
+            title: "My youtube video",
+            thumbnail: "aaa",
+            description: "Describe your channel. This might be the most obvious thing to do, but it’s where most people get hung up. The goal of this description is to tell your viewers what will happen if they subscribe and watch your videos. What kind of content will they see? How frequently will they see it? Will they learn anything? Make sure they know the benefits of subscribing such as your amazing sense of humor or your easy to understand tutorials.",
+            tags: ['aaa','bbb'],
+            id: 'y1'
+        }
+    ];
+
+    public vimeoArticles: any[] = [
+        {
+            title: "My vimeo video",
+            thumbnail: "aaa",
+            description: "Describe your channel. This might be the most obvious thing to do, but it’s where most people get hung up. The goal of this description is to tell your viewers what will happen if they subscribe and watch your videos. What kind of content will they see? How frequently will they see it? Will they learn anything? Make sure they know the benefits of subscribing such as your amazing sense of humor or your easy to understand tutorials.",
+            tags: ['ccc','aaa'],
+            id: 'v1'
+        }
+    ]
+
+    public twitterArticles: any[] = [
+        {
+            title: "My twiitter article",
+            description: "With Twitter, it wasn't clear what it was. They called it a social network, they called it microblogging, but it was hard to define, because it didn't replace anything. There was this path of discovery with something like that, where over time you figure out what it is. Twitter actually changed from what we thought it was in the beginning, which we described as status updates and a social utility. It is that, in part, but the insight we eventually came to was Twitter was really more of an information network than it is a social network.",
+            tags: ['aaaa', 'vvv'],
+            id: 't1'
+        }
+    ]
 
     public updatedArticles: any[];
 
