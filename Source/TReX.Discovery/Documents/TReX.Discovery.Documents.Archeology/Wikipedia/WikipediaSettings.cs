@@ -4,7 +4,7 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
 {
     public sealed class WikipediaSettings
     {
-        public WikipediaSettings(string srWhat, string srSearch,int srLimit, int srOffSet)
+        public WikipediaSettings(string srWhat, string srSearch, int srLimit, int srOffSet)
         {
             EnsureArg.IsNotNullOrWhiteSpace(srWhat);
             EnsureArg.IsNotNullOrWhiteSpace(SrSearch);
