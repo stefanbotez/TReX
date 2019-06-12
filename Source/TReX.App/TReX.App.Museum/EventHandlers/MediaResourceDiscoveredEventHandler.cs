@@ -29,7 +29,7 @@ namespace TReX.App.Museum.EventHandlers
         public async Task Handle(MediaResourceDiscovered notification, CancellationToken cancellationToken)
         {
             await logger.Log($"App discovered resource: {notification.Title}");
-            var resourceResult = ParentDiscovery.Create(notification.DiscoveryId, notification.DiscoveryTopic)
+            await ParentDiscovery.Create(notification.DiscoveryId, notification.DiscoveryTopic)
                 .OnSuccess(pd => Resource.CreateMedia(notification.ProviderDetails, pd, notification.Title, notification.Description))
                 .OnSuccess(r => r.FillBucket(nameof(MediaResourceDiscovered.ThumbnailUrl), notification.ThumbnailUrl))
                 .OnSuccess(r => this.writeRepository.CreateAsync(r))

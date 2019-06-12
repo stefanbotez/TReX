@@ -71,5 +71,10 @@ namespace TReX.Kernel.Shared
                 return Result.Fail(e.Message);
             }
         }
+
+        public static string PascalToCamelCase(this string text)
+        {
+            return text[0].ToString().ToLower() + text.Substring(1);
+        }
     }
 }

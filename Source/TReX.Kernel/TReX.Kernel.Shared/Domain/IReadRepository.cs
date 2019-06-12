@@ -10,5 +10,7 @@ namespace TReX.Kernel.Shared.Domain
         Task<Maybe<T>> GetByIdAsync(string id);
 
         Task<Result<IEnumerable<T>>> GetByIdsAsync(IEnumerable<string> ids);
+
+        Task<IEnumerable<T>> GetAll();
     }
 }

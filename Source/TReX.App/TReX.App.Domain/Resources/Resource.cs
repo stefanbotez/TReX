@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 using TReX.Kernel.Shared;
 using TReX.Kernel.Shared.Domain;
@@ -19,6 +20,7 @@ namespace TReX.App.Domain.Resources
             Title = title;
             Description = description;
             Type = type;
+            PublishedAt = DateTime.Now;
         }
 
         public ProviderDetails ProviderDetails { get; private set; }
@@ -31,9 +33,11 @@ namespace TReX.App.Domain.Resources
 
         public ParentDiscovery Discovery { get; private set; }
 
-        public Dictionary<string, object> _Bucket { get; private set; } = new Dictionary<string, object>();
+        private Dictionary<string, object> _Bucket { get; set; } = new Dictionary<string, object>();
 
         public IReadOnlyDictionary<string, object> Bucket => _Bucket;
+
+        public DateTime PublishedAt { get; private set; }
 
         public static  Result<Resource> CreateMedia(ProviderDetails provider, ParentDiscovery discovery, string title, string description) 
             => Create(provider, discovery, title, description, ResourceType.Media);
@@ -58,6 +62,21 @@ namespace TReX.App.Domain.Resources
             where T : class
         {
             _Bucket[key] = value;
+        }
+
+        public bool SatisfiesTopic(string topic)
+        {
+            if (string.IsNullOrEmpty(topic))
+            {
+                return true;
+            }
+
+            if (this.Discovery.Topic.Contains(topic, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return true;
+            }
+
+            return Title.Contains(topic, StringComparison.InvariantCultureIgnoreCase) || Description.Contains(topic, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

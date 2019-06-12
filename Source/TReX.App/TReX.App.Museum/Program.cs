@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
 
@@ -6,6 +7,8 @@ namespace TReX.App.Museum
 {
     public static class Program
     {
+        private static readonly ManualResetEvent _quitEvent = new ManualResetEvent(false);
+
         public static async Task Main(string[] args)
         {
             await BuildContainer()
@@ -13,6 +16,12 @@ namespace TReX.App.Museum
                 .Run();
 
             Console.ReadLine();
+            Console.WriteLine("Museum worker is up..");
+            Console.CancelKeyPress += (sender, eArgs) => {
+                _quitEvent.Set();
+                eArgs.Cancel = true;
+            };
+            _quitEvent.WaitOne();
         }
 
         private static IContainer BuildContainer()

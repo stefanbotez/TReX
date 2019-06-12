@@ -54,10 +54,11 @@ services:
       RAVEN_Url: "http://0.0.0.0:8080"
       RAVEN_TCP_Port: 38888
     ports:
-        - "8081:8080"
+        - "8080:8080"
   event-store:
     image: "eventstore/eventstore"
     environment:
       EVENTSTORE_RUN_PROJECTIONS: "All"
     ports:
       - "2113:2113"
+      - "1113:1113"

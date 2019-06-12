@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using EnsureThat;
@@ -47,6 +46,11 @@ namespace TReX.Kernel.Raven
                     }
                 })
                 .OnFailure(e => this.logger.LogError(e));
+        }
+
+        public async Task<IEnumerable<T>> GetAll()
+        {
+            return await this.session.Query<T>().ToListAsync();
         }
     }
 }
