@@ -15,7 +15,7 @@ export class UserService {
     }
 
     public getUser(): User {
-        if(!this.isAuthenticated) {
+        if(!this.isAuthenticated()) {
             return User.guest();
         }
 
