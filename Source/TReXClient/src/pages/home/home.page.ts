@@ -164,6 +164,6 @@ export class HomePage extends Page implements OnInit {
         e.preventDefault();
         self.discoveredResources = [];
 
-        this.resourcesService.discoverTopic(self.topic);
+        self.resourcesService.discoverTopic(self.topic);
     }
 }
