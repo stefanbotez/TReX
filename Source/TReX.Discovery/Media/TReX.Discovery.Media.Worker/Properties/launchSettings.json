@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TReX.Discovery.Media.Worker": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

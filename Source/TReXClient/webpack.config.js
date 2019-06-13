@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const webpackConfig = {
     entry: {
-        'bundle.js': './main.ts',
-        'style.css': './styles/main.scss'
+        '/bundle.js': './main.ts',
+        '/style.css': './styles/main.scss'
     },
     target: 'web',
     node: {

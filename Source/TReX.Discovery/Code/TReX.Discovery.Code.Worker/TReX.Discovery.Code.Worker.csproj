@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Integration\TReX.Discovery.Shared.Integration.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Code.DependencyInjection\TReX.Discovery.Code.DependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>

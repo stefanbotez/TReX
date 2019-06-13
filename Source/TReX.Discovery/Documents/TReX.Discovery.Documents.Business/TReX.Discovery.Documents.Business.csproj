@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\TReX.Kernel\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Business\TReX.Discovery.Shared.Business.csproj" />
+  </ItemGroup>
+
+</Project>

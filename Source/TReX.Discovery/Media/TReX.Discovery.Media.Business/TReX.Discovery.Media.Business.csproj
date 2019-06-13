@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>TReX.Discovery.Media.Business</AssemblyName>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ensure.That" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Business\TReX.Discovery.Shared.Business.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Media.Domain\TReX.Discovery.Media.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,6 +1,21 @@
-import { HomePage } from '@pages';
+import { HomePage, LoginPage, ArticlePage } from '@pages';
 
-export const routes = {
-    '/': HomePage,
-    '**': HomePage
+export interface Route {
+    page: any;
+    redirectTo: any;
+}
+
+export const routes: {[s: string]: Partial<Route>} = {
+    '/home': {
+        page: HomePage
+    },
+    '/login': {
+        page: LoginPage
+    },
+    '/article/:id': {
+        page: ArticlePage
+    },
+    '*': {
+        redirectTo: '/home'
+    },
 };

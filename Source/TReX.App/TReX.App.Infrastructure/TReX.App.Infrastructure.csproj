@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TReX.Kernel\TReX.Kernel.Raven\TReX.Kernel.Raven.csproj" />
+    <ProjectReference Include="..\..\TReX.Kernel\TReX.Kernel.Utilities\TReX.Kernel.Utilities.csproj" />
+    <ProjectReference Include="..\TReX.App.Domain\TReX.App.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

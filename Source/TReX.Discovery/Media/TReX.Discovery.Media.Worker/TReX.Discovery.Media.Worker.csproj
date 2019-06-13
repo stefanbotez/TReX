@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Domain\TReX.Discovery.Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\TReX.Discovery.Shared.Integration\TReX.Discovery.Shared.Integration.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Media.Business\TReX.Discovery.Media.Business.csproj" />
+    <ProjectReference Include="..\TReX.Discovery.Media.DependencyInjection\TReX.Discovery.Media.DependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>

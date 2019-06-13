@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="CSharpFunctionalExtensions" Version="1.18.1" />
+    <PackageReference Include="EventStore.Client" Version="5.0.1" />
+    <PackageReference Include="JsonNet.ContractResolvers" Version="1.1.0" />
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TReX.Kernel.Shared\TReX.Kernel.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
