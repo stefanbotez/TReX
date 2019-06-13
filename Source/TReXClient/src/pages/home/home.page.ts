@@ -1,5 +1,5 @@
 import { inject } from 'inversify';
-import { TrexPage, DomMaster, Page, OnInit } from '@framework';
+import { TrexPage, DomMaster, Page, OnInit, NotificationsService, NotificationMessage } from '@framework';
 
 import * as template from './home.page.html'
 import { Subject } from 'rxjs';
@@ -33,7 +33,8 @@ export class HomePage extends Page implements OnInit {
 
     public constructor(
         @inject(DomMaster) master: DomMaster,
-        @inject(ResourcesService) private resourcesService) {
+        @inject(ResourcesService) private resourcesService,
+        @inject(NotificationsService) private notifications) {
         
         super(master);
         resourcesService.find('.NET', 1, 'title');
@@ -157,6 +158,10 @@ export class HomePage extends Page implements OnInit {
         self.resourcesService.find(self.topic, 1, 'newest').then((page: PageResponse) => {
             self.searchedResources = [];
             self.searchedResources = page.items;
+
+            if(self.searchedResources.length == 0) {
+                self.notifications.pushError(NotificationMessage.error("No results for " + self.topic));
+            }
         });
     }
 
