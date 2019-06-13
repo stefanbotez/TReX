@@ -58,7 +58,8 @@ export class LoginPage extends Page implements OnInit {
 
     private initForm(): void {
         this.form.onSuccess.subscribe(() => {
-            this.notifications.pushSuccess(NotificationMessage.success(`Login made for credentials: ${this.form.email}, ${this.form.password}`));            
+            this.notifications.pushSuccess(NotificationMessage.success(`Successfull login!`));     
+            localStorage.setItem('access_token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c');
             this.routerService.goToHome();            
         });
 
