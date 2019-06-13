@@ -2,7 +2,7 @@ import { PageConstructor, ComponentConstructor } from "@framework";
 
 interface ModuleParams {
     pages: any[];
-    components: ComponentConstructor[];
+    components: any[];
 }
 
 export function Module(params: ModuleParams): any {

@@ -7,22 +7,26 @@
         <div class="user-info">
             <div class="initials-container">
                 <div class="initials">
-                    {initials}
+                    {user.initials}
                 </div>
             </div>
 
             <div class="about-user">
                 <div class="name">
-                    {name}
+                    {user.name}
                 </div>
                 <div class="occupation">
-                    {occupation}
+                    {user.occupation}
                 </div>
             </div>
         </div>
 
         <div class="menu">
             <ul>
+                <li rv-class-selected="isDiscoverActive" rv-on-click="selected">
+                    <i class="fa fa-fire"></i>
+                    Discover
+                </li>
                 <li rv-class-selected="isHistoryActive" rv-on-click="selected">
                     <i class="fa fa-book-open"></i>
                     History

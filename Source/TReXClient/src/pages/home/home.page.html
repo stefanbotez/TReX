@@ -5,21 +5,36 @@
     </div>
 
     <div class="home-right-container">
-        <div rv-hide="proposalsTabSelected">
+        <div class="discover" rv-show="isDiscoverSelected">
+            <header>
+                <h1>Discover your favorite topics</h1>
+            </header>
+
+            <form action="" class="search" rv-on-submit="submitDiscovery">
+                <input rv-value="topic">
+                <button>Go!</button>
+            </form>
+        </div>
+
+        <div class="history" rv-show="isHistorySelected">history</div>
+
+        <div class="saved" rv-show="isSavedSelected">saved</div>
+
+        <div class="proposals" rv-show="isProposalsSelected">
+            <div class="empty-header"></div>
+            <trex-proposal channel="proposalChannel"></trex-proposal>
+        </div>
+
+        <!-- <div rv-hide="proposalsTabSelected">
             <trex-filter-bar channel="filterbarChannel"></trex-filter-bar>
             <div class="article-preview-container">
-                <trex-article-preview rv-each-article="updatedArticles" article="article"></trex-article-preview>
+                <trex-resource-preview rv-each-article="updatedArticles" resource="article"></trex-resource-preview>
                 <trex-youtube-preview rv-each-youtube="youtubeArticles" youtube="youtube"></trex-youtube-preview>
                 <trex-vimeo-preview rv-each-vimeo="vimeoArticles" vimeo="vimeo"></trex-vimeo-preview>
                 <trex-twitter-preview rv-each-twitter="twitterArticles" twitter="twitter"></trex-twitter-preview>
                 <trex-not-found rv-if="notFound"></trex-not-found>
             </div>
-        </div>
-
-        <div rv-show="proposalsTabSelected">
-            <div class="empty-header"></div>
-            <trex-proposal channel="proposalChannel"></trex-proposal>
-        </div>
+        </div> -->
     </div>
     
 </div>
