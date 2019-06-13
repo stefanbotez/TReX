@@ -13,4 +13,10 @@ export class ResourcesService {
 
         return apiResponse.data;
     }
+
+    public async discoverTopic(topic: string): Promise<void> {
+        await Axios.post('http://localhost:51096/api/v1/discoveries', {
+            topic: topic
+        });
+    }
 }
