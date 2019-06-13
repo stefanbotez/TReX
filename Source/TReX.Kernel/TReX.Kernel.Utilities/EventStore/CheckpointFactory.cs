@@ -1,4 +1,5 @@
-﻿using TReX.Kernel.Shared.Bus;
+﻿using System.Reflection;
+using TReX.Kernel.Shared.Bus;
 
 namespace TReX.Kernel.Utilities.EventStore
 {
@@ -7,7 +8,8 @@ namespace TReX.Kernel.Utilities.EventStore
         public static string GetStream<T>()
             where T : IBusMessage
         {
-            return $"{typeof(T).Name}-Checkpoint";
+            var consumerName = Assembly.GetEntryAssembly().GetName().Name;
+            return $"{consumerName}-{typeof(T).Name}-Checkpoint";
         }
     }
 }

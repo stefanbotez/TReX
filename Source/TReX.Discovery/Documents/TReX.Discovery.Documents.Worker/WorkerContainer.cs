@@ -1,5 +1,4 @@
-﻿using System.Net.Mime;
-using Autofac;
+﻿using Autofac;
 using TReX.Discovery.Documents.DependencyInjection;
 using TReX.Discovery.Shared.Integration;
 using TReX.Kernel.Utilities;

@@ -42,10 +42,10 @@ namespace TReX.Discovery.Documents.Archeology.Wikipedia
 
         private async Task<Result<IEnumerable<WikipediaDocumentLecture>>> GetLectures(string topic, int depth = 1)
         {
-            var depthExceededResult = Result.Create(depth <= this.settings.MaxDepth, $"Maximum vimeo depth exceeded for topic {topic}");
+            var depthExceededResult = Result.Create(depth <= this.settings.MaxDepth, $"Maximum wikipedia depth exceeded for topic {topic}");
 
             var studiesResult = await depthExceededResult.OnSuccess(() => this.provider.Search(topic))
-                .Ensure(x => provider.ToWikipediaDocumentLectures(x.Content.ReadAsStringAsync().Result).Count > 0, "No vimeo items for requested topic");
+                .Ensure(x => provider.ToWikipediaDocumentLectures(x.Content.ReadAsStringAsync().Result).Count > 0, "No wikipedia items for requested topic");
 
             if (studiesResult.IsFailure)
             {

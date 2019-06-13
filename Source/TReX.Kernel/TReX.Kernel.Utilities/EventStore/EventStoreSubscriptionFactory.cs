@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using CSharpFunctionalExtensions;
 using EnsureThat;
 using EventStore.ClientAPI;
@@ -17,17 +18,16 @@ namespace TReX.Kernel.Utilities.EventStore
     public sealed class EventStoreSubscriptionFactory
     {
         private readonly IEventStoreConnection storeConnection;
-        private readonly IMediator mediator;
         private readonly EventStoreSettings settings;
+        private readonly ILifetimeScope scope;
 
-        public EventStoreSubscriptionFactory(IEventStoreConnection storeConnection, IMediator mediator, EventStoreSettings settings)
+        public EventStoreSubscriptionFactory(IEventStoreConnection storeConnection, EventStoreSettings settings, ILifetimeScope scope)
         {
             EnsureArg.IsNotNull(storeConnection);
-            EnsureArg.IsNotNull(mediator);
             EnsureArg.IsNotNull(settings);
             this.storeConnection = storeConnection;
-            this.mediator = mediator;
             this.settings = settings;
+            this.scope = scope;
         }
 
         public async Task<EventStoreCatchUpSubscription> CreateSubscription<T>()
@@ -53,9 +53,13 @@ namespace TReX.Kernel.Utilities.EventStore
             var serializerSettings = new JsonSerializerSettings { ContractResolver = new PrivateSetterAndCtorContractResolver()};
             var message = JsonConvert.DeserializeObject<T>(jsonEvent, serializerSettings);
 
-            await this.mediator.Publish(message);
-            await this.StoreCheckpoint<T>(@event);
+            using (var newScope = this.scope.BeginLifetimeScope())
+            {
+                var mediator = newScope.Resolve<IMediator>();
 
+                await mediator.Publish(message);
+                await this.StoreCheckpoint<T>(@event);
+            }
         }
 
         private async void OnSubscriptionDropped<T>(EventStoreCatchUpSubscription subscription, SubscriptionDropReason dropReason, Exception e)

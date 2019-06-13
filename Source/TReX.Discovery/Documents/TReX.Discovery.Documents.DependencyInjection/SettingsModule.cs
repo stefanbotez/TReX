@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using TReX.Discovery.Documents.Archeology.Twitter;
+using TReX.Discovery.Documents.Archeology.Wikipedia;
 using TReX.Kernel.Utilities;
 
 namespace TReX.Discovery.Documents.DependencyInjection
@@ -14,7 +15,9 @@ namespace TReX.Discovery.Documents.DependencyInjection
                 twitterSection[nameof(TwitterSettings.ApiKey)],
                 twitterSection[nameof(TwitterSettings.ApiSecret)],
                 int.Parse(twitterSection[nameof(TwitterSettings.PerPage)]),
-                int.Parse(twitterSection[nameof(TwitterSettings.MaxDepth)])));
+                int.Parse(twitterSection[nameof(TwitterSettings.MaxDepth)])))
+                .RegisterSettings(wikipediaSection => new WikipediaSettings(
+                    int.Parse(wikipediaSection[nameof(WikipediaSettings.MaxDepth)])));
         }
     }
 }
