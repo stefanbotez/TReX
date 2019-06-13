@@ -15,6 +15,7 @@ namespace TReX.Discovery.Media.Archeology.Vimeo
 
         public VimeoMediaLecture(string videoId, string title, string description, Thumbnail thumbnail, DateTime publishedAt)
         {
+            Id = videoId;
             VideoId = videoId;
             Title = title;
             Description = description;
