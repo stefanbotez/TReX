@@ -154,7 +154,7 @@ export class HomePage extends Page implements OnInit {
         e.preventDefault();
         self.discoveredResources = [];
 
-        this.resourcesService.find(self.topic, 1, 'newest').then((page: PageResponse) => {
+        self.resourcesService.find(self.topic, 1, 'newest').then((page: PageResponse) => {
             self.searchedResources = [];
             self.searchedResources = page.items;
         });
@@ -164,6 +164,6 @@ export class HomePage extends Page implements OnInit {
         e.preventDefault();
         self.discoveredResources = [];
 
-        this.resourcesService.discoverTopic(self.topic);
+        self.resourcesService.discoverTopic(self.topic);
     }
 }

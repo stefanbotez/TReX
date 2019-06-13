@@ -10,13 +10,13 @@
                 <h1>Discover your favorite topics</h1>
             </header>
 
-            <form action="" class="search" rv-on-submit="submitDiscovery">
+            <form action="" class="search" rv-on-submit="searchTopic">
                 <input rv-value="topic">
                 <button>Search</button>
             </form>
 
-            <div rv-if="searchResources" class="found-resources">
-                <trex-resource-preview rv-each-resource="searchResources" resource="resource"></trex-resource-preview>
+            <div class="found-resources">
+                <trex-resource-preview rv-each-resource="searchedResources" resource="resource"></trex-resource-preview>
             </div>
 
             <footer>

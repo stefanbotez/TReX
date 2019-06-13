@@ -25,6 +25,9 @@ export class UserService {
 
     private getDecodedToken(): any {
         const token = localStorage.getItem('access_token');
+        if(!token) {
+            return null;
+        }
         return decode(token, null, true);
     }
 }
