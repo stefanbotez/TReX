@@ -19,7 +19,7 @@ export class ResourcePreviewComponent extends Component {
         this.resource = inputs.resource;
     }
 
-    public goToArticle(e: any, self: ArticlePreviewComponent): void {
+    public goToArticle(e: any, self: ResourcePreviewComponent): void {
         self.routerService.goTo(`/article/${self.resource.id}`);
     }
 }

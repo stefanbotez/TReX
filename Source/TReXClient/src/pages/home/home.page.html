@@ -12,9 +12,16 @@
 
             <form action="" class="search" rv-on-submit="submitDiscovery">
                 <input rv-value="topic">
-                <button>Go!</button>
+                <button>Search</button>
             </form>
 
+            <div rv-if="searchResources" class="found-resources">
+                <trex-resource-preview rv-each-resource="searchResources" resource="resource"></trex-resource-preview>
+            </div>
+
+            <footer>
+                <button rv-on-click="discoverMore">Discover more</button>
+            </footer>
             
         </div>
 

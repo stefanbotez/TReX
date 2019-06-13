@@ -5,5 +5,5 @@ export class Resource {
     public description: string;
     public type: string;
     public provider: Provider;
-    
+    public id: string;
 }
